@@ -1,7 +1,52 @@
-%h1
-  %i.fas.fa-home
-  Hello world!
+.jumbotron
+  .display-4
+    What do you want to learn today?
+
+  .p-4
   
-= link_to products_path, class: 'btn btn-success' do
-  .fa.fa-shopping-bag
+  .form-inline.my-2.my-lg-0
+    = form_tag(products_path, method: :get) do
+      .input-group
+        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
+        %span.input-group-append
+          %button.btn.btn-primary.btn-sm{:type => "submit"}
+            %span.fa.fa-search{"aria-hidden" => "true"}
+
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Product.count
+    online products
+    .row
+    Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+      /.fa.fa-brain
+    = Product.distinct.count(:user_id)
+    expert instructors
+    .row
+    Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    active learners
+    .row
+    Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Lifetime access
+    .row
+    Learn on your schedule
+
+%hr
+%h2
   Products
+.card-columns
+  - @products.each do |product|
+    = render 'products/product', product: product
+
+%hr

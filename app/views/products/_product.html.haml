@@ -1,0 +1,16 @@
+.card
+  .card-header
+    .fa.fa-book
+    = link_to product.title, product_path(product)
+  .card-body
+    = product.description
+  .card-footer
+    .far.fa-clock
+    = product.created_at.strftime('%d-%b-%Y')
+    .row
+    .fa.fa-chalkboard-teacher
+    = product.user
+  .card-footer
+    = link_to 'Show', product, class: 'btn btn-sm btn-primary'
+    = link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-warning'
+    = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'

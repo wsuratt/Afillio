@@ -1,5 +1,5 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "#"} Afillio
+%nav.navbar.navbar-expand-lg.navbar-dark{:style => "background-color:#90d4a2;"}
+  %a.navbar-brand{:href => "/"} Afillio
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -13,6 +13,10 @@
           = link_to products_path, class: 'nav-link' do
             .fa.fa-shopping-bag
             Products
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_product_path)}"}
+          = link_to new_product_path, class: 'nav-link' do
+            .fa.fa-plus
+            New Product
       %ul.navbar-nav.mr-right
         %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
           = link_to root_path, class: 'nav-link' do
