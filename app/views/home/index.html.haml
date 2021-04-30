@@ -1,6 +1,6 @@
 .jumbotron
   .display-4
-    What do you want to learn today?
+    What do you want to sell today?
 
   .p-4
   
@@ -11,42 +11,28 @@
         %span.input-group-append
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
-
-.card-group
-  .card.card-body
-    %h1
-      .fa.fa-graduation-cap
-    = Product.count
-    online products
-    .row
-    Explore a variety of fresh topics
-  .card.card-body
-    %h1
-      .fa.fa-chalkboard-teacher
-      /.fa.fa-brain
-    = Product.distinct.count(:user_id)
-    expert instructors
-    .row
-    Find the right instructor for you
-  .card.card-body
-    %h1
-      .fa.fa-user-graduate
-    = User.count
-    active learners
-    .row
-    Join the knowledge sharing community
-  .card.card-body
-    %h1
-      .fa.fa-infinity
-    Lifetime access
-    .row
-    Learn on your schedule
+  .float-right
+    = link_to 'How it works', how_it_works_path
 
 %hr
 %h2
-  Products
+  Popular products
 .card-columns
   - @products.each do |product|
+    = render 'products/product', product: product
+
+%hr
+%h2 
+  Top rated products
+.card-columns
+  - @products.each do |product|
+    = render 'products/product', product: product
+
+%hr
+%h2 
+  Latest products
+.card-columns
+  - @latest_products.each do |product|
     = render 'products/product', product: product
 
 %hr
