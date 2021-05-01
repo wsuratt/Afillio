@@ -1,7 +1,38 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
 a:hover {
     background-color: transparent;
 }
 
+a:visited {
+    color: $primary;
+}
+
+a.btn-custom:visited {
+    color: white;
+}
+
+a.btn-warning:visited {
+    color: white;
+}
+
+a.btn-danger:visited {
+    color: white;
+}
+
+.btn-custom {
+    color: white;
+    background-color: #90d4a2;
+}
+
 .navbar-nav .nav-item .nav-link {
     color: white;
+}
+
+.form-control.is-invalid { 
+    background-image: none; 
+}
+
+.form-control.is-valid { 
+    background-image: none; 
 }

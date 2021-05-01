@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index]
+  skip_before_action :authenticate_user!, :only => [:index, :how_it_works]
   def index
     @products = Product.all.limit(3)
     @latest_products = Product.all.limit(3).order(created_at: :desc)

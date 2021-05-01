@@ -6,6 +6,10 @@
     .form-inputs
       = f.input :title
       = f.input :description
+      = f.input :category, collection: [ "Other", "Tech", "Apparel"]
+      = f.input :quantity
+      = f.input :price
+      = f.input :commission
   
     .form-actions
       = f.button :submit

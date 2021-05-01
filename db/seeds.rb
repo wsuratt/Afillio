@@ -1,9 +1,13 @@
-User.create!(email: 'admin@example.com', password: 'admin@example.com', password_confirmation: 'admin@example.com')
+#User.create!(email: 'admin@example.com', password: 'admin@example.com', password_confirmation: 'admin@example.com')
 
 30.times do
   Product.create!([{
     title: Faker::Commerce.product_name,
     description: Faker::TvShows::FamilyGuy.quote,
-    user_id: User.first.id
+    user_id: User.first.id,
+    category: 'Other',
+    quantity: Faker::Number.between(from: 100, to: 1000),
+    price: Faker::Number.between(from: 10, to: 200),
+    commission: Faker::Number.between(from: 10, to: 100),
   }])
 end

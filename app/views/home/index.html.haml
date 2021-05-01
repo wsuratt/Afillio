@@ -23,13 +23,6 @@
 
 %hr
 %h2 
-  Top rated products
-.card-columns
-  - @products.each do |product|
-    = render 'products/product', product: product
-
-%hr
-%h2 
   Latest products
 .card-columns
   - @latest_products.each do |product|

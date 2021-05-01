@@ -1,16 +1,35 @@
 .card
   .card-header
-    .fa.fa-book
+    .fa.fa-shopping-bag
     = link_to product.title, product_path(product)
   .card-body
-    = product.description
+    %small= simple_format(product.description)
   .card-footer
-    .far.fa-clock
-    = product.created_at.strftime('%d-%b-%Y')
+    .text-center
+      Price:
+      = number_to_currency(product.price)
+      .row
+      Commission:
+      = number_to_currency(product.commission)
+  .card-footer
     .row
-    .fa.fa-chalkboard-teacher
-    = product.user
+      .col-md-6
+        .fa.fa-globe-africa
+        = product.quantity
+      .col-md-6
+        .text-right
+          .fa.fa-signal
+          = product.category
   .card-footer
-    = link_to 'Show', product, class: 'btn btn-sm btn-primary'
+    .row
+      .col-md-6
+        .far.fa-clock
+        = product.created_at.strftime('%d-%b-%Y')
+      .col-md-6
+        .text-right
+          .fa.fa-chalkboard-teacher
+          = product.user
+  .card-footer
+    = link_to 'Show', product, class: 'btn btn-sm btn-custom'
     = link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-warning'
-    = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
+    = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
