@@ -12,4 +12,10 @@ class Product < ApplicationRecord
   
   extend FriendlyId
   friendly_id :title, use: :slugged
+  
+  CATEGORIES = [:"Other", :"Tech", :"Apparel"]
+  def self.categories
+    CATEGORIES.map { |category| [category, category] }
+  end
+  
 end

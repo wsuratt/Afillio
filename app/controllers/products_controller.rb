@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
   def index
-    @products = Product.all
+    #@products = Product.all
+    @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
+    @products = @ransack_products.result.includes(:user)
   end
 
   def show

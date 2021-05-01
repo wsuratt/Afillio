@@ -1,16 +1,15 @@
 .jumbotron
-  .display-4
+  .display-4{:style => "font-weight: bold;"}
     What do you want to sell today?
 
   .p-4
   
-  .form-inline.my-2.my-lg-0
-    = form_tag(products_path, method: :get) do
-      .input-group
-        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
-        %span.input-group-append
-          %button.btn.btn-primary.btn-sm{:type => "submit"}
-            %span.fa.fa-search{"aria-hidden" => "true"}
+  = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
+    .input-group
+      = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
+      %span.input-group-append
+        %button.btn.btn-primary.btn-sm{:type => "submit"}
+          %span.fa.fa-search{"aria-hidden" => "true"}
   .float-right
     = link_to 'How it works', how_it_works_path
 

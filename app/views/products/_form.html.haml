@@ -6,7 +6,8 @@
     .form-inputs
       = f.input :title
       = f.input :description
-      = f.input :category, collection: [ "Other", "Tech", "Apparel"]
+      /= f.input :category, collection: [ "Other", "Tech", "Apparel"]
+      = f.input :category, collection: Product.categories, include_blank: true
       = f.input :quantity
       = f.input :price
       = f.input :commission
