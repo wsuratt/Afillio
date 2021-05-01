@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark{:style => "background-color:#90d4a2;"} 
-  %a.navbar-brand{:href => "/"} Afillio
+  %a.navbar-brand{:style => "font-weight:bold;", :href => "/"} Afillio
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -22,10 +22,6 @@
             .fa.fa-users
             Users
       %ul.navbar-nav.mr-right
-        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
-          = link_to root_path, class: 'nav-link' do
-            .fa.fa-home
-            Another link
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             %b= current_user.username

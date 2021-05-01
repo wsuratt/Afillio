@@ -1,0 +1,22 @@
+%hr
+%footer
+  .container
+    .row
+      .col-md-4
+        Copyright
+        © 
+        = Time.now.year
+        William Suratt
+        .row
+        .fa.fa-envelope
+        = mail_to 'example@afillio.com'
+        .row
+      .col-md-4
+        Privacy policy
+        .row
+        Terms and conditions
+      .col-md-4
+        About us
+        .row
+        = link_to 'Become a Vendor', new_product_path
+%br 
