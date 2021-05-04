@@ -12,13 +12,16 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def edit
+    authorize @product
   end
 
   def create
     @product = Product.new(product_params)
+    authorize @product
     @product.user = current_user
 
     respond_to do |format|
@@ -33,6 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    authorize @product
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: "Product was successfully updated." }
@@ -45,6 +49,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
