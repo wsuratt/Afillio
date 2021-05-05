@@ -2,8 +2,6 @@
   .card-header
     .fa.fa-shopping-bag
     = link_to product.title, product_path(product)
-  .card-body
-    %small= simple_format(product.description)
   .card-footer
     .text-center
       Price:
@@ -11,24 +9,6 @@
       .row
       Commission:
       = number_to_currency(product.commission)
-  .card-footer
-    .row
-      .col-md-6
-        .fa.fa-globe-africa
-        = product.quantity
-      .col-md-6
-        .text-right
-          .fa.fa-signal
-          = product.category
-  .card-footer
-    .row
-      .col-md-6
-        .far.fa-clock
-        = product.created_at.strftime('%d-%b-%Y')
-      .col-md-6
-        .text-right
-          .fa.fa-chalkboard-teacher
-          = product.user.username
   - if current_user
     - if policy(product).edit?
       .card-footer

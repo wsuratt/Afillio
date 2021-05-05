@@ -40,3 +40,9 @@ a.btn-danger:visited {
 .form-control.is-valid { 
     background-image: none; 
 }
+
+.card-columns {
+    -webkit-column-count:2;
+    -moz-column-count:2;
+    column-count:2;
+}
