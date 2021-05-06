@@ -26,3 +26,5 @@
     .card-columns
       - @products.each do |product|
         = render 'products/product', product: product
+    != pagy_bootstrap_nav(@pagy)
+%br

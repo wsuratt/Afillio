@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def index
     #@products = Product.all
     @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
-    @products = @ransack_products.result.includes(:user)
+    @pagy, @products = pagy(@ransack_products.result.includes(:user))
   end
 
   def show
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def edit
     authorize @product
   end
-
+  
   def create
     @product = Product.new(product_params)
     authorize @product
