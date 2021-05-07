@@ -61,3 +61,4 @@ gem 'ransack'
 gem "rolify"
 gem "pundit"
 gem 'pagy'
+gem "rqrcode", "~> 2.0"

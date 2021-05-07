@@ -8,6 +8,14 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @qrcode = RQRCode::QRCode.new(request.original_url)
+    
+    @svg = @qrcode.as_svg(
+      offset: 0,
+      color: "000",
+      shape_rendering: "crispEdges",
+      module_size: 4
+    )
   end
 
   def new
