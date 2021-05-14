@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:new, :create, :show]
   before_action :set_order, only: %i[ show update destroy ]
 
   # GET /orders or /orders.json
