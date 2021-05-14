@@ -4,7 +4,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+  
+  has_secure_token :referral_token
+  
+  has_many :products
+  has_many :orders
+  
   def to_s
     email
   end
@@ -12,8 +17,6 @@ class User < ApplicationRecord
   def username
     self.email.split(/@/).first
   end
-  
-  has_many :products
   
   extend FriendlyId
   friendly_id :email, use: :slugged

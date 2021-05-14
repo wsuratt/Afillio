@@ -1,0 +1,46 @@
+%p#notice= notice
+.card
+  .card-header
+    %h3
+      .fa.fa-box
+      Order
+  .card-footer
+    %p
+      %b Product:
+      = @order.product
+    %p
+      %b Referred by:
+      = @order.user
+    %p
+      %b Quantity:
+      = @order.quantity
+    %p
+      %b Total:
+      = @order.total
+  .card-footer
+    %p
+      %b Street address:
+      = @order.street_address
+    %p
+      %b City:
+      = @order.city
+    %p
+      %b State:
+      = @order.state
+    %p
+      %b Zipcode:
+      = @order.zipcode
+    %p
+      %b First name:
+      = @order.first_name
+    %p
+      %b Last name:
+      = @order.last_name
+    %p
+      %b Phone:
+      = @order.phone
+    %p
+      %b Email:
+      = @order.email
+
+= link_to 'Back', orders_path

@@ -1,0 +1,21 @@
+.container
+  = simple_form_for(@order, url: @user.referral_token) do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  
+    .form-inputs
+      = f.association :product, as: :hidden
+      = f.association :user, as: :hidden
+      = f.input :quantity, input_html: { value: 1 }
+      // = f.input :total, readonly: true, input_html: { value: @product.price * :quantity }
+      = f.input :street_address
+      = f.input :city
+      = f.input :state
+      = f.input :zipcode
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :phone
+      = f.input :email
+  
+    .form-actions
+      = f.button :submit, 'Checkout'

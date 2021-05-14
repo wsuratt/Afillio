@@ -4,11 +4,16 @@
 
 = render 'products/product', product: @product
 
+%p
+.card
+  .card-header
+    = @product.description
+
 .text-center
   %p
   = @svg.html_safe
   %p
-  %input#myInput{:type => "text", :value => request.original_url}/
+  %input#myInput{:type => "text", :value => request.base_url + "/orders/" + @product.slug + "/" + @user.referral_token}/
   %button{:class => "btn btn-sm btn-custom", :onclick => "myFunction()"}
     .fa.fa-clipboard
 :javascript
@@ -24,5 +29,5 @@
     document.execCommand("copy");
   
     /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
+    // alert("Copied the text: " + copyText.value);
   }

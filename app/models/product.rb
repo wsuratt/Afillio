@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   validates :commission, presence: true, numericality: { :less_than_or_equal_to => :price, :greater_than => 0 }
   
   belongs_to :user
+  has_many :orders
   
   def to_s
     title

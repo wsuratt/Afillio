@@ -1,0 +1,14 @@
+.card
+  .card-header
+    %h3
+      .fa.fa-box
+      New order
+  .card-body
+    = render 'products/product', product: @product
+    %p
+    .card
+      .card-header
+        = @product.description
+
+  .card-body
+    = render 'form'

@@ -1,0 +1,40 @@
+%h1 Listing orders
+
+.table-responsive
+  %table.table.table-bordered.table-striped.table-sm.table-hover
+    %thead
+      %tr
+        %th Product
+        %th Referred by
+        %th Quantity
+        %th Total
+        %th Street address
+        %th City
+        %th State
+        %th Zipcode
+        %th First name
+        %th Last name
+        %th Phone
+        %th Email
+        %th
+        %th
+  
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.product
+          %td= order.user
+          %td= order.quantity
+          %td= order.total
+          %td= order.street_address
+          %td= order.city
+          %td= order.state
+          %td= order.zipcode
+          %td= order.first_name
+          %td= order.last_name
+          %td= order.phone
+          %td= order.email
+          %td= link_to 'Show', order
+          %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br

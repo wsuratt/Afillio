@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_product, :set_user, only: %i[ show edit update destroy ]
 
   def index
     #@products = Product.all
@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @qrcode = RQRCode::QRCode.new(request.original_url)
+    @qrcode = RQRCode::QRCode.new(request.base_url + "/orders/" + @product.slug + "/" + @user.referral_token)
     
     @svg = @qrcode.as_svg(
       offset: 0,
@@ -68,6 +68,10 @@ class ProductsController < ApplicationController
   private
     def set_product
       @product = Product.friendly.find(params[:id])
+    end
+    
+    def set_user
+      @user = current_user
     end
 
     def product_params
