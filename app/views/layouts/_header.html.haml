@@ -13,18 +13,59 @@
           = link_to products_path, class: 'nav-link' do
             .fa.fa-shopping-bag
             Products
-        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_product_path)}"}
-          = link_to new_product_path, class: 'nav-link' do
-            .fa.fa-plus
-            New Product
-        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(users_path)}"}
-          = link_to users_path, class: 'nav-link' do
-            .fa.fa-users
-            Users
-        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(orders_path)}"}
-          = link_to orders_path, class: 'nav-link' do
-            .fa.fa-box
-            Orders
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(my_sales_orders_path)}"}
+          = link_to my_sales_orders_path, class: "nav-link" do
+            .fa.fa-tags
+            My sales
+            .badge.badge-danger
+              = Order.where(orders: {user: current_user}).count
+      %ul.navbar-nav.mr-auto
+        // - if current_user.has_role?(:seller)
+        //   %li.nav-item.dropdown
+        //     %a#sellerDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        //       .fa.fa-tag
+        //       Sell
+        //     .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "sellerDropdown"}
+        //       = link_to my_sales_orders_path, class: "dropdown-item" do
+        //         .fa.fa-tags
+        //         My sales
+        //         .badge.badge-danger
+        //           = Order.where(orders: {user: current_user}).count
+        - if current_user.has_role?(:vendor)
+          %li.nav-item.dropdown
+            %a#vendorDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              .fa.fa-store
+              Vend
+            .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "vendorDropdown"}
+              = link_to new_product_path, class: "dropdown-item" do
+                .fa.fa-plus
+                New Product
+              = link_to created_products_path, class: "dropdown-item" do
+                .fa.fa-shopping-bag
+                My products
+                .badge.badge-danger
+                  = current_user.products.count
+              = link_to my_orders_orders_path, class: "dropdown-item" do
+                .fa.fa-table
+                My orders
+                .badge.badge-danger
+                  = Order.joins(:product).where(products: {user: current_user}).count
+        - if current_user.has_role?(:admin)
+          %li.nav-item.dropdown
+            %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              .fa.fa-cog
+              Admin
+            .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "adminDropdown"}
+              = link_to users_path, class: "dropdown-item" do
+                .fa.fa-users
+                Users
+                .badge.badge-danger
+                  = User.count
+              = link_to orders_path, class: "dropdown-item" do
+                .fa.fa-box
+                Orders
+                .badge.badge-danger
+                  = Order.count
       %ul.navbar-nav.mr-right
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

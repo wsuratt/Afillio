@@ -3,8 +3,24 @@ class ProductsController < ApplicationController
 
   def index
     #@products = Product.all
+    @ransack_path = products_path
+
     @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
     @pagy, @products = pagy(@ransack_products.result.includes(:user))
+  end
+  
+  def purchased
+    @ransack_path = purchased_products_path
+    @ransack_products = Product.joins(:orders).where(orders: {user: current_user}).ransack(params[:products_search], search_key: :products_search)
+    @pagy, @products = pagy(@ransack_products.result.includes(:user))
+    render 'index'
+  end
+
+  def created
+    @ransack_path = created_products_path
+    @ransack_products = Product.where(user: current_user).ransack(params[:products_search], search_key: :products_search)
+    @pagy, @products = pagy(@ransack_products.result.includes(:user))
+    render 'index'
   end
 
   def show
@@ -58,10 +74,13 @@ class ProductsController < ApplicationController
 
   def destroy
     authorize @product
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
+    if @product.destroy
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to @product, alert: 'Product has orders. Can not be destroyed.'
     end
   end
 

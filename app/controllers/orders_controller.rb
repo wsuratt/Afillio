@@ -4,10 +4,26 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @ransack_path = orders_path
+    
+    @q = Order.ransack(params[:q])
+    @pagy, @orders = pagy(@q.result.includes(:user))
     authorize @orders
   end
-
+  
+  def my_sales
+    @ransack_path = my_orders_orders_path
+    @q = Order.where(orders: {user: current_user}).ransack(params[:q])
+    @pagy, @orders = pagy(@q.result.includes(:user))
+  end
+  
+  def my_orders
+    @ransack_path = my_orders_orders_path
+    @q = Order.joins(:product).where(products: {user: current_user}).ransack(params[:q])
+    @pagy, @orders = pagy(@q.result.includes(:user))
+    render 'index'
+  end
+  
   # GET /orders/1 or /orders/1.json
   def show
   end

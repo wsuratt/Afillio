@@ -2,12 +2,12 @@
   .text-center
     Products
     .badge.badge-info
-      = @products.count
+      = @pagy.count
 %p
 
 .row
   .col-md-2
-    = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
+    = search_form_for @ransack_products, as: :products_search, url: @ransack_path do |f|
       = f.label :title
       = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm'
       = f.label :category
@@ -18,8 +18,15 @@
       = f.search_field :commission_eq, placeholder: 'Commission', class: 'form-control form-control-sm'
       = f.label :vendor
       = f.search_field :user_email_cont, placeholder: 'Email', class: 'form-control form-control-sm'
+      .row
+      = sort_link(@ransack_products, :price)
+      .row
+      = sort_link(@ransack_products, :orders_count, "Most Popular")
+      .row
+      = sort_link(@ransack_products, :created_at, "Fresh")
+      .row
       = f.submit
-    = link_to 'refresh', products_path
+    = link_to 'refresh', @ransack_path
 
 
   .col-md-10

@@ -13,18 +13,33 @@
   .float-right
     = link_to 'How it works', how_it_works_path
 
+%p
+- if current_user
+  %hr
+  %h2
+    .fa.fa-tags
+    Your recent sales
+  .card-columns
+    - @sold_products.each do |product|
+      = render 'products/product', product: product
+
 %hr
 %h2
+  .fa.fa-chart-line
   Popular products
 .card-columns
-  - @products.each do |product|
+  - @popular.each do |product|
     = render 'products/product', product: product
+// .text-right
+//   = link_to 'More popular products', products_path(products_search: {s: 'orders_count desc'})
 
 %hr
 %h2 
+  .fa.fa-clock
   Latest products
 .card-columns
-  - @latest_products.each do |product|
+  - @latest.each do |product|
     = render 'products/product', product: product
-
+// .text-right
+//   = link_to 'More new products', products_path(products_search: {s: 'created_at desc'})
 %hr

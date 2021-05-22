@@ -7,8 +7,8 @@ class User < ApplicationRecord
   
   has_secure_token :referral_token
   
-  has_many :products
-  has_many :orders
+  has_many :products, dependent: :nullify
+  has_many :orders, dependent: :nullify
   
   def to_s
     email

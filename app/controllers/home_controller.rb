@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index, :how_it_works]
   def index
-    @products = Product.all.limit(4)
-    @latest_products = Product.all.limit(4).order(created_at: :desc)
+    @latest = Product.latest
+    @popular = Product.popular
+    @sold_products = Product.joins(:orders).where(orders: {user: current_user}).order(created_at: :desc).limit(2)
   end
 
   def privacy_policy

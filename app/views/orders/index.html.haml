@@ -1,10 +1,23 @@
-%h1 Listing orders
+%h2
+  .text-center
+    Orders
+    .badge.badge-info
+      = @pagy.count
+%p
+
+= search_form_for @q, url: @ransack_path do |f|
+  = f.search_field :product_title_cont, placeholder: 'product title'
+  = f.submit
+= link_to 'refresh', @ransack_path
 
 .table-responsive
   %table.table.table-bordered.table-striped.table-sm.table-hover
     %thead
       %tr
-        %th Product
+        %th
+          = sort_link(@q, :created_at)
+        %th
+          = sort_link(@q, :product_title)
         %th Referred by
         %th Quantity
         %th Total
@@ -16,16 +29,18 @@
         %th Last name
         %th Phone
         %th Email
+        %th Seller commission
+        %th Earned
         %th
-        %th
-  
+        
     %tbody
       - @orders.each do |order|
         %tr
+          %td= order.created_at
           %td= order.product
           %td= order.user
           %td= order.quantity
-          %td= order.total
+          %td= number_to_currency(order.total)
           %td= order.street_address
           %td= order.city
           %td= order.state
@@ -34,7 +49,11 @@
           %td= order.last_name
           %td= order.phone
           %td= order.email
-          %td= link_to 'Show', order
-          %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
-
+          %td
+          %td
+          %td
+            = link_to 'Show', order
+            %p
+            = link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+!= pagy_bootstrap_nav(@pagy)
 %br

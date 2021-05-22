@@ -22,6 +22,10 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user.has_role?(:admin) || @record.user == @user
+    (@user.has_role?(:admin) || @record.user == @user) && @record.orders.none?
+  end
+
+  def owner?
+    @record.user == @user
   end
 end

@@ -3,6 +3,12 @@
     .fa.fa-user
     = link_to user.email, user_path(user)
   .card-footer
+    Products created:
+    = user.products_count
+    .row
+    Referrals:
+    = user.orders_count
+  .card-footer
     - user.roles.each do |role|
       .badge.badge-info
         = role.name

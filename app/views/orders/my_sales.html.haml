@@ -1,0 +1,32 @@
+%h2
+  .text-center
+    Sales
+    .badge.badge-info
+      = @pagy.count
+%p
+
+= search_form_for @q, url: @ransack_path do |f|
+  = f.search_field :product_title_cont, placeholder: 'product title'
+  = f.submit
+= link_to 'refresh', @ransack_path
+
+.table-responsive
+  %table.table.table-bordered.table-striped.table-sm.table-hover
+    %thead
+      %tr
+        %th
+          = sort_link(@q, :created_at, "Date")
+        %th
+          = sort_link(@q, :product_title)
+        %th Total
+        %th Commission
+  
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.created_at
+          %td= order.product
+          %td= number_to_currency(order.total)
+          %td
+!= pagy_bootstrap_nav(@pagy)
+%br
