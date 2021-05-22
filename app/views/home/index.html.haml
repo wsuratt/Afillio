@@ -30,8 +30,6 @@
 .card-columns
   - @popular.each do |product|
     = render 'products/product', product: product
-// .text-right
-//   = link_to 'More popular products', products_path(products_search: {s: 'orders_count desc'})
 
 %hr
 %h2 
@@ -40,6 +38,4 @@
 .card-columns
   - @latest.each do |product|
     = render 'products/product', product: product
-// .text-right
-//   = link_to 'More new products', products_path(products_search: {s: 'created_at desc'})
 %hr
