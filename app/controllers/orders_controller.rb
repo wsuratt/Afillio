@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:new, :create, :show]
-  before_action :set_order, only: %i[ show update destroy ]
+  skip_before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :show]
+  before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
   def index
@@ -39,17 +39,21 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  # def edit
-  # end
+  def edit
+  end
 
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
     # @order.product = Product.friendly.find(params[:title])
-    @order.total = @order.product.price * @order.quantity
+    @order.total_cents = @order.product.price_cents * @order.quantity
+    @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
+    @order.admin_commission_cents = 0.05 * @order.product.price_cents * @order.quantity
+    @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+    
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: "Order was successfully created." }
+        format.html { redirect_to @order}
         format.json { render :show, status: :created, location: @order }
       else
         @product = @order.product
@@ -59,19 +63,19 @@ class OrdersController < ApplicationController
       end
     end
   end
-# redirect_to :action => "new", :title => @order.product.title, :referral_token => @order.user.referral_token
+  
   # PATCH/PUT /orders/1 or /orders/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @order.update(order_params)
-  #       format.html { redirect_to @order, notice: "Order was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @order }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @order.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to @order }
+        format.json { render :show, status: :ok, location: @order }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
@@ -91,7 +95,7 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:product_id, :user_id, :quantity, :total, :street_address, :city, :state, :zipcode, :first_name, :last_name, :phone, :email)
+      params.require(:order).permit(:product_id, :user_id, :quantity, :total, :total_cents, :street_address, :city, :state, :zipcode, :first_name, :last_name, :phone, :email, :seller_commission, :seller_commission_cents, :vendor_commission, :vendor_commission_cents, :admin_commission, :admin_commission_cents)
     end
     
 end

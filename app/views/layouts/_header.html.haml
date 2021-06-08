@@ -46,7 +46,7 @@
                 .badge.badge-danger
                   = current_user.products.count
               = link_to my_orders_orders_path, class: "dropdown-item" do
-                .fa.fa-table
+                .fa.fa-box
                 My orders
                 .badge.badge-danger
                   = Order.joins(:product).where(products: {user: current_user}).count

@@ -62,3 +62,5 @@ gem "rolify"
 gem "pundit"
 gem 'pagy'
 gem "rqrcode", "~> 2.0"
+gem 'stripe'
+gem 'money-rails'

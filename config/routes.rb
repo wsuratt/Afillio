@@ -5,13 +5,17 @@ Rails.application.routes.draw do
     get :purchased, :created, on: :collection
   end
   
-  resources :orders, :except => :edit, path_names: { new: ':title/:referral_token' } do
+  resources :orders, path_names: { edit: ':id/edit', new: ':title/:referral_token' } do
     get :my_orders, on: :collection
     get :my_sales, on: :collection
   end
   post 'orders/:title/:referral_token', to: 'orders#create'
-
+  
   resources :users, only: [:index, :edit, :show, :update]
+  
+  post "checkout/create", to: "checkout#create"
+  get "checkout/success", to: "checkout#success"
+  resources :webhooks, only: [:create]
   
   root "home#index"
   get "how_it_works", to: "home#how_it_works"

@@ -16,8 +16,8 @@
       = @order.quantity
     %p
       %b Total:
-      = @order.total
-  .card-footer
+      = number_to_currency(@order.total_cents)
+  .card-body
     %p
       %b Street address:
       = @order.street_address
@@ -42,5 +42,12 @@
     %p
       %b Email:
       = @order.email
-
-= link_to 'Back', orders_path
+      
+  -if current_user
+    .card-footer
+      = link_to 'Back', orders_path
+  -else
+    .card-footer
+      = link_to 'Edit', edit_order_path(@order)
+      .text-center
+        = button_to "Checkout", checkout_create_path, params: {id: @order.id}, remote: true, class: 'btn btn-sm btn-success'

@@ -4,7 +4,13 @@
     .badge.badge-info
       = @pagy.count
 %p
-
+%h6
+  .text-center
+    Balance
+%h4
+  .text-center
+    = number_to_currency(current_user.balance)
+%p
 = search_form_for @q, url: @ransack_path do |f|
   = f.search_field :product_title_cont, placeholder: 'product title'
   = f.submit
@@ -20,13 +26,15 @@
           = sort_link(@q, :product_title)
         %th Total
         %th Commission
+        %th Paid
   
     %tbody
       - @orders.each do |order|
         %tr
-          %td= order.created_at
+          %td= order.created_at.to_date
           %td= order.product
-          %td= number_to_currency(order.total)
-          %td
+          %td= number_to_currency(order.total_cents)
+          %td= number_to_currency(order.seller_commission_cents)
+          %td= order.paid
 != pagy_bootstrap_nav(@pagy)
 %br

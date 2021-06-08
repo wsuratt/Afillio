@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
-  validates :title, :category, :quantity, :price,  presence: true
+  validates :title, :category, :quantity, :price_cents, :commission_cents,  presence: true
   validates :description, presence: true, length: { :minimum => 5, :maximum => 280 }
-  validates :price, presence: true, numericality: { :greater_than => 0 }
-  validates :commission, presence: true, numericality: { :less_than_or_equal_to => :price, :greater_than => 0 }
+  # validates :price, presence: true, numericality: { :greater_than => 0 }
+  # validates :commission, presence: true, numericality: { :less_than_or_equal_to => :price, :greater_than => 0 }
   
   belongs_to :user, counter_cache: true
   #User.find_each { |user| User.reset_counters(user.id, :products) }  
@@ -16,6 +16,9 @@ class Product < ApplicationRecord
   def to_s
     title
   end
+  
+  monetize :price, as: :price_cents, presence: true, numericality: { :greater_than => 0 }
+  monetize :commission, as: :commission_cents, presence: true, numericality: { :less_than_or_equal_to => :price_cents, :greater_than => 0 }
   
   extend FriendlyId
   friendly_id :title, use: :slugged

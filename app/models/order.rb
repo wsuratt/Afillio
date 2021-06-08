@@ -16,7 +16,12 @@ class Order < ApplicationRecord
   end
   
   def to_s
-    user.to_s + " " + course.to_s
+    user.to_s + " " + product.to_s
   end
+  
+  monetize :total, as: :total_cents, presence: true
+  monetize :seller_commission, as: :seller_commission_cents, presence: true
+  monetize :vendor_commission, as: :vendor_commission_cents, presence: true
+  monetize :admin_commission, as: :admin_commission_cents, presence: true
   
 end

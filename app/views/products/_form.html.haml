@@ -9,8 +9,8 @@
       /= f.input :category, collection: [ "Other", "Tech", "Apparel"]
       = f.input :category, collection: Product.categories, include_blank: true
       = f.input :quantity
-      = f.input :price
-      = f.input :commission
+      = f.input :price_cents, :label => "Price"
+      = f.input :commission_cents, :label => "Commission"
       %p
   
     .form-actions
