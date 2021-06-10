@@ -27,11 +27,13 @@ class WebhooksController < ApplicationController
       session = event.data.object
       @order = Order.find_by(id: session.client_reference_id)
       @order.update(paid: true)
-      # # seller
-      # @order.user.balance += @order.seller_commission_cents
-      # # vendor
-      # @order.product.user.balance += @order.vendor_commission_cents
-      # # admin
+      # seller
+      @order.user.balance_cents += @order.seller_commission_cents
+      # vendor
+      @order.product.user.balance_cents += @order.vendor_commission_cents
+      # admin
+      @user = User.find_by(id: 1)
+      @user.balance_cents += @order.admin_commission_cents
     end
 
     render json: { message: 'success' }

@@ -34,6 +34,7 @@ class User < ApplicationRecord
   end
   
   validate :must_have_a_role, on: :update
+  monetize :balance, as: :balance_cents
 
   private
   def must_have_a_role

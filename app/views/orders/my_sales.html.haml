@@ -9,7 +9,7 @@
     Balance
 %h4
   .text-center
-    = number_to_currency(current_user.balance)
+    = number_to_currency(current_user.balance_cents)
 %p
 = search_form_for @q, url: @ransack_path do |f|
   = f.search_field :product_title_cont, placeholder: 'product title'
