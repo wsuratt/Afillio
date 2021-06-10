@@ -29,11 +29,14 @@ class WebhooksController < ApplicationController
       @order.update(paid: true)
       # seller
       @order.user.balance_cents += @order.seller_commission_cents
+      @order.user.save
       # vendor
       @order.product.user.balance_cents += @order.vendor_commission_cents
+      @order.product.user.save
       # admin
       @user = User.find_by(id: 1)
       @user.balance_cents += @order.admin_commission_cents
+      @user.save
     end
 
     render json: { message: 'success' }
