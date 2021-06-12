@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "checkout/success", to: "checkout#success"
   resources :webhooks, only: [:create]
   
+  get "stripe/connect", to: "stripe#connect", as: :stripe_connect
+  
   root "home#index"
   get "how_it_works", to: "home#how_it_works"
   get "privacy-policy", to: "home#privacy_policy"

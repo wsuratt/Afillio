@@ -13,7 +13,7 @@ class CheckoutController < ApplicationController
         quantity: 1
       }],
       mode: 'payment',
-      success_url: root_url + 'checkout/success/' + "?session_id={CHECKOUT_SESSION_ID}",
+      success_url: root_url + 'checkout/success' + "?session_id={CHECKOUT_SESSION_ID}",
       cancel_url: root_url + 'orders/' + order.slug,
       client_reference_id: order.id,
     })
