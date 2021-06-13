@@ -14,7 +14,7 @@
 - if current_user.stripe_user_id
   .text-center
     Connected with Stripe
-  - if current_user.balance > 0
+  - if current_user.balance == 0
     .text-center
       = link_to "Payout", transfer_button_link, class: 'btn btn-sm btn-success'
 - else
