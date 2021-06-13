@@ -3,6 +3,6 @@ Checkout status:
 = @session.payment_status
 %br
 Amount paid:
-= @session.amount_total/100.to_f
+= number_to_currency(@session.amount_total/100.to_f)
 %br
 = link_to 'Order summary', order_path(@order)
