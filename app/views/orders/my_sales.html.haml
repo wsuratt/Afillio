@@ -9,12 +9,12 @@
     Balance
 %h4
   .text-center
-    = number_to_currency(current_user.balance_cents)
+    = number_to_currency(@balance)
     
 - if current_user.stripe_user_id
   .text-center
     Connected with Stripe
-  - if current_user.balance_cents > 0
+  - if @balance > 0
     .text-center
       = link_to "Payout", transfer_button_link, class: 'btn btn-sm btn-success'
 - else
