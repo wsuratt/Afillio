@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
     @ransack_path = my_orders_orders_path
     @q = Order.where(orders: {user: current_user}).ransack(params[:q])
     @pagy, @orders = pagy(@q.result.includes(:user))
-    @balance = current_user.balance_cents
   end
   
   def my_orders

@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   def update
     authorize @user
     if @user.update(user_params)
-      @user.balance = 50
       redirect_to users_path, notice: 'User roles were successfully updated.'
     else
       render :edit

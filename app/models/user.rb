@@ -21,6 +21,8 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: :slugged
   
+  monetize :balance, as: :balance_cents
+  
   after_create :assign_default_role
 
   def assign_default_role
@@ -34,7 +36,6 @@ class User < ApplicationRecord
   end
   
   validate :must_have_a_role, on: :update
-  monetize :balance, as: :balance_cents
 
   private
   def must_have_a_role
