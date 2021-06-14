@@ -8,7 +8,7 @@ module OrdersHelper
   end
   def transfer_button_link
     Stripe::Transfer.create({
-      amount: current_user.balance_cents,
+      amount: 12,
       currency: "usd",
       destination: current_user.stripe_user_id,
     })
