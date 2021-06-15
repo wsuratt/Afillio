@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :webhooks, only: [:create]
   
   get "stripe/connect", to: "stripe#connect", as: :stripe_connect
+  get "payout/transfer", to: "payout#transfer"
   
   root "home#index"
   get "how_it_works", to: "home#how_it_works"

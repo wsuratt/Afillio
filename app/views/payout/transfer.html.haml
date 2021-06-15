@@ -1,0 +1,5 @@
+%h1
+  Transfer initiated
+%h3
+  = "Your transfer of " + number_to_currency(current_user.balance_cents) + " has been initiated."
+= link_to 'Back', my_sales_orders_path
