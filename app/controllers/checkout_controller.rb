@@ -8,7 +8,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: product.title,
-        amount: order.total_cents,
+        amount: (order.total_cents * 100).to_i,
         currency: "usd",
         quantity: 1
       }],
