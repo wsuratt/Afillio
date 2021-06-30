@@ -1,7 +1,7 @@
 %h2
   .text-center
     Products
-    .badge.badge-info
+    .badge.bg-danger
       = @pagy.count
 %p
 
@@ -11,7 +11,9 @@
       = f.label :title
       = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm'
       = f.label :category
+      .row
       = f.select :category_cont, Product.categories, include_blank: true
+      .row
       = f.label :price
       = f.search_field :price_eq, placeholder: 'Price', class: 'form-control form-control-sm'
       = f.label :commission
@@ -30,8 +32,9 @@
 
 
   .col-md-10
-    .card-columns
+    .row.row-cols-1.row-cols-2.g-4
       - @products.each do |product|
-        = render 'products/product', product: product
+        .col
+          = render 'products/product', product: product
     != pagy_bootstrap_nav(@pagy)
 %br

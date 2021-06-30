@@ -1,17 +1,21 @@
-.jumbotron
-  .display-4{:style => "font-weight: bold;"}
-    What do you want to sell today?
-
-  .p-4
-  
-  = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
-    .input-group
-      = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
-      %span.input-group-append
-        %button.btn.btn-primary.btn-sm{:type => "submit"}
-          %span.fa.fa-search{"aria-hidden" => "true"}
-  .float-right
-    = link_to 'How it works', how_it_works_path
+.card 
+  .bg-light
+    .p-3 
+      .rounded-lg 
+        .display-1{:style => "font-weight: bold;"}
+          What do you want to sell today?
+    
+        .p-4
+        
+        = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
+          .input-group
+            = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
+            %span.input-group-append
+              %button.btn.btn-primary.btn-sm{:type => "submit"}
+                %span.fa.fa-search{"aria-hidden" => "true"}
+        .float-end
+          = link_to 'How it works', how_it_works_path
+        .p-2
 
 %p
 - if current_user
@@ -19,23 +23,26 @@
   %h2
     .fa.fa-tags
     Your recent sales
-  .card-columns
+  .row.row-cols-1.row-cols-2.g-4
     - @sold_products.each do |product|
-      = render 'products/product', product: product
+      .col
+        = render 'products/product', product: product
 
 %hr
 %h2
   .fa.fa-chart-line
   Popular products
-.card-columns
+.row.row-cols-1.row-cols-2.g-4
   - @popular.each do |product|
-    = render 'products/product', product: product
+    .col
+      = render 'products/product', product: product
 
 %hr
 %h2 
   .fa.fa-clock
   Latest products
-.card-columns
+.row.row-cols-1.row-cols-2.g-4
   - @latest.each do |product|
-    = render 'products/product', product: product
+    .col
+      = render 'products/product', product: product
 %hr

@@ -4,6 +4,10 @@ a:hover {
     background-color: transparent;
 }
 
+a:link {
+    text-decoration:none; 
+}
+
 a:visited {
     color: $primary;
 }
@@ -53,4 +57,31 @@ a.btn-danger:visited {
     -webkit-column-count:2;
     -moz-column-count:2;
     column-count:2;
+}
+
+//footer always on the bottom
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin: 0 0 200px;
+}
+.footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	//height: 200px;
+	width: 100%;
+	overflow: hidden;
+	padding: 30px 0;
+}
+
+.card-columns .card {
+    display: block;
+    width: 100%;
+}
+
+.card {
+    padding: 1px;
 }

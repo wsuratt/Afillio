@@ -52,16 +52,18 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "haml-rails", "~> 2.0"
-gem 'simple_form'
-gem 'faker'
+gem "haml-rails", "~> 2.0" # HTML abstraction markup language
+gem 'simple_form' # creating forms made easier
+gem 'faker' # fake data for seeds.rb
 gem 'devise'
-gem 'friendly_id', '~> 5.4.0'
-gem 'ransack'
-gem "rolify"
-gem "pundit"
-gem 'pagy'
+gem 'friendly_id', '~> 5.4.0' # nice URLs and hide IDs
+gem 'ransack' # filter and sort data
+gem "rolify" # give users roles
+gem "pundit" # authorization (different roles have different accesses)
+gem 'pagy' # pagination
 gem "rqrcode", "~> 2.0"
-gem 'stripe'
+gem 'stripe' # accept payments 
 gem 'money-rails'
 gem 'httparty'
+gem "aws-sdk-s3", require: false # save images and files in production
+gem 'active_storage_validations' # validate image and file uploads

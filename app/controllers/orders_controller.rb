@@ -66,6 +66,12 @@ class OrdersController < ApplicationController
   
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    if @order.update(order_params)
+      @order.total_cents = @order.product.price_cents * @order.quantity
+      @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
+      @order.admin_commission_cents = 0.05 * @order.product.price_cents * @order.quantity
+      @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+    end
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order }

@@ -5,6 +5,18 @@
   
     .form-inputs
       = f.input :title
+      
+      = f.label :image
+      .row
+      - if @product.image.attached?
+        = image_tag @product.image, width: "200px"
+      .row
+        = @product.image.filename
+      .row
+      = f.file_field :image
+      %small= f.error :image, class: 'text-danger'
+
+      .row
       = f.input :description
       /= f.input :category, collection: [ "Other", "Tech", "Apparel"]
       = f.input :category, collection: Product.categories, include_blank: true

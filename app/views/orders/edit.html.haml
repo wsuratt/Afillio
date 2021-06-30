@@ -11,7 +11,7 @@
       .form-inputs
         = f.association :product, as: :hidden
         = f.association :user, as: :hidden
-        = f.input :quantity, input_html: { value: 1 }
+        = f.input :quantity
         // = f.input :total, readonly: true, input_html: { value: @product.price * :quantity }
         = f.input :street_address
         = f.input :city
