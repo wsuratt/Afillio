@@ -14,12 +14,13 @@
             = link_to products_path, class: 'nav-link' do
               .fa.fa-shopping-bag
               Products
-          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(my_sales_orders_path)}"}
-            = link_to my_sales_orders_path, class: "nav-link" do
-              .fa.fa-tags
-              My sales
-              .badge.bg-danger
-                = Order.where(orders: {user: current_user}).count
+          - if current_user.has_role?(:seller)
+            %li.nav-item{class: "#{'active font-weight-bold' if current_page?(my_sales_orders_path)}"}
+              = link_to my_sales_orders_path, class: "nav-link" do
+                .fa.fa-tags
+                My sales
+                .badge.bg-danger
+                  = Order.where(orders: {user: current_user}).count
         %ul.navbar-nav.me-auto
           - if current_user.has_role?(:vendor)
             %li.nav-item.dropdown
