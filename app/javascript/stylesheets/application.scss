@@ -85,3 +85,12 @@ body {
 .card {
     padding: 1px;
 }
+
+//iOS rounded input
+input {
+  border-radius: 0;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}

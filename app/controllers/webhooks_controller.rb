@@ -37,6 +37,9 @@ class WebhooksController < ApplicationController
       @user = User.find_by(id: 1)
       @user.balance_cents += @order.admin_commission_cents
       @user.save
+      
+      @order.product.quantity -= @order.quantity
+      @order.product.save
     end
 
     render json: { message: 'success' }

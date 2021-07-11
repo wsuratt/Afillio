@@ -10,8 +10,8 @@ class Product < ApplicationRecord
   
   validates :title, uniqueness: true
   
-  scope :latest, -> { limit(2).order(created_at: :desc) }
-  scope :popular, -> { limit(2).order(orders_count: :desc, created_at: :desc) }
+  scope :latest, -> { limit(4).order(created_at: :desc) }
+  scope :popular, -> { limit(4).order(orders_count: :desc, created_at: :desc) }
   
   has_one_attached :image
   validates :image, attached: true, 
@@ -28,7 +28,7 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
   
-  CATEGORIES = [:"Other", :"Tech", :"Apparel"]
+  CATEGORIES = [:"Apparel", :"Beauty", :"Education", :"Health", :"Home", :"Outdoors", :"Tech", :"Toys", :"Other"]
   def self.categories
     CATEGORIES.map { |category| [category, category] }
   end

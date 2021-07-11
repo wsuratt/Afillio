@@ -1,33 +1,40 @@
-= link_to 'Products', products_path
-\/
-= link_to @product.title, product_path(@product)
-
-= render 'products/product', product: @product
-
-%p
-.card
-  .card-header
-    = @product.description
-
-.text-center
-  %p
-  = @svg.html_safe
-  %p
-  %input#myInput{:type => "text", :value => request.base_url + "/orders/" + @product.slug + "/" + @user.referral_token}/
-  %button{:class => "btn btn-sm btn-custom", :onclick => "myFunction()"}
-    .fa.fa-clipboard
-:javascript
-  function myFunction() {
-    /* Get the text field */
-    var copyText = document.getElementById("myInput");
+.row.justify-content-center
+  .col-md-6
+    = link_to 'Products', products_path
+    \/
+    = link_to @product.title, product_path(@product)
   
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    = render 'products/product', product: @product
   
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-  
-    /* Alert the copied text */
-    // alert("Copied the text: " + copyText.value);
-  }
+    %p
+    .card
+      .card-header
+        Description
+      .card-body
+        = @product.description
+
+    - if @product.quantity > 0
+      .text-center
+        %p
+        = @svg.html_safe
+        %p
+        %input#myInput{:type => "text", :value => request.base_url + "/orders/" + @product.slug + "/" + @user.referral_token}/
+        %button{:class => "btn btn-sm btn-custom", :onclick => "myFunction()"}
+          .fa.fa-clipboard
+      :javascript
+        function myFunction() {
+          /* Get the text field */
+          var copyText = document.getElementById("myInput");
+        
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        
+          /* Copy the text inside the text field */
+          document.execCommand("copy");
+        
+          /* Alert the copied text */
+          // alert("Copied the text: " + copyText.value);
+        }
+    - else
+      Out of stock
