@@ -45,10 +45,10 @@
           %b Email:
           = @order.email
           
-      -if current_user
+      - if current_user
         .card-footer
           = link_to 'Back', orders_path
-      -else
+      - elsif !@order.paid
         .card-footer
           = link_to 'Edit', edit_order_path(@order)
           .text-center

@@ -27,7 +27,7 @@
     %thead
       %tr
         %th
-          = sort_link(@q, :created_at)
+          = sort_link(@q, :created_at, "Date")
         %th
           = sort_link(@q, :product_title)
         %th Referred by
@@ -47,25 +47,26 @@
         
     %tbody
       - @orders.each do |order|
-        %tr
-          %td= order.created_at
-          %td= order.product
-          %td= order.user
-          %td= order.quantity
-          %td= number_to_currency(order.total_cents)
-          %td= order.street_address
-          %td= order.city
-          %td= order.state
-          %td= order.zipcode
-          %td= order.first_name
-          %td= order.last_name
-          %td= order.phone
-          %td= order.email
-          %td
-          %td
-          %td
-            = link_to 'Show', order
-            %p
-            = link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+        - if order.paid
+          %tr
+            %td= order.created_at
+            %td= order.product
+            %td= order.user
+            %td= order.quantity
+            %td= number_to_currency(order.total_cents)
+            %td= order.street_address
+            %td= order.city
+            %td= order.state
+            %td= order.zipcode
+            %td= order.first_name
+            %td= order.last_name
+            %td= order.phone
+            %td= order.email
+            %td
+            %td
+            %td
+              = link_to 'Show', order
+              %p
+              = link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
 != pagy_bootstrap_nav(@pagy)
 %br

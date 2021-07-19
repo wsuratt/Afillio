@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   root "home#index"
   get "how_it_works", to: "home#how_it_works"
   get "privacy-policy", to: "home#privacy_policy"
+  get "about-us", to: "home#about_us"
+  get "become-vendor", to: "home#become_vendor"
+  get "terms-conditions", to: "home#terms_conditions"
 end

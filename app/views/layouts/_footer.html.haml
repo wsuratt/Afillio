@@ -8,14 +8,14 @@
         William Suratt
         .row
         .fa.fa-envelope
-        = mail_to 'example@afillio.com'
+        = mail_to 'support@afillio.com'
         .row
       .col-md-4
-        Privacy policy
+        = link_to 'Privacy policy', privacy_policy_path
         .row
-        Terms and conditions
+        = link_to 'Terms and conditions', terms_conditions_path
       .col-md-4
-        About us
+        = link_to 'About us', about_us_path
         .row
-        = link_to 'Become a Vendor', new_product_path
+        = link_to 'Become a vendor', become_vendor_path
 %br 

@@ -22,4 +22,7 @@
         .fa.fa-hand-holding-usd
       You get paid
 
-= link_to 'Get started', new_user_registration_path
+- if current_user
+  = link_to 'Get started', products_path
+- else
+  = link_to 'Get started', new_user_registration_path

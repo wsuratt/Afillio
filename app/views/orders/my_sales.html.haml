@@ -36,11 +36,12 @@
   
     %tbody
       - @orders.each do |order|
-        %tr
-          %td= order.created_at.to_date
-          %td= order.product
-          %td= number_to_currency(order.total_cents)
-          %td= number_to_currency(order.seller_commission_cents)
-          %td= order.paid
+        - if order.paid
+          %tr
+            %td= order.created_at.to_date
+            %td= order.product
+            %td= number_to_currency(order.total_cents)
+            %td= number_to_currency(order.seller_commission_cents)
+            %td= order.paid
 != pagy_bootstrap_nav(@pagy)
 %br

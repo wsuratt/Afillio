@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index, :how_it_works]
+  skip_before_action :authenticate_user!, :only => [:index, :how_it_works, :privacy_policy, :about_us, :become_vendor, :terms_conditions]
   def index
     @latest = Product.latest
     @popular = Product.popular

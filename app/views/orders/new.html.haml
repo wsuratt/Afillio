@@ -1,22 +1,31 @@
-- if @product.quantity > 0
-  .row.justify-content-center
-    .col-md-6
-      .card
-        .card-header
-          %h3
-            .fa.fa-box
-            New order
-        .card-body
-          = render 'products/product', product: @product
-          %p
-          .card
-            .card-header
-              Description
-            .card-body
-              = @product.description
-      
-        .card-body
-          = render 'form'
-          
-- else
-  Out of stock
+-if !current_user
+  -if @product.quantity > 0
+    .row.justify-content-center
+      .col-md-6
+        .card
+          .card-header
+            %h3
+              .fa.fa-box
+              New order
+          .card-body
+            = render 'products/product', product: @product
+            %p
+            .card
+              .card-header
+                Description
+              .card-body
+                = @product.description
+        
+          .card-body
+            = render 'form'
+            
+  -else
+    .text-center
+      %p
+      %h3.text-danger
+        Out of Stock
+-else
+  .text-center
+    %p
+    %h3.text-danger
+      Seller's cannot place orders from themselves.
