@@ -20,6 +20,11 @@
     = search_form_for @q, url: @ransack_path do |f|
       = f.search_field :product_title_cont, placeholder: 'product title'
       = f.submit
+      - if current_user.has_role?(:admin)
+        %p
+        = f.check_box :paid_true
+        = f.label 'paid'
+        %p
     = link_to 'refresh', @ransack_path
 
 .table-responsive
@@ -47,7 +52,7 @@
         
     %tbody
       - @orders.each do |order|
-        - if order.paid
+        - if current_user.has_role?(:admin)
           %tr
             %td= order.created_at
             %td= order.product
@@ -68,5 +73,27 @@
               = link_to 'Show', order
               %p
               = link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+        - else
+          - if order.paid
+            %tr
+              %td= order.created_at
+              %td= order.product
+              %td= order.user
+              %td= order.quantity
+              %td= number_to_currency(order.total_cents)
+              %td= order.street_address
+              %td= order.city
+              %td= order.state
+              %td= order.zipcode
+              %td= order.first_name
+              %td= order.last_name
+              %td= order.phone
+              %td= order.email
+              %td
+              %td
+              %td
+                = link_to 'Show', order
+                %p
+                = link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
 != pagy_bootstrap_nav(@pagy)
 %br

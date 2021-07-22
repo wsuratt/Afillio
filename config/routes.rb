@@ -21,9 +21,14 @@ Rails.application.routes.draw do
   get "payout/transfer", to: "payout#transfer"
   
   root "home#index"
-  get "how_it_works", to: "home#how_it_works"
+  get "how-it-works", to: "home#how_it_works"
   get "privacy-policy", to: "home#privacy_policy"
   get "about-us", to: "home#about_us"
   get "become-vendor", to: "home#become_vendor"
   get "terms-conditions", to: "home#terms_conditions"
+  
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
 end
