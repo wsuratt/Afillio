@@ -67,4 +67,5 @@ gem 'money-rails'
 gem 'httparty'
 gem "aws-sdk-s3", require: false # save images and files in production
 gem 'active_storage_validations' # validate image and file uploads
+gem 'sidekiq'
 gem 'sidekiq-scheduler' # scheduler to delete unpaid orders

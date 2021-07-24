@@ -1,8 +1,8 @@
 # config/initializers/sidekiq.rb
 Sidekiq.configure_server do |config|
-  config.redis = { url: 'redis://redis.afillio.com:7372/0' }
-end
+  config.redis = { url: ENV["OPENREDIS_URL"] }
+end unless ENV['OPENREDIS_URL'].blank?
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: 'redis://redis.afillio.com:7372/0' }
-end
+  config.redis = { url: ENV["OPENREDIS_URL"] }
+end unless ENV['OPENREDIS_URL'].blank?

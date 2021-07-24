@@ -338,6 +338,7 @@ DEPENDENCIES
   rqrcode (~> 2.0)
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   sidekiq-scheduler
   simple_form
   spring
