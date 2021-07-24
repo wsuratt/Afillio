@@ -18,13 +18,12 @@
       = link_to image_tag("stripe_button.svg", :size => "240x160"), stripe_button_link
   
     = search_form_for @q, url: @ransack_path do |f|
-      = f.search_field :product_title_cont, placeholder: 'product title'
-      = f.submit
       - if current_user.has_role?(:admin)
-        %p
         = f.check_box :paid_true
         = f.label 'paid'
         %p
+      = f.search_field :product_title_cont, placeholder: 'product title'
+      = f.submit
     = link_to 'refresh', @ransack_path
 
 .table-responsive
@@ -54,7 +53,7 @@
       - @orders.each do |order|
         - if current_user.has_role?(:admin)
           %tr
-            %td= order.created_at
+            %td= order.created_at.to_date
             %td= order.product
             %td= order.user
             %td= order.quantity
