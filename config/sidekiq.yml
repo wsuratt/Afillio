@@ -1,5 +1,13 @@
 # config/sidekiq.yml
+---
+:verbose: false
+:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+:timeout: 30
+:queues:
+  - [low_priority, 1]
+  - [high_priority, 2] # high priority
 :schedule:
-  unpaid_worker:
-  every: 1m   # Runs once per minute
-  class: UnpaidWorker
+  UnpaidJob:
+    cron: '0 8 * * *'
+    queue: scheduler
+    enabled: true
