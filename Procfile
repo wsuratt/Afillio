@@ -1,1 +1,1 @@
-bundle exec sidekiq
+bundle exec sidekiq -q scheduler
