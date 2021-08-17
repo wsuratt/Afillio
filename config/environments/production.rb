@@ -15,13 +15,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-    email: {
-      deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
-      email_prefix: "[PREFIX] ",
-      sender_address: %("afillio error" <support@afillio.com>),
-      exception_recipients: %w[william@afillio.com]
-    }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
