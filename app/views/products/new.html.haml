@@ -1,9 +1,11 @@
-.card
-  .card-header
-    %h3
-      .fa.fa-shopping-bag
-      New product
-  .card-body
-    = render 'form'
-  .card-footer
-    = link_to 'Back', products_path
+.row.justify-content-center
+  .col-md-6
+    .card
+      .card-header
+        %h3
+          .fa.fa-shopping-bag
+          New product
+      .card-body
+        = render 'form'
+      .card-footer
+        = link_to 'Back', products_path

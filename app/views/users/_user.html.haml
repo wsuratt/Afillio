@@ -10,7 +10,7 @@
     = user.orders_count
   .card-footer
     - user.roles.each do |role|
-      .badge.badge-info
+      .badge.bg-info
         = role.name
     - if policy(user).edit?
       = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning'

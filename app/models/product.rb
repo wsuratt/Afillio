@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
-  validates :title, :category, :quantity, :price_cents, :commission_cents,  presence: true
+  validates :title, :category, presence: true
   validates :description, presence: true, length: { :minimum => 5, :maximum => 280 }
+  validates :quantity, presence: true, numericality: { :greater_than_or_equal_to => 0, :only_integer => true }
   # validates :price, presence: true, numericality: { :greater_than => 0 }
   # validates :commission, presence: true, numericality: { :less_than_or_equal_to => :price, :greater_than => 0 }
   
@@ -23,7 +24,7 @@ class Product < ApplicationRecord
   end
   
   monetize :price, as: :price_cents, presence: true, numericality: { :greater_than => 0 }
-  monetize :commission, as: :commission_cents, presence: true, numericality: { :less_than_or_equal_to => :price_cents, :greater_than => 0 }
+  monetize :commission, as: :commission_cents, presence: true, numericality: { :less_than_or_equal_to => Proc.new {|product| product.price_cents - product.price_cents * 0.075 }, :greater_than => 0 }
   
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -32,5 +33,12 @@ class Product < ApplicationRecord
   def self.categories
     CATEGORIES.map { |category| [category, category] }
   end
+
+  # private
   
+  #   def less_than_max
+  #     if self.commission_cents > (self.price_cents - (self.price_cents * 0.075))
+  #         self.errors[:base] << "Number must be greater"
+  #     end
+  #   end
 end

@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
     # @order.product = Product.friendly.find(params[:title])
     @order.total_cents = @order.product.price_cents * @order.quantity
     @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
-    @order.admin_commission_cents = 0.05 * @order.product.price_cents * @order.quantity
+    @order.admin_commission_cents = 0.075 * @order.product.price_cents * @order.quantity
     @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
     
     respond_to do |format|
@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       @order.total_cents = @order.product.price_cents * @order.quantity
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
-      @order.admin_commission_cents = 0.05 * @order.product.price_cents * @order.quantity
+      @order.admin_commission_cents = 0.075 * @order.product.price_cents * @order.quantity
       @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
     end
     respond_to do |format|
