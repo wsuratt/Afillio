@@ -110,6 +110,9 @@ GEM
     erubis (2.7.0)
     et-orbi (1.2.4)
       tzinfo
+    exception_notification (4.4.3)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.3)
@@ -320,6 +323,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  exception_notification
   faker
   friendly_id (~> 5.4.0)
   haml-rails (~> 2.0)
