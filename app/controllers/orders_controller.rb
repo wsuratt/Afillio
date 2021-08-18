@@ -7,20 +7,20 @@ class OrdersController < ApplicationController
     @ransack_path = orders_path
     
     @q = Order.ransack(params[:q])
-    @pagy, @orders = pagy(@q.result.includes(:user))
+    @pagy, @orders = pagy(@q.result.includes(:user).where('paid = ?', true))
     authorize @orders
   end
   
   def my_sales
     @ransack_path = my_orders_orders_path
     @q = Order.where(orders: {user: current_user}).ransack(params[:q])
-    @pagy, @orders = pagy(@q.result.includes(:user))
+    @pagy, @orders = pagy(@q.result.includes(:user).where('paid = ?', true))
   end
   
   def my_orders
     @ransack_path = my_orders_orders_path
     @q = Order.joins(:product).where(products: {user: current_user}).ransack(params[:q])
-    @pagy, @orders = pagy(@q.result.includes(:user))
+    @pagy, @orders = pagy(@q.result.includes(:user).where('paid = ?', true))
     render 'index'
   end
   

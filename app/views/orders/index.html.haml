@@ -46,7 +46,7 @@
         %th Phone
         %th Email
         %th Seller commission
-        %th Earned
+        %th You earned
         %th
         
     %tbody
@@ -66,8 +66,8 @@
             %td= order.last_name
             %td= order.phone
             %td= order.email
-            %td= order.paid
-            %td
+            %td= order.seller_commission_cents
+            %td= order.vendor_commission_cents
             %td
               = link_to 'Show', order
               %p
@@ -88,8 +88,8 @@
               %td= order.last_name
               %td= order.phone
               %td= order.email
-              %td
-              %td
+              %td= order.seller_commission_cents
+              %td= order.vendor_commission_cents
               %td
                 = link_to 'Show', order
                 %p
