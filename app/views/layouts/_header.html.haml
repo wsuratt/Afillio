@@ -20,7 +20,7 @@
                 .fa.fa-tags
                 My sales
                 .badge.bg-danger
-                  = Order.where(orders: {user: current_user}).count
+                  = Order.where(orders: {user: current_user}, paid: true).count
         %ul.navbar-nav.me-auto
           - if current_user.has_role?(:vendor)
             %li.nav-item.dropdown
@@ -40,7 +40,7 @@
                   .fa.fa-box
                   My orders
                   .badge.bg-danger
-                    = Order.joins(:product).where(products: {user: current_user}).count
+                    = Order.joins(:product).where(products: {user: current_user}, paid: true).count
           - if current_user.has_role?(:admin)
             %li.nav-item.dropdown
               %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
