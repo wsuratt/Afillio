@@ -47,7 +47,7 @@
         %th Email
         %th Seller commission
         %th Earned
-        %th Paid
+        %th
         
     %tbody
       - @orders.each do |order|
@@ -66,9 +66,9 @@
             %td= order.last_name
             %td= order.phone
             %td= order.email
-            %td
-            %td
             %td= order.paid
+            %td
+            %td
               = link_to 'Show', order
               %p
               = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
@@ -90,7 +90,7 @@
               %td= order.email
               %td
               %td
-              %td= order.paid
+              %td
                 = link_to 'Show', order
                 %p
                 = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
