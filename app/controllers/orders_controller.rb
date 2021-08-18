@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     @ransack_path = orders_path
     
     @q = Order.ransack(params[:q])
-    @pagy, @orders = pagy(@q.result.includes(:user).where('paid = ?', true))
+    @pagy, @orders = pagy(@q.result.includes(:user))
     authorize @orders
   end
   
