@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     #@products = Product.all
     @ransack_path = products_path
 
-    @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
+    @ransack_products = Product.where(show: true).ransack(params[:products_search], search_key: :products_search)
     @pagy, @products = pagy(@ransack_products.result.includes(:user))
   end
   

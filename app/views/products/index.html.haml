@@ -41,7 +41,7 @@
   .col-md-10
     .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
       - @products.each do |product|
-        - if current_page?(products_path)
+        - if current_page?(products_path) and !current_user.has_role?(:admin)
           - if product.show
             .col
               = render 'products/product', product: product
