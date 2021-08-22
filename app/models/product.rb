@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   validates :title, :category, presence: true
+  validates :show, inclusion: { in: [ true, false ] }
   validates :description, presence: true, length: { :minimum => 5, :maximum => 280 }
   validates :quantity, presence: true, numericality: { :greater_than_or_equal_to => 0, :only_integer => true }
   # validates :price, presence: true, numericality: { :greater_than => 0 }

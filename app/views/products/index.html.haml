@@ -30,6 +30,10 @@
       .row
       = sort_link(@ransack_products, :created_at, "Newest")
       .row
+      - if current_page?(created_products_path)
+        = f.check_box :show_true
+        = f.label 'Shown in store'
+      .row
       = f.submit
     = link_to 'refresh', @ransack_path
 
@@ -37,8 +41,13 @@
   .col-md-10
     .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
       - @products.each do |product|
-        .col
-          = render 'products/product', product: product
+        - if current_page?(products_path)
+          - if product.show
+            .col
+              = render 'products/product', product: product
+        - else
+          .col
+            = render 'products/product', product: product
     %p
     != pagy_bootstrap_nav(@pagy)
 %br
