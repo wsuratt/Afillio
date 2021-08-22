@@ -76,11 +76,11 @@ class ProductsController < ApplicationController
     authorize @product
     if @product.destroy
       respond_to do |format|
-        format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+        format.html { redirect_to products_url, notice: 'Product was successfully deleted.' }
         format.json { head :no_content }
       end
     else
-      redirect_to @product, alert: 'Product has orders. Can not be destroyed.'
+      redirect_to @product, alert: 'Product has orders. Can not be deleted.'
     end
   end
 

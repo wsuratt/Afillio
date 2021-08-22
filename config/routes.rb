@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+
   resources :products do
     get :purchased, :created, on: :collection
   end
