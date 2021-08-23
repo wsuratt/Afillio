@@ -10,7 +10,8 @@
       = number_to_currency(current_user.balance_cents)
         
     - if current_user.stripe_user_id
-      Connected with Stripe
+      = link_to 'Connected with Stripe', 'https://connect.stripe.com', target: :_blank
+      %p
       - if current_user.balance_cents.to_i > 0
         %p
           = link_to "Payout", payout_transfer_path, class: 'btn btn-sm btn-success'
@@ -75,7 +76,7 @@
         - else
           - if order.paid
             %tr
-              %td= order.created_at
+              %td= order.created_at.to_date
               %td= order.product
               %td= order.user
               %td= order.quantity
