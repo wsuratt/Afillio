@@ -13,6 +13,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = favicon_link_tag asset_path('afillio-logo.svg')
+    = favicon_link_tag asset_path('afillio-logo.png'), rel: 'apple-touch-icon', type: 'image/png'
   %body
     = render 'layouts/header'
     = render 'layouts/messages'
