@@ -41,9 +41,17 @@ a.btn-danger:visited {
     color: white;
 }
 
-// .dropdown-item {
-//     color: black;
-// }
+.footer_links {
+    color: white;
+}
+
+.footer_links:visited {
+    color: white;
+}
+
+.footer_links:hover {
+    color: gray;
+}
 
 .form-control.is-invalid { 
     background-image: none; 
@@ -65,7 +73,7 @@ html {
 	min-height: 100%;
 }
 body {
-	margin: 0 0 200px;
+	margin: 0 0 300px;
 }
 .footer {
 	position: absolute;

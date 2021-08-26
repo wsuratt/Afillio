@@ -1,21 +1,37 @@
-%footer.footer.bg-dark.text-white
-  .container
-    .row
-      .col-md-4
-        Copyright
-        © 
-        = Time.now.year
-        William Suratt
-        .row
-        .fa.fa-envelope
-        = mail_to 'support@afillio.com'
-        .row
-      .col-md-4
-        = link_to 'Privacy policy', privacy_policy_path
-        .row
-        = link_to 'Terms and conditions', terms_conditions_path
-      .col-md-4
-        = link_to 'About us', about_us_path
-        .row
-        = link_to 'Become a vendor', become_vendor_path
+%footer.footer.pb-0.bg-dark.text-white
+  %section
+    .container
+      .row.mt-3.justify-content-center
+        .col.col-lg-2.text-center
+          %p
+            = link_to 'About us', about_us_path, { :class=>"footer_links" }
+          %p
+            = link_to 'Become a vendor', become_vendor_path, { :class=>"footer_links" }
+        .col.col-lg-2.text-center
+          %p
+            = link_to 'Privacy policy', privacy_policy_path, { :class=>"footer_links" }
+          %p
+            = link_to 'Terms and conditions', terms_conditions_path, { :class=>"footer_links" }
+        %p
+          .fa.fa-envelope.text-center.footer_links
+            = mail_to 'support@afillio.com', 'support@afillio.com', class: "footer_links"
+        // .col-md-4.col-lg-3.col-xl-3.mx-auto.mb-md-0.mb-4
+        //   / Links
+        //   %h6.text-uppercase.fw-bold.mb-4
+        //     Contact
+        //   %p
+        //     %i.fas.fa-home.me-3
+        //     New York, NY 10012, US
+        //   %p
+        //     %i.fas.fa-envelope.me-3
+        //     info@example.com
+        //   %p
+        //     %i.fas.fa-phone.me-3
+        //     + 01 234 567 88
+        //   %p
+        //     %i.fas.fa-print.me-3
+        //     + 01 234 567 89
+    .text-center.p-4
+      © 2021 Copyright:
+      %a.text-reset.fw-bold.footer_links{:href => "https://afillio.com/"} Afillio.com
 %br 
