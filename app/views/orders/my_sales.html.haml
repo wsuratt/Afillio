@@ -24,7 +24,7 @@
     = link_to 'refresh', @ransack_path
 
 .table-responsive
-  %table.table.table-bordered.table-striped.table-sm.table-hover.mx-auto.w-50
+  %table.table.table-bordered.table-striped.table-sm.table-hover.my_sales
     %thead
       %tr
         %th
@@ -42,5 +42,6 @@
             %td= order.product
             %td= number_to_currency(order.total_cents)
             %td= number_to_currency(order.seller_commission_cents)
-!= pagy_bootstrap_nav(@pagy)
+.col.my_sales
+  != pagy_bootstrap_nav(@pagy)
 %br

@@ -41,6 +41,14 @@ a.btn-danger:visited {
     color: white;
 }
 
+@include media-breakpoint-up(md) {
+    .my_sales {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
+
 .footer_links {
     color: white;
 }
