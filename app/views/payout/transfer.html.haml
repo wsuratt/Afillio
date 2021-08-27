@@ -3,3 +3,6 @@
 %h3
   = "Your transfer of " + number_to_currency(@amount) + " has been initiated."
 = link_to 'Back', my_sales_orders_path
+
+:javascript
+  alert('Your transfer has been initiated. Please allow up to 3 business days for your transfer to process.')
