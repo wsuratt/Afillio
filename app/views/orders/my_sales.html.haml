@@ -24,7 +24,7 @@
     = link_to 'refresh', @ransack_path
 
 .table-responsive
-  %table.table.table-bordered.table-striped.table-sm.table-hover
+  %table.table.table-bordered.table-striped.table-sm.table-hover.mx-auto.w-50
     %thead
       %tr
         %th
@@ -33,7 +33,6 @@
           = sort_link(@q, :product_title)
         %th Total
         %th Commission
-        %th Paid
   
     %tbody
       - @orders.each do |order|
@@ -43,6 +42,5 @@
             %td= order.product
             %td= number_to_currency(order.total_cents)
             %td= number_to_currency(order.seller_commission_cents)
-            %td= order.paid
 != pagy_bootstrap_nav(@pagy)
 %br
