@@ -73,21 +73,19 @@
             %tr
               %td= order.created_at.to_date
               %td= order.product
-              %td= order.user
               %td= order.quantity
               %td= number_to_currency(order.total_cents)
               %td
+                = order.first_name + ' ' + order.last_name 
+                %br
                 = order.street_address
-                %p
-                = order.city
-              %td= order.street_address
-              %td= order.city
-              %td= order.state
-              %td= order.zipcode
-              %td= order.first_name
-              %td= order.last_name
-              %td= order.phone
-              %td= order.email
+                %br
+                = order.city + ', ' + order.state + ' ' + order.zipcode
+              %td 
+                = number_to_phone(order.phone)
+                %br
+                = order.email
+              %td= order.user
               %td= order.seller_commission_cents
               %td= order.vendor_commission_cents
               %td
