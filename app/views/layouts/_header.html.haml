@@ -30,7 +30,7 @@
               .dropdown-menu.dropdown-menu-end{"aria-labelledby" => "vendorDropdown"}
                 = link_to new_product_path, class: "dropdown-item" do
                   .fa.fa-plus
-                  New Product
+                  New product
                 = link_to created_products_path, class: "dropdown-item" do
                   .fa.fa-shopping-bag
                   My products
@@ -41,6 +41,9 @@
                   My orders
                   .badge.bg-danger
                     = Order.joins(:product).where(products: {user: current_user}, paid: true).count
+                = link_to users_vendor_info_path, class: "dropdown-item" do
+                  .fa.fa-user-edit
+                  My info
           - if current_user.has_role?(:admin)
             %li.nav-item.dropdown
               %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}

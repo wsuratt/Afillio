@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  get 'users/vendor_info', to: "users#vendor_info"
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
   resources :products do
@@ -14,19 +15,19 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :edit, :show, :update]
   
-  post "checkout/create", to: "checkout#create"
-  get "checkout/success", to: "checkout#success"
+  post 'checkout/create', to: 'checkout#create'
+  get 'checkout/success', to: 'checkout#success'
   resources :webhooks, only: [:create]
   
-  get "stripe/connect", to: "stripe#connect", as: :stripe_connect
-  get "payout/transfer", to: "payout#transfer"
+  get 'stripe/connect', to: 'stripe#connect', as: :stripe_connect
+  get 'payout/transfer', to: 'payout#transfer'
   
-  root "home#index"
-  get "how-it-works", to: "home#how_it_works"
-  get "privacy-policy", to: "home#privacy_policy"
-  get "about-us", to: "home#about_us"
-  get "become-vendor", to: "home#become_vendor"
-  get "terms-conditions", to: "home#terms_conditions"
+  root 'home#index'
+  get 'how-it-works', to: 'home#how_it_works'
+  get 'privacy-policy', to: 'home#privacy_policy'
+  get 'about-us', to: 'home#about_us'
+  get 'become-vendor', to: 'home#become_vendor'
+  get 'terms-conditions', to: 'home#terms_conditions'
   
   require 'sidekiq/web'
   require 'sidekiq-scheduler/web'

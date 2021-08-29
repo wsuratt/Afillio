@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     authorize @users
   end
   
+  def vendor_info
+  end
+  
   def show
   end
   
