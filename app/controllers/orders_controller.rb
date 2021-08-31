@@ -6,21 +6,25 @@ class OrdersController < ApplicationController
   def index
     @ransack_path = orders_path
     
-    @q = Order.ransack(params[:q])
+    if current_user.has_role?(:admin)
+      @q = Order.ransack(params[:q])
+    else
+      @q = Order.where(paid: true).ransack(params[:q])
+    end
     @pagy, @orders = pagy(@q.result.includes(:user))
     authorize @orders
   end
   
   def my_sales
     @ransack_path = my_orders_orders_path
-    @q = Order.where(orders: {user: current_user}).ransack(params[:q])
-    @pagy, @orders = pagy(@q.result.includes(:user).where('paid = ?', true))
+    @q = Order.where(orders: {user: current_user}, paid: true).ransack(params[:q])
+    @pagy, @orders = pagy(@q.result.includes(:user))
   end
   
   def my_orders
     @ransack_path = my_orders_orders_path
-    @q = Order.joins(:product).where(products: {user: current_user}).ransack(params[:q])
-    @pagy, @orders = pagy(@q.result.includes(:user).where('paid = ?', true))
+    @q = Order.joins(:product).where(products: {user: current_user}, paid: true).ransack(params[:q])
+    @pagy, @orders = pagy(@q.result.includes(:user))
     render 'index'
   end
   
@@ -45,21 +49,31 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-    # @order.product = Product.friendly.find(params[:title])
-    @order.total_cents = @order.product.price_cents * @order.quantity
-    @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
-    @order.admin_commission_cents = 0.075 * @order.product.price_cents * @order.quantity
-    @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
-    
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order}
-        format.json { render :show, status: :created, location: @order }
-      else
+    if @order.product.quantity > 0
+      # @order.product = Product.friendly.find(params[:title])
+      @order.total_cents = @order.product.price_cents * @order.quantity
+      @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
+      @order.admin_commission_cents = 0.075 * @order.product.price_cents * @order.quantity
+      @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+      
+      respond_to do |format|
+        if @order.save
+          format.html { redirect_to @order}
+          format.json { render :show, status: :created, location: @order }
+        else
+          @product = @order.product
+          @user = @order.user
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
         @product = @order.product
         @user = @order.user
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        flash.now[:error] = "Product is out of stock."
+        format.html { render :new }
+        format.json { head :no_content }
       end
     end
   end

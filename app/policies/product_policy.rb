@@ -18,7 +18,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def create?
-    @user.has_role?(:vendor)
+    @user.has_role?(:vendor) && @user.info_complete?
   end
 
   def destroy?

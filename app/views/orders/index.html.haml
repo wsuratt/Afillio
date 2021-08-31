@@ -45,52 +45,27 @@
         
     %tbody
       - @orders.each do |order|
-        - if current_user.has_role?(:admin)
-          %tr
-            %td= order.created_at.to_date
-            %td= order.product
-            %td= order.quantity
-            %td= number_to_currency(order.total_cents)
-            %td
-              = order.first_name + ' ' + order.last_name 
-              %br
-              = order.street_address
-              %br
-              = order.city + ', ' + order.state + ' ' + order.zipcode
-            %td 
-              = number_to_phone(order.phone)
-              %br
-              = order.email
-            %td= order.user
-            %td= order.seller_commission_cents
-            %td= order.vendor_commission_cents
-            %td
-              = link_to 'Show', order
-              %p
-              = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
-        - else
-          - if order.paid
-            %tr
-              %td= order.created_at.to_date
-              %td= order.product
-              %td= order.quantity
-              %td= number_to_currency(order.total_cents)
-              %td
-                = order.first_name + ' ' + order.last_name 
-                %br
-                = order.street_address
-                %br
-                = order.city + ', ' + order.state + ' ' + order.zipcode
-              %td 
-                = number_to_phone(order.phone)
-                %br
-                = order.email
-              %td= order.user
-              %td= order.seller_commission_cents
-              %td= order.vendor_commission_cents
-              %td
-                = link_to 'Show', order
-                %p
-                = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
+        %tr
+          %td= order.created_at.to_date
+          %td= order.product
+          %td= order.quantity
+          %td= number_to_currency(order.total_cents)
+          %td
+            = order.first_name + ' ' + order.last_name 
+            %br
+            = order.street_address
+            %br
+            = order.city + ', ' + order.state + ' ' + order.zipcode
+          %td 
+            = number_to_phone(order.phone)
+            %br
+            = order.email
+          %td= order.user
+          %td= order.seller_commission_cents
+          %td= order.vendor_commission_cents
+          %td
+            = link_to 'Show', order
+            %p
+            = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
 != pagy_bootstrap_nav(@pagy)
 %br

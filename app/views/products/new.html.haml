@@ -1,3 +1,8 @@
+- if not current_user.info_complete?
+  .alert.alert-danger{:role => "alert"}
+    Please complete 
+    = link_to 'user info', users_vendor_info_path(current_user)
+    before creating new products.
 .row.justify-content-center
   .col-md-6
     .card
@@ -6,9 +11,6 @@
           .fa.fa-shopping-bag
           New product
       .card-body
-        - if current_user.info_complete?
-          = render 'form'
-        - else
-          Hi
+        = render 'form'
       .card-footer
         = link_to 'Back', products_path

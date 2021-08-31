@@ -1,3 +1,8 @@
+- if current_user.has_role?(:vendor) and not current_user.info_complete? and current_page?(created_products_path)
+  .alert.alert-danger{:role => "alert"}
+    Please complete 
+    = link_to 'user info', users_vendor_info_path(current_user)
+    before creating new products.
 %h2
   .text-center
     Products
@@ -48,9 +53,8 @@
   .col-md-10
     .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
       - @products.each do |product|
-        - if product.user.info_complete?
-          .col
-            = render 'products/product', product: product
+        .col
+          = render 'products/product', product: product
     %p
     != pagy_bootstrap_nav(@pagy)
 %br
