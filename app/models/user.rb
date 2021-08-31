@@ -18,6 +18,14 @@ class User < ApplicationRecord
     self.email.split(/@/).first
   end
   
+  def info_complete?
+    if self.vendor_title.blank? || self.return_url.blank? || (self.support_email.blank? && self.support_phone.blank? && self.support_url.blank?)
+      return false
+    else
+      return true
+    end
+  end
+  
   extend FriendlyId
   friendly_id :email, use: :slugged
   

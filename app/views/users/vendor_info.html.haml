@@ -1,3 +1,22 @@
-%h2
-  .text-center
-    My info
+.row.justify-content-center
+  .col-md-6
+    .card
+      .card-header
+        %h3
+          .fa.fa-user-edit
+          My info
+      .card-body
+        = simple_form_for @user do |f|
+          = f.input :vendor_title, :label => 'Company name (required)'
+          %p
+          = f.input :return_url, :label => 'Return policy url (required)'
+          %p
+          = f.label 'Customer support (at least one required)'
+          %hr
+          = f.input :support_email, :label => 'Customer support email'
+          %p
+          = f.input :support_phone, :label => 'Customer support phone'
+          %p
+          = f.input :support_url, :label => 'Customer support url'
+          %hr
+          = f.button :submit, 'Update'

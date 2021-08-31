@@ -54,7 +54,3 @@
           .text-center
             = button_to "Checkout", checkout_create_path, params: {id: @order.id}, remote: true, class: 'btn btn-sm btn-success'
             
-  .text-center
-    %p
-    %h3.text-danger
-      No refunds or returns allowed at this time.

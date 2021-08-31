@@ -12,6 +12,12 @@
         Description
       .card-body
         = @product.description
+        %hr
+        Sold by: 
+        = @product.user.vendor_title
+        %br
+        Return policy: 
+        = link_to @product.user.return_url
 
     - if @product.quantity > 0
       .text-center

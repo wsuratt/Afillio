@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'users/vendor_info', to: "users#vendor_info"
+  resources :users, only: [:index, :edit, :show, :update]
+  get 'users/:id/vendor_info', to: 'users#vendor_info', as: :users_vendor_info
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
   resources :products do
@@ -12,8 +13,6 @@ Rails.application.routes.draw do
     get :my_sales, on: :collection
   end
   post 'orders/:title/:referral_token', to: 'orders#create'
-  
-  resources :users, only: [:index, :edit, :show, :update]
   
   post 'checkout/create', to: 'checkout#create'
   get 'checkout/success', to: 'checkout#success'

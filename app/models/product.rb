@@ -24,6 +24,10 @@ class Product < ApplicationRecord
     title
   end
   
+  def filter_products
+    self.reject { |a| a[:show] }
+  end
+  
   monetize :price, as: :price_cents, presence: true, numericality: { :greater_than => 0 }
   monetize :commission, as: :commission_cents, presence: true, numericality: { :less_than_or_equal_to => Proc.new {|product| product.price_cents - product.price_cents * 0.075 }, :greater_than => 0 }
   

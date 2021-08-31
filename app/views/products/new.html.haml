@@ -6,6 +6,9 @@
           .fa.fa-shopping-bag
           New product
       .card-body
-        = render 'form'
+        - if current_user.info_complete?
+          = render 'form'
+        - else
+          Hi
       .card-footer
         = link_to 'Back', products_path

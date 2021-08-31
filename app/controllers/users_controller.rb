@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :vendor_info, :edit, :update, :destroy]
   
   def index
     @pagy, @users = pagy(User.all.order(created_at: :desc))
@@ -18,8 +18,10 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
-    if @user.update(user_params)
+    if @user.update(user_params) && current_user.has_role?(:admin)
       redirect_to users_path, notice: 'User roles were successfully updated.'
+    elsif @user.update(user_params) && current_user.has_role?(:vendor)
+      redirect_to users_vendor_info_path(current_user), notice: 'User info was successfully updated.'
     else
       render :edit
     end
@@ -44,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit({role_ids: []})
+    params.require(:user).permit(policy(@user).permitted_attributes)
   end
   
 end 
