@@ -9,7 +9,7 @@
         = simple_form_for @user do |f|
           = f.input :vendor_title, :label => 'Company name (required)'
           %p
-          = f.input :return_url, :label => 'Return policy url (required)'
+          = f.input :return_url, :label => "Return policy url (if no return policy is provided it will default to 'no refunds or returns')"
           %p
           = f.label 'Customer support (at least one required)'
           %hr
