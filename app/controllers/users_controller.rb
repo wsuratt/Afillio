@@ -18,12 +18,18 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
-    if @user.update(user_params) && current_user.has_role?(:admin)
-      redirect_to users_path, notice: 'User roles were successfully updated.'
-    elsif @user.update(user_params) && current_user.has_role?(:vendor)
-      redirect_to users_vendor_info_path(current_user), notice: 'User info was successfully updated.'
+    if current_user.has_role?(:admin)
+      if @user.update(user_params)
+        redirect_to users_path, notice: 'User roles were successfully updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @user.update(user_params)
+        redirect_to users_vendor_info_path(current_user), notice: 'User info was successfully updated.'
+      else
+        redirect_to users_vendor_info_path(current_user), alert: 'Failed to update user info.'
+      end
     end
   end
   

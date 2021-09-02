@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
   
   def info_complete?
-    if self.vendor_title.blank? || self.return_url.blank? || (self.support_email.blank? && self.support_phone.blank? && self.support_url.blank?)
+    if self.vendor_title.blank? || (self.support_email.blank? && self.support_phone.blank? && self.support_url.blank?)
       return false
     else
       return true
@@ -44,6 +44,12 @@ class User < ApplicationRecord
   end
   
   validate :must_have_a_role, on: :update
+  
+  # def balance_cents
+  #   Rails.cache.fetch([id, :balance_cents, updated_at]) do
+  #     orders.sum(:seller_commission_cents)
+  #   end
+  # end
 
   private
   def must_have_a_role

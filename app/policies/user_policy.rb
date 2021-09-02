@@ -9,7 +9,7 @@ class UserPolicy < ApplicationPolicy
     if @user.has_role?(:admin)
       [:roles, :vendor_title, :return_url, :support_email, :support_phone, :support_url]
     else
-      [:vendor_title, :vendor_title, :return_url, :support_email, :support_phone, :support_url]
+      [:vendor_title, :return_url, :support_email, :support_phone, :support_url]
     end
   end
 
