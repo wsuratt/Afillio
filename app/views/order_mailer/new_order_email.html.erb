@@ -6,21 +6,28 @@
   <body>
     <p><%= @order.first_name %>, thank you for your order!</p>
     <p>Order summary:</p>
-    <p>Product: <%= @order.product.title %></p>
-    <p>Price: <%= @order.product.price %></p>
-    <p>Quantity: <%= @order.quantity %></p>
-    <p>Total: <%= @order.total_cents %></p>
+    <p>
+      Product: <%= @order.product.title %><br>
+      Sold by: <%= @order.product.user.vendor_title %><br>
+      Price: <%= number_to_currency(@order.product.price_cents) %><br>
+      Quantity: <%= @order.quantity %><br>
+      Total: <%= number_to_currency(@order.total_cents) %>
+    </p>
     <br/>
     <p>Shipping info:</p>
-    <p><%= @order.first_name %> <%= @order.last_name %></p>
-    <p><%= @order.first_name %> <%= @order.last_name %></p>
-    <p><%= @order.street_address %></p>
-    <p><%= @order.city %>, <%= @order.state %> <%= @order.zipcode %></p>
-    <p><%= number_to_phone(@order.phone) %></p>
+      <%= @order.first_name %> <%= @order.last_name %><br>
+      <%= @order.street_address %><br>
+      <%= @order.city %>, <%= @order.state %> <%= @order.zipcode %><br>
+      <%= number_to_phone(@order.phone) %>
+    </p>
     <br/>
     <p>Customer support:</p>
-    <p>Email: <%= @order.product.user.support_email %></p>
-    <p>Phone: <%= @order.product.user.support_phone %></p>
-    <p>Link: <%= @order.product.user.support_url %></p>
+      Email: <%= @order.product.user.support_email %><br>
+      Phone: <%= @order.product.user.support_phone %><br>
+      Link: <%= @order.product.user.support_url %>
+    </p>
+    <br/>
+    <p>Return policy:</p>
+    <p><%= = @order.product.user.return_url.blank? ? 'No refunds or returns.' : @order.product.user.return_url %></p>
   </body>
 </html>

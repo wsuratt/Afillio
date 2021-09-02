@@ -20,10 +20,7 @@
                 = @product.user.vendor_title
                 %br
                 Return policy: 
-                - if @product.user.return_url.blank?
-                  No refunds or returns
-                -else
-                  = link_to @product.user.return_url
+                = @product.user.return_url.blank? ? 'No refunds or returns' : @product.user.return_url
         
           .card-body
             = render 'form'
