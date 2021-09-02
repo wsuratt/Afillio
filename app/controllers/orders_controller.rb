@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
       
       respond_to do |format|
         if @order.save
-          OrderMailer.with(order: @order).new_order_email.deliver_later
+          OrderMailer.with(order: @order).new_order_email.deliver_now
           format.html { redirect_to @order}
           format.json { render :show, status: :created, location: @order }
         else
