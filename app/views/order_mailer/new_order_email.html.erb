@@ -28,6 +28,6 @@
     </p>
     <br/>
     <p>Return policy:</p>
-    <p><%= = @order.product.user.return_url.blank? ? 'No refunds or returns.' : @order.product.user.return_url %></p>
+    <p><%= @order.product.user.return_url.blank? ? 'No refunds or returns.' : @order.product.user.return_url %></p>
   </body>
 </html>
