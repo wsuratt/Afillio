@@ -4,6 +4,23 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>You got a new order from <%= @order.product.title %>!</p>
+    <p><%= @order.first_name %>, thank you for your order!</p>
+    <p>Order summary:</p>
+    <p>Product: <%= @order.product.title %></p>
+    <p>Price: <%= @order.product.price %></p>
+    <p>Quantity: <%= @order.quantity %></p>
+    <p>Total: <%= @order.total_cents %></p>
+    <br/>
+    <p>Shipping info:</p>
+    <p><%= @order.first_name %> <%= @order.last_name %></p>
+    <p><%= @order.first_name %> <%= @order.last_name %></p>
+    <p><%= @order.street_address %></p>
+    <p><%= @order.city %>, <%= @order.state %> <%= @order.zipcode %></p>
+    <p><%= number_to_phone(@order.phone) %></p>
+    <br/>
+    <p>Customer support:</p>
+    <p>Email: <%= @order.product.user.support_email %></p>
+    <p>Phone: <%= @order.product.user.support_phone %></p>
+    <p>Link: <%= @order.product.user.support_url %></p>
   </body>
 </html>
