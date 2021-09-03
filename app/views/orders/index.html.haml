@@ -23,7 +23,7 @@
         = f.check_box :paid_true
         = f.label 'paid'
         %p
-      = f.search_field :product_title_cont, placeholder: 'product title'
+      = f.search_field :slug_cont, placeholder: 'Order ID'
       = f.submit
     = link_to 'refresh', @ransack_path
 
@@ -33,12 +33,12 @@
       %tr
         %th
           = sort_link(@q, :created_at, "Order Date")
+        %th Order ID
         %th Product Title
         %th Quantity
         %th Total
         %th Shipping
         %th Contact
-        %th Referred By
         %th Seller Earned
         %th You Earned
         %th
@@ -47,6 +47,7 @@
       - @orders.each do |order|
         %tr
           %td= order.created_at.to_date
+          %td= order.slug
           %td= order.product
           %td= order.quantity
           %td= number_to_currency(order.total_cents)
@@ -60,7 +61,6 @@
             = number_to_phone(order.phone)
             %br
             = order.email
-          %td= order.user
           %td= order.seller_commission_cents
           %td= order.vendor_commission_cents
           %td

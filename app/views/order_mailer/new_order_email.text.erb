@@ -4,8 +4,8 @@ Thank you for your order!
 Order Details:
 --------------------------
 
-Order id: <%= @order.slug %><br>
-Sold by: <%= @order.product.user.vendor_title %><br>
+Order ID: <%= @order.slug %><br>
+Sold By: <%= @order.product.user.vendor_title %><br>
 
 Product: <%= @order.product.title %><br>
 Price: <%= number_to_currency(@order.product.price_cents) %><br>
