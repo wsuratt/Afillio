@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
   end
   
   def tracking_number_update
+    authorize @order
     if @order.update(order_params)
       @order.total_cents = @order.product.price_cents * @order.quantity
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
