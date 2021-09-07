@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :show]
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[ show edit update destroy tracking_number tracking_number_update ]
 
   # GET /orders or /orders.json
   def index
@@ -26,6 +26,30 @@ class OrdersController < ApplicationController
     @q = Order.joins(:product).where(products: {user: current_user}, paid: true).ransack(params[:q])
     @pagy, @orders = pagy(@q.result.includes(:user))
     render 'index'
+  end
+  
+  def tracking_number
+  end
+  
+  def tracking_number_update
+    if @order.update(order_params)
+      @order.total_cents = @order.product.price_cents * @order.quantity
+      @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
+      @order.admin_commission_cents = 0.075 * @order.product.price_cents * @order.quantity
+      @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+      if !@order.tracking_number.blank?
+        OrderMailer.with(order: @order).shipped_order_email.deliver_now
+      end
+    end
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to orders_path }
+        format.json { render :index, status: :ok, location: @order }
+      else
+        format.html { render :tracking_number, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   # GET /orders/1 or /orders/1.json
@@ -115,7 +139,27 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:product_id, :user_id, :quantity, :total, :total_cents, :street_address, :city, :state, :zipcode, :first_name, :last_name, :phone, :email, :seller_commission, :seller_commission_cents, :vendor_commission, :vendor_commission_cents, :admin_commission, :admin_commission_cents)
+      params.require(:order).permit(:product_id,
+        :user_id,
+        :quantity,
+        :total,
+        :total_cents,
+        :street_address,
+        :city,
+        :state,
+        :zipcode,
+        :first_name,
+        :last_name,
+        :phone,
+        :email,
+        :seller_commission,
+        :seller_commission_cents,
+        :vendor_commission,
+        :vendor_commission_cents,
+        :admin_commission,
+        :admin_commission_cents,
+        :tracking_number
+      )
     end
     
 end

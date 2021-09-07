@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :vendor_info, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :vendor_info, :edit, :update, :destroy, :vendor_info, :vendor_info_update ]
   
   def index
     @pagy, @users = pagy(User.all.order(created_at: :desc))
@@ -7,6 +7,15 @@ class UsersController < ApplicationController
   end
   
   def vendor_info
+  end
+  
+  def vendor_info_update
+    authorize @user
+    if @user.update(user_params)
+      redirect_to vendor_info_user_path(current_user), notice: 'User info was successfully updated.'
+    else
+      redirect_to vendor_info_user_path(current_user), alert: 'Failed to update user info.'
+    end
   end
   
   def show
@@ -18,18 +27,10 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
-    if current_user.has_role?(:admin)
-      if @user.update(user_params)
-        redirect_to users_path, notice: 'User roles were successfully updated.'
-      else
-        render :edit
-      end
+    if @user.update(user_params)
+      redirect_to users_path, notice: 'User roles were successfully updated.'
     else
-      if @user.update(user_params)
-        redirect_to users_vendor_info_path(current_user), notice: 'User info was successfully updated.'
-      else
-        redirect_to users_vendor_info_path(current_user), alert: 'Failed to update user info.'
-      end
+      render :edit
     end
   end
   

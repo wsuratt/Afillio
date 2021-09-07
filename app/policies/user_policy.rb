@@ -20,6 +20,18 @@ class UserPolicy < ApplicationPolicy
   def edit?
     @user.has_role?(:admin) || @user.has_role?(:vendor)
   end
+  
+  def vendor_info?
+    @user.has_role?(:admin) || @user.has_role?(:vendor)
+  end
+  
+  def vendor_info_update?
+    @user.has_role?(:admin) || @user.has_role?(:vendor)
+  end
+  
+  def index?
+    @user.has_role?(:admin)
+  end
 
   def update?
     @user.has_role?(:admin) || @user.has_role?(:vendor)

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:index, :edit, :show, :update]
-  get 'users/:id/vendor_info', to: 'users#vendor_info', as: :users_vendor_info
+  resources :users, only: [:index, :edit, :show, :update] do
+    member do
+      get :vendor_info
+      patch :vendor_info_update
+      put :vendor_info_update
+    end
+  end
+  # get 'users/:id/vendor_info', to: 'users#vendor_info', as: :users_vendor_info
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
   resources :products do
@@ -11,6 +17,11 @@ Rails.application.routes.draw do
   resources :orders, path_names: { edit: ':id/edit', new: ':title/:referral_token' } do
     get :my_orders, on: :collection
     get :my_sales, on: :collection
+    member do
+      get :tracking_number
+      patch :tracking_number_update
+      put :tracking_number_update
+    end
   end
   post 'orders/:title/:referral_token', to: 'orders#create'
   

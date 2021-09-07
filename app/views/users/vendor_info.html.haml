@@ -6,7 +6,7 @@
           .fa.fa-user-edit
           My info
       .card-body
-        = simple_form_for @user do |f|
+        = simple_form_for @user, url: vendor_info_update_user_path(@user) do |f|
           = f.input :vendor_title, :label => 'Company name (required)'
           %p
           = f.input :return_url, :label => "Return policy url (if no return policy is provided it will default to 'no refunds or returns')"

@@ -41,7 +41,7 @@
                   My orders
                   .badge.bg-danger
                     = Order.joins(:product).where(products: {user: current_user}, paid: true).count
-                = link_to users_vendor_info_path(current_user), class: "dropdown-item" do
+                = link_to vendor_info_user_path(current_user), class: "dropdown-item" do
                   .fa.fa-user-edit
                   My info
           - if current_user.has_role?(:admin)

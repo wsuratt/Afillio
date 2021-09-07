@@ -1,16 +1,17 @@
-Thank you for your order!
+Your order has shipped!
 ===============================================
 
 Order Details:
 --------------------------
 
 Order ID: <%= @order.slug %>
-Sold By: <%= @order.product.user.vendor_title %>
-
 Product: <%= @order.product.title %>
-Price: <%= number_to_currency(@order.product.price_cents) %>
-Quantity: <%= @order.quantity %>
-Total: <%= number_to_currency(@order.total_cents) %>
+
+Tracking Information:
+--------------------------
+
+Tracking Number: <%= @order.tracking_number %>
+Track package: 'https://track.aftership.com/trackings?courier=&language=en&tracking-numbers=' + <%= @order.tracking_number %>
 
 Shipping Information:
 --------------------------

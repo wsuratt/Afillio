@@ -1,0 +1,14 @@
+.row.justify-content-center
+  .col-md-6
+    .card
+      .card-header
+        %h3
+          .fa.fa-box
+          Confirm shipment
+      .card-body
+        = simple_form_for @order, url: tracking_number_update_order_path(@order) do |f|
+          = f.input :tracking_number, :label => 'Tracking number'
+          %hr
+          = f.button :submit, 'Confirm'
+      .card-footer
+        = link_to 'Back', orders_path

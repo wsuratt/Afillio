@@ -19,7 +19,7 @@
         Return policy: 
         = @product.user.return_url.blank? ? 'No refunds or returns' : @product.user.return_url
 
-    - if @product.quantity > 0
+    - if @product.quantity > 0 and current_user.has_role?(:seller)
       .text-center
         %p
         = @svg.html_safe

@@ -37,7 +37,8 @@
         %th Product Title
         %th Quantity
         %th Total
-        %th Shipping
+        %th
+          = sort_link(@q, :tracking_number, "Shipping")
         %th Contact
         %th Seller Earned
         %th You Earned
@@ -57,6 +58,8 @@
             = order.street_address
             %br
             = order.city + ', ' + order.state + ' ' + order.zipcode
+            %br
+            = link_to order.tracking_number.blank? ? 'Confirm shipment' : 'Shipped', tracking_number_order_path(order)
           %td 
             = number_to_phone(order.phone)
             %br
