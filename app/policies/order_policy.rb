@@ -9,11 +9,11 @@ class OrderPolicy < ApplicationPolicy
     @user.has_role?(:admin)
   end
   
-  def tracking_number
+  def tracking_number?
     @record.product.user == @user
   end
   
-  def tracking_number_update
+  def tracking_number_update?
     @record.product.user == @user
   end
 
