@@ -8,6 +8,14 @@ class OrderPolicy < ApplicationPolicy
   def index?
     @user.has_role?(:admin)
   end
+  
+  def tracking_number
+    @user.has_role?(:admin) || @record.user == @user
+  end
+  
+  def tracking_number_update
+    @user.has_role?(:admin) || @record.user == @user
+  end
 
   def update?
     @user.has_role?(:admin) || @record.user == @user
