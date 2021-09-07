@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   
   def my_orders
     @ransack_path = my_orders_orders_path
-    @q = Order.joins(:product).where(products: {user: current_user}, paid: false).ransack(params[:q])
+    @q = Order.joins(:product).where(products: {user: current_user}, paid: true).ransack(params[:q])
     @pagy, @orders = pagy(@q.result.includes(:user))
     render 'index'
   end
