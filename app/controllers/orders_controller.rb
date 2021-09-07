@@ -5,12 +5,8 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @ransack_path = orders_path
-    
-    if current_user.has_role?(:admin)
-      @q = Order.ransack(params[:q])
-    else
-      @q = Order.where(paid: true).ransack(params[:q])
-    end
+
+    @q = Order.ransack(params[:q])
     @pagy, @orders = pagy(@q.result.includes(:user))
     authorize @orders
   end
@@ -23,7 +19,7 @@ class OrdersController < ApplicationController
   
   def my_orders
     @ransack_path = my_orders_orders_path
-    @q = Order.joins(:product).where(products: {user: current_user}, paid: true).ransack(params[:q])
+    @q = Order.joins(:product).where(products: {user: current_user}, paid: false).ransack(params[:q])
     @pagy, @orders = pagy(@q.result.includes(:user))
     render 'index'
   end
@@ -126,9 +122,16 @@ class OrdersController < ApplicationController
   def destroy
     authorize @order
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully deleted." }
-      format.json { head :no_content }
+    if current_user.has_role?(:admin)
+      respond_to do |format|
+        format.html { redirect_to orders_url, notice: "Order was successfully deleted." }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to my_orders_orders_path, notice: "Order was successfully deleted." }
+        format.json { head :no_content }
+      end
     end
   end
 
