@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     end
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to orders_path }
+        format.html { redirect_to my_orders_orders_path }
         format.json { render :index, status: :ok, location: @order }
       else
         format.html { render :tracking_number, status: :unprocessable_entity }
