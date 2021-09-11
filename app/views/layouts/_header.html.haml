@@ -59,7 +59,7 @@
                   .fa.fa-users
                   Verify vendors
                   .badge.bg-danger
-                    = User.count
+                    = User.with_role(:seller).where.not(vendor_title: [nil, ""]).count
                 = link_to orders_path, class: "dropdown-item" do
                   .fa.fa-box
                   Orders
