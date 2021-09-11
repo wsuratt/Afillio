@@ -1,7 +1,7 @@
 - if current_user.has_role?(:vendor) and not current_user.info_complete? and current_page?(created_products_path)
   .alert.alert-danger{:role => "alert"}
     Please complete 
-    = link_to 'user info', users_vendor_info_path(current_user)
+    = link_to 'user info', vendor_info_user_path(current_user)
     before creating new products.
 %h2
   .text-center

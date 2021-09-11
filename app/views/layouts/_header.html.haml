@@ -55,6 +55,11 @@
                   Users
                   .badge.bg-danger
                     = User.count
+                = link_to verify_vendors_users_path, class: "dropdown-item" do
+                  .fa.fa-users
+                  Verify vendors
+                  .badge.bg-danger
+                    = User.count
                 = link_to orders_path, class: "dropdown-item" do
                   .fa.fa-box
                   Orders

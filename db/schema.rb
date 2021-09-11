@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 2021_09_04_235316) do
     t.string "support_email"
     t.string "support_phone"
     t.string "support_url"
+    t.string "website_url"
+    t.string "instagram"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["referral_token"], name: "index_users_on_referral_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

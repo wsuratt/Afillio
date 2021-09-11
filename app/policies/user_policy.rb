@@ -7,9 +7,9 @@ class UserPolicy < ApplicationPolicy
   
   def permitted_attributes
     if @user.has_role?(:admin)
-      [:roles, :vendor_title, :return_url, :support_email, :support_phone, :support_url]
+      [{role_ids: []}, :vendor_title, :return_url, :support_email, :support_phone, :support_url, :website_url, :instagram]
     else
-      [:vendor_title, :return_url, :support_email, :support_phone, :support_url]
+      [:vendor_title, :return_url, :support_email, :support_phone, :support_url, :website_url, :instagram]
     end
   end
 
@@ -17,17 +17,21 @@ class UserPolicy < ApplicationPolicy
     @user.has_role?(:admin)
   end
   
+  def verify_vendors?
+    @user.has_role?(:admin)
+  end
+  
   def edit?
     @user.has_role?(:admin) || @user.has_role?(:vendor)
   end
   
-  def vendor_info?
-    @user.has_role?(:admin) || @user.has_role?(:vendor)
-  end
+  # def vendor_info?
+  #   @user.has_role?(:admin) || @user.has_role?(:vendor)
+  # end
   
-  def vendor_info_update?
-    @user.has_role?(:admin) || @user.has_role?(:vendor)
-  end
+  # def vendor_info_update?
+  #   @user.has_role?(:admin) || @user.has_role?(:vendor)
+  # end
   
   def index?
     @user.has_role?(:admin)

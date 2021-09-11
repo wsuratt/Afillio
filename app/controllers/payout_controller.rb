@@ -1,6 +1,7 @@
 class PayoutController < ApplicationController
+  before_action :set_amount
+  
   def transfer
-    @amount = current_user.balance_cents
     if @amount > 0
       Stripe::Transfer.create({
         amount: (@amount * 100).to_i, #this amount needs to be in cents
@@ -10,5 +11,11 @@ class PayoutController < ApplicationController
       current_user.balance_cents = 0
       current_user.save
     end
+  end
+  
+  private
+  
+  def set_amount
+    @amount = current_user.balance_cents
   end
 end

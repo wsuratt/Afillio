@@ -47,7 +47,7 @@
           
       - if current_user
         .card-footer
-          = link_to 'Back', orders_path
+          = link_to 'Back', :back
       - elsif !@order.paid
         .card-footer
           = link_to 'Edit', edit_order_path(@order)

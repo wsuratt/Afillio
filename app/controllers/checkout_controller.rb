@@ -4,21 +4,25 @@ class CheckoutController < ApplicationController
   def create
     order = Order.friendly.find(params[:id])
     product = order.product
-    @session = Stripe::Checkout::Session.create({
-      payment_method_types: ['card'],
-      line_items: [{
-        name: product.title,
-        amount: (order.total_cents * 100).to_i,
-        currency: "usd",
-        quantity: 1
-      }],
-      mode: 'payment',
-      success_url: root_url + 'checkout/success' + "?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: root_url + 'orders/' + order.slug,
-      client_reference_id: order.id,
-    })
-    respond_to do |format|
-      format.js
+    if product.quantity > 0
+      @session = Stripe::Checkout::Session.create({
+        payment_method_types: ['card'],
+        line_items: [{
+          name: product.title,
+          amount: (order.total_cents * 100).to_i,
+          currency: "usd",
+          quantity: 1
+        }],
+        mode: 'payment',
+        success_url: root_url + 'checkout/success' + "?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: root_url + 'orders/' + order.slug,
+        client_reference_id: order.id,
+      })
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to order_path(@order), alert: "This item is out of stock"
     end
   end
   

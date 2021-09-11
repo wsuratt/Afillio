@@ -1,1 +1,33 @@
-= render 'users/user', user: @user 
+.row.justify-content-center
+  .col-md-6
+    = render 'users/user', user: @user 
+    %p
+    .card
+      .card-header
+        %h3
+          .fa.fa-user
+          User info
+      .card-footer
+        Company name:
+        = @user.vendor_title
+        .row
+        Return policy url:
+        - if @user.return_url.blank?
+          No refunds or returns.
+        - else
+          = @user.return_url
+        .row
+        Website url:
+        = @user.website_url
+        .row
+        Instagram handle:
+        = @user.instagram
+      .card-footer
+        Support email:
+        = @user.support_email
+        .row
+        Support phone:
+        = @user.support_phone
+        .row
+        Support url:
+        = @user.support_url

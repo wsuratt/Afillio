@@ -3,7 +3,9 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{description: 'Afilliate marketing made simple'}/
+    %meta{keywords: 'selling, afilliate marketing, reselling, shoes'}/
+    %meta{author: 'Afillio.com'}/
     %title Afillio
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
@@ -14,6 +16,8 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = favicon_link_tag asset_path('afillio-logo.svg')
     = favicon_link_tag asset_path('afillio-logo.png'), rel: 'apple-touch-icon', type: 'image/png'
+    - if Rails.env.production?
+      = render 'layouts/google_analytics'
   %body
     = render 'layouts/header'
     = render 'layouts/messages'

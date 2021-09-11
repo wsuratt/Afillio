@@ -11,6 +11,10 @@
           %p
           = f.input :return_url, :label => "Return policy url (if no return policy is provided it will default to 'no refunds or returns')"
           %p
+          = f.input :website_url, :label => "Website url"
+          %p
+          = f.input :instagram, :label => "Instagram handle"
+          %p
           = f.label 'Customer support (at least one required)'
           %hr
           = f.input :support_email, :label => 'Customer support email'
@@ -19,4 +23,10 @@
           %p
           = f.input :support_url, :label => 'Customer support url'
           %hr
-          = f.button :submit, 'Update'
+          - if current_user.has_role?(:seller)
+            = f.button :submit, 'Submit'
+          - else
+            = f.button :submit, 'Update'
+      - if current_user.has_role?(:seller)
+        .card-footer
+          = link_to 'Back', :back

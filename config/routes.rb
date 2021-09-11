@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations'}
   resources :users, only: [:index, :edit, :show, :update] do
+    get :verify_vendors, on: :collection
     member do
+      get :become_vendor
       get :vendor_info
       patch :vendor_info_update
       put :vendor_info_update
     end
   end
-  # get 'users/:id/vendor_info', to: 'users#vendor_info', as: :users_vendor_info
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
   resources :products do
@@ -36,7 +37,6 @@ Rails.application.routes.draw do
   get 'how-it-works', to: 'home#how_it_works'
   get 'privacy-policy', to: 'home#privacy_policy'
   get 'about-us', to: 'home#about_us'
-  get 'become-vendor', to: 'home#become_vendor'
   get 'terms-conditions', to: 'home#terms_conditions'
   
   require 'sidekiq/web'

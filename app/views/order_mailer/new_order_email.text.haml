@@ -1,0 +1,33 @@
+Thank you for your order!
+\===============================================
+
+Order Details:
+\--------------------------
+
+Order ID: #{@order.slug}
+Sold By: #{@order.product.user.vendor_title}
+
+Product: #{@order.product.title}
+Price: #{number_to_currency(@order.product.price_cents)}
+Quantity: #{@order.quantity}
+Total: #{number_to_currency(@order.total_cents)}
+
+Shipping Information:
+\--------------------------
+
+\#{@order.first_name} #{@order.last_name}
+\#{@order.street_address}
+\#{@order.city}, #{@order.state} #{@order.zipcode}
+\#{number_to_phone(@order.phone)}
+
+Customer support:
+\--------------------------
+
+Email: #{@order.product.user.support_email}
+Phone: #{@order.product.user.support_phone}
+Link: #{@order.product.user.support_url}
+
+Return policy:
+\--------------------------
+
+\#{@order.product.user.return_url.blank? ? 'No refunds or returns.' : @order.product.user.return_url}

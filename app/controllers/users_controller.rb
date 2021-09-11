@@ -1,20 +1,36 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :vendor_info, :edit, :update, :destroy, :vendor_info, :vendor_info_update ]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :vendor_info, :vendor_info_update ]
   
   def index
     @pagy, @users = pagy(User.all.order(created_at: :desc))
     authorize @users
   end
   
+  def verify_vendors
+    @pagy, @users = pagy(User.with_role(:seller).where.not(vendor_title: [nil, ""]))
+    authorize @users
+  end
+  
+  def become_vendor
+  end
+  
   def vendor_info
   end
   
   def vendor_info_update
-    authorize @user
-    if @user.update(user_params)
-      redirect_to vendor_info_user_path(current_user), notice: 'User info was successfully updated.'
+    # authorize @user
+    if @user.has_role?(:seller)
+      if @user.update(user_params)
+        redirect_to become_vendor_user_path(@user), notice: 'User info was successfully submitted.'
+      else
+        redirect_to vendor_info_user_path(@user), alert: 'Failed to submit user info.'
+      end
     else
-      redirect_to vendor_info_user_path(current_user), alert: 'Failed to update user info.'
+      if @user.update(user_params)
+        redirect_to vendor_info_user_path(@user), notice: 'User info was successfully updated.'
+      else
+        redirect_to vendor_info_user_path(@user), alert: 'Failed to update user info.'
+      end
     end
   end
   

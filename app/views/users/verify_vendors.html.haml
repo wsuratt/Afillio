@@ -1,0 +1,14 @@
+%h2
+  .text-center
+    Users
+    .badge.bg-info
+      = @pagy.count
+%p
+
+.row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
+  - @users.each do |user|
+    = render 'users/user', user: user 
+
+!= pagy_bootstrap_nav(@pagy)
+
+%br 
