@@ -83,7 +83,7 @@
                   %tr
                     %td{:align => "center", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;"}
                       %h2{:style => "font-size: 18px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"}
-                        This product was sold to you by #{@order.product.user.website_url ? @order.product.user.vendor_title : link_to @order.product.user.vendor_title, @order.product.user.website_url}.
+                        This product was sold to you by #{@order.product.user.website_url ? @order.product.user.vendor_title : (link_to @order.product.user.vendor_title, @order.product.user.website_url)}.
                   %tr
                     %td{:align => "center", :style => "padding-top: 10px;"}
                       %h2{:style => "font-size: 18px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"} Instagram
