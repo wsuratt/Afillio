@@ -6,16 +6,12 @@
     #navbarSupportedContent.collapse.navbar-collapse
       - if current_user
         %ul.navbar-nav.me-auto
-          // %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
-          //   = link_to root_path, class: 'nav-link' do
-          //     .fa.fa-home
-          //     Home
-          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(products_path)}"}
+          %li.nav-item{class: "#{'active fw-bold' if current_page?(products_path)}"}
             = link_to products_path, class: 'nav-link' do
               .fa.fa-shopping-bag
               Products
           - if current_user.has_role?(:seller)
-            %li.nav-item{class: "#{'active font-weight-bold' if current_page?(my_sales_orders_path)}"}
+            %li.nav-item{class: "#{'active fw-bold' if current_page?(my_sales_orders_path)}"}
               = link_to my_sales_orders_path, class: "nav-link" do
                 .fa.fa-tags
                 My sales
@@ -77,6 +73,9 @@
                 .fa.fa-sign-out-alt
                 %b Sign out
       - else
-        %ul.navbar-nav
-          %li.nav-item= link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
-          %li.nav-item= link_to 'Log In', new_user_session_path, class: 'nav-link'
+        %ul.navbar-nav.me-auto
+        %ul.navbar-nav.me-right
+          %li.nav-item{class: "#{'active fw-bold' if current_page?(new_user_registration_path)}"}
+            = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
+          %li.nav-item{class: "#{'active fw-bold' if current_page?(new_user_session_path)}"}
+            = link_to 'Log In', new_user_session_path, class: 'nav-link'
