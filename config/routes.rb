@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'users/registrations'}
+  devise_for :users, :controllers => { registrations: 'users/registrations', confirmations: 'users/confirmations' }
   resources :users, only: [:index, :edit, :show, :update] do
     get :verify_vendors, on: :collection
     member do
