@@ -20,7 +20,10 @@
     paying expensive advertising fees. If you have a larger business with an existing community, you can also benefit from allowing people who are passionate 
     about your products to sell them and make commission.
     %br
-    = link_to 'Become a vendor', become_vendor_path
+    - if current_user
+      = link_to 'Become a vendor', vendor_info_user_path(current_user)
+    - else
+      = link_to 'Become a vendor', new_user_registration_path
     %p
     %h3
       Why become a seller?
