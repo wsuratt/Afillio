@@ -70,7 +70,7 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-    if @order.product.quantity > 0
+    if @order.product.quantity >= @order.quantity
       # @order.product = Product.friendly.find(params[:title])
       @order.total_cents = @order.product.price_cents * @order.quantity
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
