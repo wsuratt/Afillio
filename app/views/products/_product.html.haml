@@ -6,7 +6,7 @@
     .text-center
       - if product.image.attached?
         .card-img-top
-          = image_tag product.image, height: "100%", width: "100%"
+          = image_tag product.image, alt: product.title + " image", height: "100%", width: "100%"
       %hr
       Price:
       = number_to_currency(product.price_cents)
