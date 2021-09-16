@@ -21,8 +21,12 @@
           = number_to_currency(@order.total_cents)
       .card-body
         %p
-          %b Street address:
+          %b Address:
           = @order.street_address
+        - if !@order.street_address2.blank?
+          %p
+            %b Address 2:
+            = @order.street_address
         %p
           %b City:
           = @order.city

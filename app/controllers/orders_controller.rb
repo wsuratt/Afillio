@@ -71,6 +71,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.product.quantity >= @order.quantity
+      OrderMailer.with(order: @order).new_order_email.deliver_now
       # @order.product = Product.friendly.find(params[:title])
       @order.total_cents = @order.product.price_cents * @order.quantity
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
@@ -92,7 +93,11 @@ class OrdersController < ApplicationController
       respond_to do |format|
         @product = @order.product
         @user = @order.user
-        flash.now[:error] = "Product is out of stock."
+        if @product.quantity == 0
+          flash.now[:error] = "This item is out of stock. Sorry for the inconvenience."
+        else
+          flash.now[:error] = "There is only " + @product.quantity.to_s + " of this item in stock. Please adjust your order accordingly."
+        end
         format.html { render :new }
         format.json { head :no_content }
       end
@@ -149,6 +154,7 @@ class OrdersController < ApplicationController
         :total,
         :total_cents,
         :street_address,
+        :street_address2,
         :city,
         :state,
         :zipcode,

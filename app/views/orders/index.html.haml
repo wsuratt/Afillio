@@ -57,6 +57,9 @@
             %br
             = order.street_address
             %br
+            - if !order.street_address2.blank?
+              = order.street_address2
+              %br
             = order.city + ', ' + order.state + ' ' + order.zipcode
             %br
             = link_to order.tracking_number.blank? ? 'Confirm shipment' : 'Shipped', tracking_number_order_path(order)

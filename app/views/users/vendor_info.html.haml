@@ -9,11 +9,11 @@
         = simple_form_for @user, url: vendor_info_update_user_path(@user) do |f|
           = f.input :vendor_title, :label => 'Company name (required)'
           %p
-          = f.input :return_url, :label => "Return policy url (if no return policy is provided it will default to 'no refunds or returns')"
+          = f.input :return_url, :label => 'Return policy url (if no return policy is provided it will default to 'no refunds or returns')''
           %p
-          = f.input :website_url, :label => "Website url"
+          = f.input :website_url, :label => 'Website url'
           %p
-          = f.input :instagram, :label => "Instagram handle"
+          = f.input :instagram, :label => 'Instagram handle'
           %p
           = f.label 'Customer support (at least one required)'
           %hr

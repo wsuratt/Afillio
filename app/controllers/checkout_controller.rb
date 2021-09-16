@@ -4,7 +4,7 @@ class CheckoutController < ApplicationController
   def create
     order = Order.friendly.find(params[:id])
     product = order.product
-    if product.quantity > order.quantity
+    if product.quantity >= order.quantity
       @session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
         line_items: [{
@@ -22,7 +22,11 @@ class CheckoutController < ApplicationController
         format.js
       end
     else
-      redirect_to order_path(@order), alert: "There are of these item in stock."
+      if @product.quantity == 0
+        redirect_to order_path(@order), alert: "This item is out of stock. Sorry for the inconvenience."
+      else
+        redirect_to order_path(@order), alert: "There is only " + @product.quantity.to_s + " of this item in stock. Please adjust your order accordingly."
+      end
     end
   end
   

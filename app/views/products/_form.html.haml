@@ -5,7 +5,7 @@
   
     .form-inputs
       = f.input :title
-      
+      %p
       = f.label :image
       .row
       - if @product.image.attached?
@@ -17,13 +17,19 @@
       %small= f.error :image, class: 'text-danger'
 
       .row
+      %p
       = f.input :description
-      /= f.input :category, collection: [ "Other", "Tech", "Apparel"]
+      %p
       = f.input :category, collection: Product.categories, include_blank: true
+      %p
       = f.input :quantity
+      %p
       = f.input :price_cents, :label => "Price"
+      %p
       = f.input :commission_cents, :label => "Commission"
+      %p
       = f.label "Show in store"
+      %p
       = f.check_box :show
       %p
   

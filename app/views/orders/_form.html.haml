@@ -7,14 +7,23 @@
       = f.association :product, as: :hidden
       = f.association :user, as: :hidden
       = f.input :quantity, input_html: { value: 1 }
-      // = f.input :total, readonly: true, input_html: { value: @product.price * :quantity }
-      = f.input :street_address
+      %p
+      = f.input :street_address, :label => 'Address'
+      %p
+      = f.input :street_address2, :label => 'Address 2'
+      %p
       = f.input :city
+      %p
       = f.input :state
+      %p
       = f.input :zipcode
+      %p
       = f.input :first_name
+      %p
       = f.input :last_name
+      %p
       = f.input :phone
+      %p
       = f.input :email
       %p
   
