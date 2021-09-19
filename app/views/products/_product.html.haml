@@ -1,13 +1,14 @@
-.card.h-100
+.card.d-flex.h-100
   .card-header
     .fa.fa-shopping-bag
     = link_to product.title, product_path(product)
-  .card-footer.h-100
+  .card-footer.align-items-center.d-flex.justify-content-center.h-100
     .text-center
       - if product.image.attached?
         .card-img-top
           = image_tag product.image, alt: product.title + " image", height: "100%", width: "100%"
-      %hr
+  .card-footer
+    .text-center
       Price:
       = number_to_currency(product.price_cents)
       .row
