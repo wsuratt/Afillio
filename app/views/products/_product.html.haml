@@ -1,8 +1,8 @@
-.card
+.card.h-100
   .card-header
     .fa.fa-shopping-bag
     = link_to product.title, product_path(product)
-  .card-footer
+  .card-footer.h-100
     .text-center
       - if product.image.attached?
         .card-img-top
