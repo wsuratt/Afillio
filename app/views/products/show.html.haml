@@ -17,7 +17,7 @@
         = @product.user.vendor_title
         %br
         Return policy: 
-        = @product.user.return_url.blank? ? 'No refunds or returns' : @product.user.return_url
+        = @product.user.return_url.blank? ? 'No refunds or returns.' : @product.user.return_url
 
     - if @product.quantity > 0 and current_user.has_role?(:seller)
       .text-center
@@ -42,7 +42,7 @@
           /* Alert the copied text */
           // alert("Copied the text: " + copyText.value);
         }
-    - else
+    -else if @product.quantity <= 0
       .text-center
         %p
         %h3.text-danger
