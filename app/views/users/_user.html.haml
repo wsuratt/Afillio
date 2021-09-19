@@ -8,21 +8,17 @@
     .row
     Referrals:
     = user.orders_count
-  .card-footer
+    .row
     Confirmed email?
     - if user.confirmed_at.present?
       .badge.badge-success Yes
     - else
       .badge.badge-danger No
+  .card-footer
     - user.roles.each do |role|
       .badge.bg-info
         = role.name
   .card-footer
-  Confirmed email?
-    - if user.confirmed_at.present?
-      .badge.badge-success Yes
-    - else
-      .badge.badge-danger No
     - if policy(user).edit?
       = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning'
       = link_to "Delete", admin_destroy_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'

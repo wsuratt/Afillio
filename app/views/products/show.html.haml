@@ -42,8 +42,9 @@
           /* Alert the copied text */
           // alert("Copied the text: " + copyText.value);
         }
-    -else if @product.quantity <= 0
+    - elsif @product.quantity <= 0
       .text-center
         %p
         %h3.text-danger
           Out of Stock
+    - else
