@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @qrcode = RQRCode::QRCode.new(request.base_url + "/orders/" + @product.slug + "/" + @user.referral_token)
+    @qrcode = RQRCode::QRCode.new(request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token)
     
     @svg = @qrcode.as_svg(
       offset: 0,
