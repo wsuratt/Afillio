@@ -32,7 +32,10 @@ class Product < ApplicationRecord
   monetize :commission, as: :commission_cents, presence: true, numericality: { :less_than_or_equal_to => Proc.new {|product| product.price_cents - product.price_cents * 0.075 }, :greater_than => 0 }
   
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: %i(slugged finders)
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
   
   CATEGORIES = [:"Apparel", :"Beauty", :"Education", :"Health", :"Home", :"Outdoors", :"Tech", :"Toys", :"Other"]
   def self.categories
