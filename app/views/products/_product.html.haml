@@ -12,8 +12,9 @@
       Price:
       = number_to_currency(product.price_cents)
       .row
-      Commission:
-      = number_to_currency(product.commission_cents)
+      - if !request.path_info.include?('orders/new')
+        Commission:
+        = number_to_currency(product.commission_cents)
   - if current_user
     - if policy(product).edit?
       .card-footer

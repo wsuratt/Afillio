@@ -24,7 +24,7 @@
         %p
         = @svg.html_safe
         %p
-        %input#myInput{:type => "text", :value => request.base_url + "/orders/" + @product.slug + "/" + @user.referral_token}/
+        %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
         %button{:class => "btn btn-sm btn-custom", :onclick => "myFunction()"}
           .fa.fa-clipboard
       :javascript
