@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:show]
   before_action :set_product, :set_user, only: %i[ show edit update destroy ]
 
   def index
@@ -27,14 +28,16 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @qrcode = RQRCode::QRCode.new(request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token)
-    
-    @svg = @qrcode.as_svg(
-      offset: 0,
-      color: "000",
-      shape_rendering: "crispEdges",
-      module_size: 4
-    )
+    if current_user
+      @qrcode = RQRCode::QRCode.new(request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token)
+      
+      @svg = @qrcode.as_svg(
+        offset: 0,
+        color: "000",
+        shape_rendering: "crispEdges",
+        module_size: 4
+      )
+    end
   end
 
   def new
