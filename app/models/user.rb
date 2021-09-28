@@ -29,7 +29,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: %i(slugged finders)
   def should_generate_new_friendly_id?
-    title_changed?
+    email_changed?
   end
   
   monetize :balance, as: :balance_cents
