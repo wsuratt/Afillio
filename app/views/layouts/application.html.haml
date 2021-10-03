@@ -3,17 +3,18 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "afilliate marketing, advertising, sell, products", :name => "keywords"}/
     %meta{:content => "Afilliate marketing made simple.", :name => "description"}/
-    %title Afillio
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
     %script{src: "https://js.stripe.com/v3/"}
+    = favicon_link_tag asset_path('afillio-logo.svg')
+    = favicon_link_tag asset_path('afillio-logo.png'), rel: 'apple-touch-icon', type: 'image/png'
+    %title Afillio
+    
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = favicon_link_tag asset_path('afillio-logo.svg')
-    = favicon_link_tag asset_path('afillio-logo.png'), rel: 'apple-touch-icon', type: 'image/png'
     - if Rails.env.production?
       = render 'layouts/google_analytics'
   %body
