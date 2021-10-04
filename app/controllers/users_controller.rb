@@ -20,13 +20,13 @@ class UsersController < ApplicationController
   def vendor_info_update
     # authorize @user
     if @user.has_role?(:seller)
-      if @user.update(user_params)
+      if @user.update(user_params) && !@user.vendor_title.blank? && (!@user.support_email.blank? || !@user.support_phone.blank? || !@user.support_url.blank?)
         redirect_to become_vendor_user_path(@user), notice: 'User info was successfully submitted.'
       else
-        redirect_to vendor_info_user_path(@user), alert: 'Failed to submit user info.'
+        redirect_to vendor_info_user_path(@user), alert: 'Failed to submit user info. Please make sure all required fields are filled out.'
       end
     else
-      if @user.update(user_params)
+      if @user.update(user_params) && !@user.vendor_title.blank?
         redirect_to vendor_info_user_path(@user), notice: 'User info was successfully updated.'
       else
         redirect_to vendor_info_user_path(@user), alert: 'Failed to update user info.'

@@ -1,7 +1,7 @@
 - if not current_user.info_complete?
   .alert.alert-danger{:role => "alert"}
     Please complete 
-    = link_to 'user info', users_vendor_info_path(current_user)
+    = link_to 'user info', vendor_info_user_path(current_user)
     before creating new products.
 .row.justify-content-center
   .col-md-6
