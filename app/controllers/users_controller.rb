@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         redirect_to vendor_info_user_path(@user), alert: 'Failed to submit user info. Please make sure all required fields are filled out.'
       end
     else
-      if @user.update(user_params) && !@user.vendor_title.blank?
+      if @user.update(user_params)
         redirect_to vendor_info_user_path(@user), notice: 'User info was successfully updated.'
       else
         redirect_to vendor_info_user_path(@user), alert: 'Failed to update user info.'
