@@ -70,3 +70,4 @@ gem 'active_storage_validations' # validate image and file uploads
 gem 'sidekiq-scheduler' # scheduler to delete unpaid orders
 gem 'exception_notification'
 gem 'recaptcha'
+gem 'rails_autoscale_agent'
