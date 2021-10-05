@@ -1,8 +1,9 @@
-- if current_user.has_role?(:vendor) and not current_user.info_complete? and current_page?(created_products_path)
-  .alert.alert-danger{:role => "alert"}
-    Please complete 
-    = link_to 'user info', vendor_info_user_path(current_user)
-    to show products in store.
+- if current_user
+  - if current_user.has_role?(:vendor) and not current_user.info_complete? and current_page?(created_products_path)
+    .alert.alert-danger{:role => "alert"}
+      Please complete 
+      = link_to 'user info', vendor_info_user_path(current_user)
+      to show products in store.
 %h2
   .text-center
     Products

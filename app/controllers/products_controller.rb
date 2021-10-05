@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:show]
+  skip_before_action :authenticate_user!, :only => [:show, :index]
   before_action :set_product, :set_user, only: %i[ show edit update destroy ]
 
   def index
     #@products = Product.all
     @ransack_path = products_path
-    if current_user.has_role?(:admin)
-      @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
+    if current_user
+      if current_user.has_role?(:admin)
+        @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
+      end
     else
       @ransack_products = Product.where(show: true).joins(:user).where.not(user: {support_email: [nil, ""]}).or(Product.where(show: true).joins(:user).where.not(user: {support_phone: [nil, ""]})).or(Product.where(show: true).joins(:user).where.not(user: {support_url: [nil, ""]})).where.not(user: {vendor_title: [nil, ""]}).ransack(params[:products_search], search_key: :products_search)
     end
