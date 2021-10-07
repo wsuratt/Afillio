@@ -47,6 +47,8 @@ class User < ApplicationRecord
   end
   
   validate :must_have_a_role, on: :update
+  validate :must_have_a_vendor_title, on: :update
+  validate :must_have_a_support, on: :update
   
   # def balance_cents
   #   Rails.cache.fetch([id, :balance_cents, updated_at]) do
@@ -58,6 +60,18 @@ class User < ApplicationRecord
   def must_have_a_role
     unless roles.any?
       errors.add(:roles, "must have at least one role")
+    end
+  end
+  
+  def must_have_a_vendor_title
+    unless !vendor_title.blank?
+      errors.add(:vendor_title, "must have a company name")
+    end
+  end
+  
+  def must_have_a_support
+    unless !support_email.blank? || !support_phone.blank? || !support_phone.blank?
+      errors.add(:support_email, "must have at least one form of customer support")
     end
   end
   

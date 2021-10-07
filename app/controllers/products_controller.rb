@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
         @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
       end
     else
-      @ransack_products = Product.where(show: true).joins(:user).where.not(user: {support_email: [nil, ""]}).or(Product.where(show: true).joins(:user).where.not(user: {support_phone: [nil, ""]})).or(Product.where(show: true).joins(:user).where.not(user: {support_url: [nil, ""]})).where.not(user: {vendor_title: [nil, ""]}).ransack(params[:products_search], search_key: :products_search)
+      @ransack_products = Product.active.ransack(params[:products_search], search_key: :products_search)
     end
     @pagy, @products = pagy(@ransack_products.result.includes(:user))
   end

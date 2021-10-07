@@ -14,6 +14,7 @@ class Product < ApplicationRecord
   
   scope :latest, -> { limit(4).order(created_at: :desc) }
   scope :popular, -> { limit(4).order(orders_count: :desc, created_at: :desc) }
+  scope :active, -> { where(show: true) }
   
   has_one_attached :image
   validates :image, attached: true, 

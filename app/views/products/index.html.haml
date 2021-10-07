@@ -16,6 +16,7 @@
     = search_form_for @ransack_products, as: :products_search, url: @ransack_path do |f|
       Search by:
       = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm'
+      = f.search_field :user_vendor_title_cont, placeholder: 'Company', class: 'form-control form-control-sm'
       = f.label :category
       .row
       = f.select :category_cont, Product.categories, include_blank: true
