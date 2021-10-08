@@ -1,0 +1,7 @@
+.row.justify-content-center
+  .col-md-6.h-25
+    = render 'reviews/review', review: @review
+    - if current_user.has_role?(:admin)
+      = link_to 'Back', :back
+    - else
+      = link_to 'Home', root_path

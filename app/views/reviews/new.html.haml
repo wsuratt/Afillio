@@ -1,0 +1,12 @@
+.row.justify-content-center
+  .col-md-6
+    .card
+      .card-header
+        %h3
+          .text-warning.fa.fa-star
+          Provide Feedback
+      .card-body
+        = render 'form'
+      .card-footer
+        = link_to 'Back', root_path
+

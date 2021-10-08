@@ -9,6 +9,7 @@ class User < ApplicationRecord
   
   has_many :products, dependent: :nullify
   has_many :orders, dependent: :nullify
+  has_many :reviews, dependent: :nullify
   
   def to_s
     email
