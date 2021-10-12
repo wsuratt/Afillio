@@ -18,15 +18,16 @@
         .p-2
 
 %p
-- if current_user && @sold_products.size > 0
-  %hr
-  %h2
-    .fa.fa-tags
-    Your recent sales
-  .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
-    - @sold_products.each do |product|
-      .col
-        = render 'products/product', product: product
+- if current_user
+  - if current_user.has_role?(:seller) && @sold_products.size > 0
+    %hr
+    %h2
+      .fa.fa-tags
+      Your recent sales
+    .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
+      - @sold_products.each do |product|
+        .col
+          = render 'products/product', product: product
 
 %hr
 %h2
