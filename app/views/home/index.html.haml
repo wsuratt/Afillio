@@ -9,7 +9,7 @@
         
         = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
           .input-group
-            = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
+            = f.search_field :title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
             %span.input-group-append
               %button.btn-primary.btn-sm{"aria-label" => "search", :type => "submit"}
                 %span.fa.fa-search{"aria-hidden" => "true"}
