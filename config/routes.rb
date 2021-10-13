@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       put :tracking_number_update
     end
   end
-  post 'orders/:title/:referral_token', to: 'orders#create'
+  post 'orders/new/:title/:referral_token', to: 'orders#create'
   
   post 'checkout/create', to: 'checkout#create'
   get 'checkout/success', to: 'checkout#success'
