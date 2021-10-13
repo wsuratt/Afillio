@@ -21,7 +21,7 @@
 
     -if current_user
       - if @product.quantity > 0 and current_user.has_role?(:seller)
-        .text-center
+        .text-center.pb-5
           %p
           %h4
             Share QR code or link below:
@@ -43,7 +43,7 @@
             // alert("Copied the text: " + copyText.value);
           }
       - elsif @product.quantity <= 0
-        .text-center
+        .text-center.pb-5
           %p
           %h3.text-danger
             Out of Stock
