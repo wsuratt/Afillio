@@ -1,4 +1,6 @@
 .card.d-flex.h-100
+  - if !current_page?(product_path(product))
+    %a.stretched-link{:href => product_path(product)}
   .card-header
     .fa.fa-shopping-bag
     = link_to product.title, product_path(product)

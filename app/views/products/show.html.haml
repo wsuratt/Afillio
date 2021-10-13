@@ -23,6 +23,9 @@
       - if @product.quantity > 0 and current_user.has_role?(:seller)
         .text-center
           %p
+          %h4
+            Share QR code or link below:
+          %p
           = @svg.html_safe
           %p
           %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
@@ -46,8 +49,8 @@
             Out of Stock
       - else
     -else
-      %p
       .text-center
+        %p
         %h4
           Want to sell this item?
         %p
