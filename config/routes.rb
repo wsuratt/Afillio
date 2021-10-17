@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   resources :reviews
+  
+  resources :support do
+    get :sign_up, on: :collection
+    get :withdraw_balance, on: :collection
+    get :sell_product, on: :collection
+  end
+  
   devise_for :users, :controllers => { registrations: 'users/registrations', confirmations: 'users/confirmations' }
   resources :users, only: [:index, :edit, :show, :update] do
     get :verify_vendors, on: :collection

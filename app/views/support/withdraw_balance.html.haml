@@ -1,0 +1,21 @@
+#wrapper.d-md-flex
+
+  = render 'support/sidebar'
+  
+  #page-content-wrapper
+    .container-fluid
+      %h1.mt-4 How to withdraw account balance:
+      %p
+      If you are a 
+      %b Seller 
+      and wish to withdraw your account balance, please visit #{link_to 'My Sales', my_sales_orders_path}. 
+      From there #{link_to 'connect your Stripe account', my_sales_orders_path} and click the green payout button. 
+      Your account balance will be transferred to the linked bank account.
+      %p
+      If you are a 
+      %b Vendor 
+      and wish to withdraw your account balance, please visit #{link_to 'My Orders', my_orders_orders_path}. 
+      From there #{link_to 'connect your Stripe account', my_sales_orders_path} and click the green payout button. 
+      Your account balance will be transferred to the linked bank account.
+      %p
+      %b Please note that the transfer process can take up to three days.
