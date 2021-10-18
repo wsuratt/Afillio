@@ -7,9 +7,9 @@
             = link_to 'About us', about_us_path, { :class=>"footer_links" }
           %p
             - if current_user
-              = link_to 'Become a vendor', vendor_info_user_path(current_user), { :class=>"footer_links" }
+              = link_to 'Become a Vendor', vendor_info_user_path(current_user), { :class=>"footer_links" }
             - else
-              = link_to 'Become a vendor', new_user_registration_path, { :class=>"footer_links" }
+              = link_to 'Become a Vendor', new_user_registration_path, { :class=>"footer_links" }
         .col.col-lg-2.text-center
           %p
             = link_to 'Privacy policy', privacy_policy_path, { :class=>"footer_links" }
