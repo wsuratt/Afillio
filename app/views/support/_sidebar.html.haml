@@ -1,8 +1,10 @@
 #sidebar-wrapper.bg-white.flex-shrink-0.mt-4
   .list-group
-    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light' if current_page?(support_index_path)}", :href => support_index_path} How it works
-    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light' if current_page?(sign_up_support_index_path)}", :href => sign_up_support_index_path} Sign up
-    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light' if current_page?(become_vendor_support_index_path)}", :href => become_vendor_support_index_path} Become a Vendor
-    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light' if current_page?(withdraw_balance_support_index_path)}", :href => withdraw_balance_support_index_path} Withdraw account balance
-    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light' if current_page?(sell_product_support_index_path)}", :href => sell_product_support_index_path} Sell a product
-    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light' if current_page?(connect_stripe_support_index_path)}", :href => connect_stripe_support_index_path} Connect with Stripe
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(support_index_path)}", :href => support_index_path} How it works
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(sign_up_support_index_path)}", :href => sign_up_support_index_path} Sign up
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(become_vendor_support_index_path)}", :href => become_vendor_support_index_path} Become a Vendor
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(withdraw_balance_support_index_path)}", :href => withdraw_balance_support_index_path} Withdraw account balance
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(sell_product_support_index_path)}", :href => sell_product_support_index_path} Sell a product
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(connect_stripe_support_index_path)}", :href => connect_stripe_support_index_path} Connect with Stripe
+    // %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(refunds_and_returns_support_index_path)}", :href => refunds_and_returns_support_index_path} Refunds and returns
+    %a.support-link.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-muted' if current_page?(other_support_index_path)}", :href => other_support_index_path} Other

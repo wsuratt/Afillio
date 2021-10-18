@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @latest = Product.active.latest
     @popular = Product.active.popular
-    @sold_products = Product.active.joins(:orders).where(orders: {user: current_user, paid: true}).order(created_at: :desc).limit(4)
+    @sold_products = Product.active.joins(:orders).where(orders: {user: current_user, paid: true}).limit(4)
   end
 
   def privacy_policy

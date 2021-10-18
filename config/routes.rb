@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get :sell_product, on: :collection
     get :become_vendor, on: :collection
     get :connect_stripe, on: :collection
+    get :refunds_and_returns, on: :collection
+    get :other, on: :collection
   end
   
   devise_for :users, :controllers => { registrations: 'users/registrations', confirmations: 'users/confirmations' }

@@ -1,0 +1,11 @@
+#wrapper.d-md-flex
+
+  = render 'support/sidebar'
+
+  #page-content-wrapper
+    .container-fluid
+      %h1.mt-4 Other questions:
+      %p
+      Please email 
+      = mail_to 'support@afillio.com', 'support@afillio.com'
+      with any other questions.
