@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get :sign_up, on: :collection
     get :withdraw_balance, on: :collection
     get :sell_product, on: :collection
+    get :become_vendor, on: :collection
+    get :connect_stripe, on: :collection
   end
   
   devise_for :users, :controllers => { registrations: 'users/registrations', confirmations: 'users/confirmations' }

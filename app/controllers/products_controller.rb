@@ -5,10 +5,8 @@ class ProductsController < ApplicationController
   def index
     #@products = Product.all
     @ransack_path = products_path
-    if current_user
-      if current_user.has_role?(:admin)
-        @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
-      end
+    if current_user && current_user.has_role?(:admin)
+      @ransack_products = Product.ransack(params[:products_search], search_key: :products_search)
     else
       @ransack_products = Product.active.ransack(params[:products_search], search_key: :products_search)
     end
