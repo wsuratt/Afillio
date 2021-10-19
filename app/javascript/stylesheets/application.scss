@@ -74,7 +74,7 @@ a.btn-danger:visited {
 }
 
 .footer_links:hover {
-    color: gray;
+    color: $gray-400;
 }
 
 .form-control.is-invalid { 
@@ -129,4 +129,12 @@ input[type="search"] {
 
 .img-max {
   max-width: 480px
+}
+
+.img-support {
+  max-width: 350px
+}
+
+.text-support {
+    color: $gray-600 !important;
 }
