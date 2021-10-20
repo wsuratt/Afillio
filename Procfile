@@ -1,1 +1,1 @@
-bundle exec sidekiq -q scheduler
+bundle exec sidekiq -q default -q mailers -q scheduler
