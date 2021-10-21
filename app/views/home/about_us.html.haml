@@ -23,7 +23,7 @@
     - if current_user
       = link_to 'Become a Vendor', vendor_info_user_path(current_user)
     - else
-      = link_to 'Become a Vendor', new_user_registration_path
+      = link_to 'Become a Vendor', new_user_session_path
     %p
     %h3
       Why become a Seller?
@@ -31,7 +31,7 @@
     No longer does one need to go through extensive sign up processes or have thousands of followers to successfully affiliate market. 
     Simply, sign up on Afillio and start selling products you are passionate about to friends, family, and more.
     %br
-    = link_to 'How it works', how_it_works_path
+    = link_to 'How it works', support_index_path
     %p
     %h3
       Our team

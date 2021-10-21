@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   get 'payout/transfer', to: 'payout#transfer'
   
   root 'home#index'
-  get 'how-it-works', to: 'home#how_it_works'
+  get 'welcome', to: 'home#welcome'
   get 'privacy-policy', to: 'home#privacy_policy'
   get 'about-us', to: 'home#about_us'
   get 'terms-conditions', to: 'home#terms_conditions'
