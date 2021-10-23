@@ -8,7 +8,7 @@
       .card-body
         = simple_form_for @order, url: tracking_number_update_order_path(@order) do |f|
           = f.input :tracking_number, :label => 'Tracking number'
-          %hr
+          %p
           = f.button :submit, 'Confirm'
       .card-footer
         = link_to 'Back', my_orders_orders_path

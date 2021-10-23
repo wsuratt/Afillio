@@ -4,6 +4,7 @@
     .badge.bg-danger
       = @pagy.count
   %p
+    = number_to_currency(Order.all.sum(:seller_commission)/100)
     %h6
       Balance
     %h4
@@ -71,7 +72,8 @@
           %td= order.vendor_commission_cents
           %td
             = link_to 'Show', order
-            %p
-            = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
+            - if current_user.has_role?(:admin)
+              %p
+              = link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }
 != pagy_bootstrap_nav(@pagy)
 %br

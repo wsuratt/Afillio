@@ -24,6 +24,10 @@ class OrdersController < ApplicationController
     render 'index'
   end
   
+  def total_earnings?
+    @orders.sum(:commission_cents)
+  end
+  
   def tracking_number
   end
   
