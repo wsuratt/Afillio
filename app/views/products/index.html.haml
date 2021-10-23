@@ -12,8 +12,9 @@
       .col-md-3.mx-auto
         .input-group.justify-content-center.flex-nowrap
           %input#myInput{:type => "text", :value => request.base_url + "/products?products_search%5Buser_vendor_title_cont%5D=" + URI.encode(current_user.vendor_title)}/
-          %button{:class => "ms-1 btn btn-sm btn-custom", :onclick => "myFunction()"}
-            Copy
+          .input-group-append
+            %button{:class => "ms-1 btn btn-sm btn-custom", :onclick => "myFunction()"}
+              Copy
     :javascript
       function myFunction() {
         var copyText = document.getElementById("myInput");
