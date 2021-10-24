@@ -1,12 +1,18 @@
 .text-center
-  %h2
+  %h2.mb-4
     Orders
     .badge.bg-danger
       = @pagy.count
   %p
-    = number_to_currency(Order.all.sum(:seller_commission)/100)
+    %b
+      Total earnings
+    %br
+    - if current_user.has_role?(:admin)
+      = total_earnings(Order.all)
+    - else
+      = total_earnings(Order.joins(:product).where(products: {user: current_user}, paid: true))
     %h6
-      Balance
+      Current balance
     %h4
       = number_to_currency(current_user.balance_cents)
         

@@ -4,6 +4,10 @@
     .badge.bg-danger
       = @pagy.count
   %p
+    %b
+      Total earnings
+    %br
+    = total_earnings(Order.where(orders: {user: current_user}, paid: true))
     %h6
       Balance
     %h4
