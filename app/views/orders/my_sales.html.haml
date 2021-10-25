@@ -1,13 +1,13 @@
 .text-center
   %h2
-    Sales
+    Sales.mb-4
     .badge.bg-danger
       = @pagy.count
   %p
     %b
       Total earnings
     %br
-    = total_earnings(Order.where(orders: {user: current_user}, paid: true))
+    = total_earnings
     %h6
       Balance
     %h4

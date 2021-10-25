@@ -7,10 +7,7 @@
     %b
       Total earnings
     %br
-    - if current_user.has_role?(:admin)
-      = total_earnings(Order.all)
-    - else
-      = total_earnings(Order.joins(:product).where(products: {user: current_user}, paid: true))
+    = total_earnings
     %h6
       Current balance
     %h4
