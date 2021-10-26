@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
       @order.total_cents = @order.product.price_cents * @order.quantity
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
       @order.admin_commission_cents = 0.03 * @order.product.price_cents * @order.quantity
-      @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+      @order.vendor_commission_cents = (@order.total_cents) - (@order.seller_commission_cents + @order.admin_commission_cents)
       if !@order.tracking_number.blank?
         OrderMailer.with(order: @order).shipped_order_email.deliver_later
       end
