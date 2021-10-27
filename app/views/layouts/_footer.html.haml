@@ -1,23 +1,24 @@
 %footer.footer.pt-1.pb-0.bg-dark.text-white
   %section
     .container
-      .row.mt-3.justify-content-center
-        .col.col-lg-2.text-center
-          %p
-            = link_to 'About us', about_us_path, { :class=>"footer_links" }
-          %p
-            - if current_user
-              = link_to 'Become a Vendor', vendor_info_user_path(current_user), { :class=>"footer_links" }
-            - else
-              = link_to 'Become a Vendor', new_user_session_path, { :class=>"footer_links" }
-        .col.col-lg-2.text-center
-          %p
-            = link_to 'Privacy policy', privacy_policy_path, { :class=>"footer_links" }
-          %p
-            = link_to 'Terms and conditions', terms_conditions_path, { :class=>"footer_links" }
-        %p
+      .row.justify-content-center.row-cols-1.row-cols-2.row-cols-lg-3.text-center
+        .mt-3
+          = link_to 'Vendor welcome', welcome_path, { :class=>"footer_links" }
+        .mt-3
+          - if current_user
+            = link_to 'Become a Vendor', vendor_info_user_path(current_user), { :class=>"footer_links" }
+          - else
+            = link_to 'Become a Vendor', new_user_session_path, { :class=>"footer_links" }
+        .mt-3
+          = link_to 'About us', about_us_path, { :class=>"footer_links" }
+        .mt-3
+          = link_to 'Terms and conditions', terms_conditions_path, { :class=>"footer_links" }
+        .mt-3
+          = link_to 'Privacy policy', privacy_policy_path, { :class=>"footer_links" }
+        .mt-3
           .fa.fa-envelope.text-center.footer_links
             = mail_to 'support@afillio.com', 'support@afillio.com', class: "footer_links"
+        %p
     .row.justify-content-center
       .col.col-lg-2.text-center
         %p
