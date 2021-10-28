@@ -9,13 +9,14 @@ module OrdersHelper
   
   def total_earnings
     if current_user.has_role?(:admin)
-      number_to_currency((orders.sum(:total_cents))*0.03)
+      orders = Order.all
+      number_to_currency((orders.sum(:total)/100.00)*0.03)
     elsif current_user.has_role?(:vendor)
       orders = Order.joins(:product).where(products: {user: current_user}, paid: true)
-      number_to_currency(orders.sum(:vendor_commission_cents))
+      number_to_currency((orders.sum(:vendor_commission)/100.00))
     else
       orders = Order.where(orders: {user: current_user}, paid: true)
-      number_to_currency(orders.sum(:seller_commission_cents))
+      number_to_currency((orders.sum(:seller_commission)/100.00))
     end
   end
 end
