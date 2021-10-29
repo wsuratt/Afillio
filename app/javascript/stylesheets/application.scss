@@ -131,11 +131,15 @@ input[type="search"] {
   max-width: 480px
 }
 
+.list-group-item {
+    color: $gray-900
+}
+
 .text-support {
     color: $gray-600 !important;
 }
 
 .mobile-hover-disabled:hover {
     background-color: transparent;
-    color: #212529
+    color: $gray-900
 }
