@@ -137,5 +137,6 @@ input[type="search"] {
 @include media-breakpoint-down(sm) {
     .mobile-hover-disabled:hover {
         background-color: transparent;
+        color: black;
     }
 }
