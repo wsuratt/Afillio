@@ -135,7 +135,7 @@ input[type="search"] {
     color: $gray-600 !important;
 }
 @include media-breakpoint-down(sm) {
-    .mobile-hover-disabled {
-        pointer-events: none;
+    .mobile-hover-disabled:hover {
+        background-color: transparent;
     }
 }
