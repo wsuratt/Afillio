@@ -134,9 +134,8 @@ input[type="search"] {
 .text-support {
     color: $gray-600 !important;
 }
-@include media-breakpoint-down(sm) {
-    .mobile-hover-disabled:hover {
-        background-color: transparent;
-        color: black;
-    }
+
+.mobile-hover-disabled:hover {
+    background-color: transparent;
+    color: #212529
 }
