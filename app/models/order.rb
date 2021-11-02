@@ -21,6 +21,11 @@ class Order < ApplicationRecord
   end
   
   def self.STRIPE_FEE
+    fee = 0.30 #30 cents
+    fee.freeze
+  end
+  
+  def self.STRIPE_FEE_CENTS
     fee = Money.new(00_01, "USD") * 30 #30 cents
     fee.freeze
   end
