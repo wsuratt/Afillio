@@ -26,7 +26,7 @@ class Order < ApplicationRecord
   end
   
   def self.AFILLIO_FEE
-    fee = 0.30.to_f
+    fee = 0.03.to_f
     fee.freeze
   end
   

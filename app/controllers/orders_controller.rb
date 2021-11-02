@@ -109,7 +109,7 @@ class OrdersController < ApplicationController
       @order.total_cents = (@order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
       @order.admin_commission_cents = (Order.AFILLIO_FEE * @order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
-      @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+      @order.vendor_commission_cents = (@order.total_cents) - (@order.seller_commission_cents + @order.admin_commission_cents)
     end
     respond_to do |format|
       if @order.update(order_params)
