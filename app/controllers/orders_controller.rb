@@ -30,10 +30,10 @@ class OrdersController < ApplicationController
   def tracking_number_update
     authorize @order
     if @order.update(order_params)
-      @order.total_cents = @order.product.price_cents * @order.quantity
-      @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
-      @order.admin_commission_cents = 0.03 * @order.product.price_cents * @order.quantity
-      @order.vendor_commission_cents = (@order.total_cents) - (@order.seller_commission_cents + @order.admin_commission_cents)
+      # @order.total_cents = (@order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
+      # @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
+      # @order.admin_commission_cents = (Order.AFILLIO_FEE * @order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
+      # @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
       if !@order.tracking_number.blank?
         OrderMailer.with(order: @order).shipped_order_email.deliver_later
       end
@@ -72,10 +72,10 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.product.quantity >= @order.quantity
       # @order.product = Product.friendly.find(params[:title])
-      @order.total_cents = @order.product.price_cents * @order.quantity
+      @order.total_cents = (@order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
-      @order.admin_commission_cents = 0.03 * @order.product.price_cents * @order.quantity
-      @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
+      @order.admin_commission_cents = (Order.AFILLIO_FEE * @order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
+      @order.vendor_commission_cents = (@order.total_cents) - (@order.seller_commission_cents + @order.admin_commission_cents)
       
       respond_to do |format|
         if @order.save
@@ -106,9 +106,9 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     if @order.update(order_params)
-      @order.total_cents = @order.product.price_cents * @order.quantity
+      @order.total_cents = (@order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
-      @order.admin_commission_cents = 0.03 * @order.product.price_cents * @order.quantity
+      @order.admin_commission_cents = (Order.AFILLIO_FEE * @order.product.price_cents * @order.quantity) + Order.STRIPE_FEE
       @order.vendor_commission_cents = (@order.product.price_cents * @order.quantity) - (@order.seller_commission_cents + @order.admin_commission_cents)
     end
     respond_to do |format|
