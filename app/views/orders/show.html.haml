@@ -20,6 +20,9 @@
           %b Referred by:
           = @order.user
         %p
+          %b Price:
+          = number_to_currency(@order.product.price_cents)
+        %p
           %b Quantity:
           = @order.quantity
         %p
