@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   scope :latest, -> { limit(4).order(created_at: :desc) }
   scope :popular, -> { limit(4).order(orders_count: :desc, created_at: :desc) }
   
-  scope :order_sales, -> { includes(:orders).order(created_at: :desc) }
+  scope :order_sales, -> { includes(:orders).order('orders.created_at') }
   
   
   scope :active, -> { where(show: true) }
