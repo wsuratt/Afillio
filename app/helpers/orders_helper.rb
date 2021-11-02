@@ -9,7 +9,7 @@ module OrdersHelper
   
   def total_earnings
     if current_user.has_role?(:admin)
-      orders = Order.all
+      orders = Order.where(paid: true)
       stripe_fee_total = Order.STRIPE_FEE*orders.length
       afillio_fee_total = (orders.sum(:total)/100.00)-(stripe_fee_total)*Order.AFILLIO_FEE
       number_to_currency(afillio_fee_total+stripe_fee_total)
