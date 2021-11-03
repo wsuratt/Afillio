@@ -79,6 +79,9 @@ class OrdersController < ApplicationController
       
       respond_to do |format|
         if @order.save
+          @user = User.find_by(id: 1)
+          @user.balance_cents += @order.admin_commission_cents
+          @user.save
           format.html { redirect_to @order}
           format.json { render :show, status: :created, location: @order }
         else
