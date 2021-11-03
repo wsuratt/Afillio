@@ -48,8 +48,8 @@ class User < ApplicationRecord
   end
   
   validate :must_have_a_role, on: :update
-  validate :must_have_a_vendor_title, on: :update
-  validate :must_have_a_support, on: :update
+  validate :must_have_a_vendor_title, on: :vendor_info_update
+  validate :must_have_a_support, on: :vendor_info_update
   
   # def balance_cents
   #   Rails.cache.fetch([id, :balance_cents, updated_at]) do
