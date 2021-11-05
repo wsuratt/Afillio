@@ -6,3 +6,12 @@
   gtag('js', new Date());
 
   gtag('config', '#{Rails.application.credentials.dig(:google_analytics)}');
+
+%script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=#{Rails.application.credentials.dig(:google_analytics_campaign)}"}
+  :cdata
+:javascript
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '#{Rails.application.credentials.dig(:google_analytics_campaign)}');
