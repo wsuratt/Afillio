@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
       @order.admin_commission_cents = (Order.AFILLIO_FEE * @order.product.price_cents * @order.quantity) + Order.STRIPE_FEE_CENTS
       @order.vendor_commission_cents = (@order.total_cents) - (@order.seller_commission_cents + @order.admin_commission_cents)
-      OrderMailer.with(user: @order.product.user).vendor_email.deliver_later
+      
       respond_to do |format|
         if @order.save
           format.html { redirect_to @order}
