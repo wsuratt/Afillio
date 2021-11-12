@@ -12,6 +12,8 @@ class OrderMailer < ApplicationMailer
   end
   
   def vendor_email
-    mail(to: @order.product.user.email, subject: "New order")
+    @user = params[:user]
+    
+    mail(to: @user.email, subject: "New order")
   end
 end

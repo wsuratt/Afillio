@@ -42,7 +42,7 @@ class WebhooksController < ApplicationController
       @order.product.save
       
       OrderMailer.with(order: @order).new_order_email.deliver_later
-      OrderMailer.vendor_email.deliver_later
+      OrderMailer.with(user: @order.product.user).vendor_email.deliver_later
     end
 
     render json: { message: 'success' }
