@@ -1,0 +1,85 @@
+!!!
+%html
+  %head
+    %title
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    :css
+      body,
+      table,
+      td,
+      a {
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+      }
+
+      table,
+      td {
+          mso-table-lspace: 0pt;
+          mso-table-rspace: 0pt;
+      }
+
+      img {
+          -ms-interpolation-mode: bicubic;
+      }
+
+      img {
+          border: 0;
+          height: auto;
+          line-height: 100%;
+          outline: none;
+          text-decoration: none;
+      }
+
+      table {
+          border-collapse: collapse !important;
+      }
+
+      body {
+          height: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
+      }
+
+      a[x-apple-data-detectors] {
+          color: inherit !important;
+          text-decoration: none !important;
+          font-size: inherit !important;
+          font-family: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+      }
+
+      @media screen and (max-width: 480px) {
+          .mobile-hide {
+              display: none !important;
+          }
+
+          .mobile-center {
+              text-align: center !important;
+          }
+      }
+
+      div[style*="margin: 16px 0;"] {
+          margin: 0 !important;
+      }
+  %body{:bgcolor => "#eeeeee", :style => "margin: 0 !important; padding: 0 !important; background-color: #eeeeee;"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td{:align => "center", :bgcolor => "#eeeeee", :style => "background-color: #eeeeee;"}
+          %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "max-width:600px;", :width => "100%"}
+            %tr
+              %td{:align => "center", :bgcolor => "#90D4A2", :style => "font-size:0; padding: 35px;", :valign => "top"}
+            %tr
+              %td{:align => "center", :bgcolor => "#ffffff", :style => "padding: 10px 35px 20px 35px; background-color: #ffffff;"}
+                %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "max-width:600px;", :width => "100%"}
+                  %tr
+                    %td{:align => "center", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 15px;"}
+                      %br/
+                      %h2{:style => "font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"} You have a new order!
+                  %tr
+                    %td{:align => "center", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;"}
+                      %h2{:style => "font-size: 18px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"}
+                        Click #{link_to 'here', my_orders_orders_path} to view.

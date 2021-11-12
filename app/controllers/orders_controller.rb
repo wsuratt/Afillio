@@ -69,6 +69,7 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
+    OrderMailer.vendor_email.deliver_later
     @order = Order.new(order_params)
     if @order.product.quantity >= @order.quantity
       # @order.product = Product.friendly.find(params[:title])

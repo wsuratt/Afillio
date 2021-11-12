@@ -10,4 +10,8 @@ class OrderMailer < ApplicationMailer
 
     mail(to: @order.email, subject: "Order shipped")
   end
+  
+  def vendor_email
+    mail(to: @order.product.user.email, subject: "New order")
+  end
 end
