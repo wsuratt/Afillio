@@ -9,8 +9,8 @@
       %a.stretched-link{:href => product_path(product)}
     .text-center
       - if product.image.attached?
-        .card-img-top
-          = image_tag product.image, alt: product.title + " image", height: "100%", width: "100%"
+        .card-img-top.mh-50
+          = image_tag product.image, alt: product.title + " image", width: "100%"
   .card-footer.position-relative
     - if !current_page?(product_path(product))
       %a.stretched-link{:href => product_path(product)}
