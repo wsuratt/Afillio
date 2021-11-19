@@ -10,11 +10,11 @@
     %a.support-link.mobile-hover-disabled.list-group-item.list-group-item-action.list-group-item-white.p-3{class: "#{'bg-light text-support' if current_page?(other_support_index_path)}", :href => other_support_index_path} Other
     
   .dropdown.toggle-dropdown
-    %a#dropdownMenuLink.btn.btn-white.support-link.border-custom.dropdown-toggle.w-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+    %a#dropdownMenuLink.btn.btn-white.support-link.border-gray.dropdown-toggle.w-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
       Support options
     %ul.dropdown-menu.w-100{"aria-labelledby" => "dropdownMenuLink"}
       %li.p-1
-        %a.support-link.dropdown-item{:href => support_index_path} How it works
+        %a.support-link.text-support.dropdown-item{:href => support_index_path} How it works
       %li
         %hr.dropdown-divider/
       %li.p-1

@@ -49,8 +49,8 @@ a.btn-danger:visited {
     color: white;
 }
 
-.border-custom {
-    border-color: #90d4a2;
+.border-gray {
+    border-color: $gray-400;
 }
 
 .navbar-nav .nav-item .nav-link {
@@ -145,7 +145,7 @@ input[type="search"] {
 }
 
 .text-support {
-    color: $gray-600 !important;
+    color: black !important;
 }
 
 @include media-breakpoint-down(md) {
