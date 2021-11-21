@@ -1,3 +1,8 @@
+- content_for :title do
+  About us
+  \-
+  Afillio
+
 .row.justify-content-center
   .col-md-10
     %h1
@@ -8,31 +13,38 @@
     Afillio is an affiliate marketing business based in Burlington, Vermont. 
     %hr
     %b Our goal is to make affiliate marketing as simple as possible.
+    %br
+    = link_to 'How it works', support_index_path
     %hr
     %i "Vendor" refers to the person listing their products on Afillio
     %br
-    %i "Seller" refers to the person selling vendors' products on Afillio
+    %i "Seller" refers to the person selling Vendors' products on Afillio
     %hr
     %h3
-      Why become a vendor?
+      Why become a Vendor?
     Afillio allows for extensive advertisement and direct to consumer sales with no overhead cost. 
-    If you have a smaller bussiness, this allows you to get your foot in the door and start building a community around your brand without 
+    If you have a smaller business, this allows you to get your foot in the door and start building a community around your brand without 
     paying expensive advertising fees. If you have a larger business with an existing community, you can also benefit from allowing people who are passionate 
     about your products to sell them and make commission.
     %br
     - if current_user
-      = link_to 'Become a vendor', vendor_info_user_path(current_user)
+      = link_to 'Become a Vendor', vendor_info_user_path(current_user)
     - else
-      = link_to 'Become a vendor', new_user_registration_path
+      = link_to 'Become a Vendor', new_user_session_path
     %p
     %h3
-      Why become a seller?
+      Why become a Seller?
     Afillio makes affiliate marketing as simple as possible in order to make it accessible to the average person. 
     No longer does one need to go through extensive sign up processes or have thousands of followers to successfully affiliate market. 
     Simply, sign up on Afillio and start selling products you are passionate about to friends, family, and more.
     %br
-    = link_to 'How it works', how_it_works_path
+    = link_to 'How it works', support_index_path
     %p
     %h3
       Our team
-    William Suratt
+    %b William Suratt
+    %p
+    I graduated from Essex High School (Essex, VT) in 2020 and am currently a sophomore at the University of Southern California majoring 
+    in Computer Science and Business Administration, while also interning at Giant Partners (Thousand Oaks, CA) as a software engineer. 
+    I also have prior experience in mobile app development, having developed and published multiple apps supporting small businesses and 
+    internet personalities.

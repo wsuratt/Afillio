@@ -9,6 +9,7 @@ class User < ApplicationRecord
   
   has_many :products, dependent: :nullify
   has_many :orders, dependent: :nullify
+  has_many :reviews, dependent: :nullify
   
   def to_s
     email
@@ -47,6 +48,8 @@ class User < ApplicationRecord
   end
   
   validate :must_have_a_role, on: :update
+  validate :must_have_a_vendor_title, on: :update, if: -> { self.has_role?(:vendor) }
+  validate :must_have_a_support, on: :update, if: -> { self.has_role?(:vendor) }
   
   # def balance_cents
   #   Rails.cache.fetch([id, :balance_cents, updated_at]) do
@@ -58,6 +61,18 @@ class User < ApplicationRecord
   def must_have_a_role
     unless roles.any?
       errors.add(:roles, "must have at least one role")
+    end
+  end
+  
+  def must_have_a_vendor_title
+    unless !vendor_title.blank?
+      errors.add(:vendor_title, "must have a company name")
+    end
+  end
+  
+  def must_have_a_support
+    unless !support_email.blank? || !support_phone.blank? || !support_phone.blank?
+      errors.add(:support_email, "must have at least one form of customer support")
     end
   end
   

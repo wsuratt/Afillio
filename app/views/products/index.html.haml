@@ -1,20 +1,44 @@
-- if current_user.has_role?(:vendor) and not current_user.info_complete? and current_page?(created_products_path)
-  .alert.alert-danger{:role => "alert"}
-    Please complete 
-    = link_to 'user info', vendor_info_user_path(current_user)
-    to show products in store.
+- content_for :title do
+  Products
+  \-
+  Afillio
+
 %h2
   .text-center
     Products
     .badge.bg-danger
       = @pagy.count
 %p
+- if current_user
+  - if current_user.has_role?(:vendor) and current_page?(created_products_path)
+    .text-center
+      Share your products:
+      %br
+      .col-md-3.mx-auto
+        .input-group.justify-content-center.flex-nowrap
+          %input#myInput{:type => "text", :value => request.base_url + "/products?products_search%5Buser_vendor_title_cont%5D=" + URI.encode(current_user.vendor_title)}/
+          .input-group-append
+            %button{:class => "ms-1 btn btn-sm btn-custom", :onclick => "myFunction()"}
+              Copy
+    :javascript
+      function myFunction() {
+        var copyText = document.getElementById("myInput");
+      
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+      
+        document.execCommand("copy");
+      
+        // alert("Copied the text: " + copyText.value);
+      }
+    %p
 
 .row
   .col-md-2
     = search_form_for @ransack_products, as: :products_search, url: @ransack_path do |f|
       Search by:
       = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm'
+      = f.search_field :user_vendor_title_cont, placeholder: 'Company', class: 'form-control form-control-sm'
       = f.label :category
       .row
       = f.select :category_cont, Product.categories, include_blank: true

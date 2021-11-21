@@ -1,0 +1,25 @@
+- content_for :title do
+  Sell a product
+  \-
+  Support
+  \-
+  Afillio
+
+#wrapper.d-md-flex
+
+  = render 'support/sidebar'
+
+  #page-content-wrapper
+    .container-fluid
+      %h1.mt-4 How to sell a product:
+      %p
+      %ol{:style => "font-size: 16px;"}
+        %li Click on the product you wish to sell.
+        %p
+        %li Have the customer scan the QR code (if in person) or share the link at the bottom of the page.
+        %p
+        %li Customer fills out the order form and submits payment.
+        %p
+        %li Once payment has been processed, the commission from the sale is added to your account balance.
+      %p
+      %b Tip: add Afillio to your homescreen for easier access.

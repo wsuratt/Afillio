@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = {host: "afillio.com", protocol: "https"}
+  config.action_mailer.default_url_options = {host: "www.afillio.com", protocol: "https"}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   
@@ -16,12 +16,12 @@ Rails.application.configure do
   }
   
   Rails.application.config.middleware.use ExceptionNotification::Rack,
-    email: {
-      deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
-      email_prefix: "[PREFIX] ",
-      sender_address: %("afillio error" <support@afillio.com>),
-      exception_recipients: %w[william@afillio.com]
-    }
+  email: {
+    deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    email_prefix: '[ERROR] ',
+    sender_address: %{"Afillio error" <support@afillio.com>},
+    exception_recipients: %w{williamsuratt1@gmail.com}
+  }
   
   # Settings specified here will take precedence over those in config/application.rb.
 

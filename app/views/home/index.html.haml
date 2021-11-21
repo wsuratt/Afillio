@@ -9,24 +9,25 @@
         
         = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
           .input-group
-            = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
+            = f.search_field :title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
             %span.input-group-append
-              %button.btn.btn-primary.btn-sm{"aria-label" => "search", :type => "submit"}
+              %button.btn-primary.btn-sm{"aria-label" => "search", :type => "submit"}
                 %span.fa.fa-search{"aria-hidden" => "true"}
         .float-end
-          = link_to 'How it works', how_it_works_path
+          = link_to 'How it works', support_index_path
         .p-2
 
 %p
-- if current_user && @sold_products.size > 0
-  %hr
-  %h2
-    .fa.fa-tags
-    Your recent sales
-  .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
-    - @sold_products.each do |product|
-      .col
-        = render 'products/product', product: product
+- if current_user
+  - if current_user.has_role?(:seller) && @recent_sales.size > 0
+    %hr
+    %h2
+      .fa.fa-tags
+      Your recent sales
+    .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
+      - @recent_sales.each do |product|
+        .col
+          = render 'products/product', product: product
 
 %hr
 %h2

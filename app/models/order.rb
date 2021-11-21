@@ -20,6 +20,21 @@ class Order < ApplicationRecord
     user.to_s + " " + product.to_s
   end
   
+  def self.STRIPE_FEE
+    fee = 0.30 #30 cents
+    fee.freeze
+  end
+  
+  def self.STRIPE_FEE_CENTS
+    fee = Money.new(00_01, "USD") * 30 #30 cents
+    fee.freeze
+  end
+  
+  def self.AFILLIO_FEE
+    fee = 0.03.to_f
+    fee.freeze
+  end
+  
   monetize :total, as: :total_cents, presence: true
   monetize :seller_commission, as: :seller_commission_cents, presence: true
   monetize :vendor_commission, as: :vendor_commission_cents, presence: true

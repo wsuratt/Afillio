@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         redirect_to vendor_info_user_path(@user), notice: 'User info was successfully updated.'
       else
-        redirect_to vendor_info_user_path(@user), alert: 'Failed to update user info.'
+        redirect_to vendor_info_user_path(@user), alert: 'Failed to update user info. Please make sure all required fields are filled out.'
       end
     end
   end

@@ -1,0 +1,13 @@
+.card.d-flex.h-100
+  .card-header
+    = link_to "Review from " + review.user.to_s, review_path(review)
+  .card-footer
+    Rating:
+    = review.rating
+    .row
+    Message:
+    = review.message
+  - if current_user
+    - if policy(review).destroy?
+      .card-footer
+        = link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'

@@ -1,3 +1,9 @@
+- content_for :title do
+  Editing
+  = @user.username
+  \-
+  Afillio
+
 .row.justify-content-center
   .col-md-6
     .card
@@ -11,4 +17,4 @@
           %hr
           = f.button :submit, class: "btn btn-success"
       .card-footer
-        = link_to 'Cancel', users_path, class: 'btn btn-danger'
+        = link_to 'Cancel', :back, class: 'btn btn-danger'

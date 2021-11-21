@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :reviews
+  
+  resources :support do
+    get :sign_up, on: :collection
+    get :withdraw_balance, on: :collection
+    get :sell_product, on: :collection
+    get :become_vendor, on: :collection
+    get :connect_stripe, on: :collection
+    get :refunds_and_returns, on: :collection
+    get :other, on: :collection
+  end
+  
   devise_for :users, :controllers => { registrations: 'users/registrations', confirmations: 'users/confirmations' }
   resources :users, only: [:index, :edit, :show, :update] do
     get :verify_vendors, on: :collection
@@ -24,7 +36,7 @@ Rails.application.routes.draw do
       put :tracking_number_update
     end
   end
-  post 'orders/:title/:referral_token', to: 'orders#create'
+  post 'orders/new/:title/:referral_token', to: 'orders#create'
   
   post 'checkout/create', to: 'checkout#create'
   get 'checkout/success', to: 'checkout#success'
@@ -34,13 +46,15 @@ Rails.application.routes.draw do
   get 'payout/transfer', to: 'payout#transfer'
   
   root 'home#index'
-  get 'how-it-works', to: 'home#how_it_works'
+  get 'welcome', to: 'home#welcome'
   get 'privacy-policy', to: 'home#privacy_policy'
   get 'about-us', to: 'home#about_us'
   get 'terms-conditions', to: 'home#terms_conditions'
   
   require 'sidekiq/web'
   require 'sidekiq-scheduler/web'
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :user, lambda { |u| u.has_role?(:admin) } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   
 end

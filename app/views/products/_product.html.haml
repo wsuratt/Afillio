@@ -1,13 +1,19 @@
 .card.d-flex.h-100
-  .card-header
+  .card-header.position-relative
+    - if !current_page?(product_path(product))
+      %a.stretched-link{:href => product_path(product)}
     .fa.fa-shopping-bag
     = link_to product.title, product_path(product)
-  .card-footer.align-items-center.d-flex.justify-content-center.h-100
+  .card-footer.align-items-center.d-flex.justify-content-center.h-100.position-relative
+    - if !current_page?(product_path(product))
+      %a.stretched-link{:href => product_path(product)}
     .text-center
       - if product.image.attached?
         .card-img-top
-          = image_tag product.image, alt: product.title + " image", height: "100%", width: "100%"
-  .card-footer
+          = image_tag product.image, alt: product.title + " image", class: "product-img"
+  .card-footer.position-relative
+    - if !current_page?(product_path(product))
+      %a.stretched-link{:href => product_path(product)}
     .text-center
       Price:
       = number_to_currency(product.price_cents)
@@ -18,5 +24,5 @@
   - if current_user
     - if policy(product).edit?
       .card-footer
-        = link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-warning'
+        = link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-warning text-white'
         = link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'

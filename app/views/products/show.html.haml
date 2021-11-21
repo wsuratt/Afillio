@@ -1,3 +1,8 @@
+- content_for :title do
+  = @product.title
+  \-
+  Afillio
+
 .row.justify-content-center
   .col-md-6.h-25
     = link_to 'Products', products_path
@@ -23,35 +28,37 @@
       - if @product.quantity > 0 and current_user.has_role?(:seller)
         .text-center
           %p
-          = @svg.html_safe
+          %h4
+            Share QR code or link below:
           %p
-          %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
-          %button{:class => "btn btn-sm btn-custom", :onclick => "myFunction()"}
-            .fa.fa-clipboard
+          = @svg.html_safe
+        %p
+        .col-md-3.mx-auto.pb-5
+          .input-group.justify-content-center.flex-nowrap
+            %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
+            .input-group-append
+              %button{:class => "ms-1 btn btn-sm btn-custom", :onclick => "myFunction()"}
+                Copy
         :javascript
           function myFunction() {
-            /* Get the text field */
             var copyText = document.getElementById("myInput");
           
-            /* Select the text field */
             copyText.select();
-            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            copyText.setSelectionRange(0, 99999);
           
-            /* Copy the text inside the text field */
             document.execCommand("copy");
           
-            /* Alert the copied text */
             // alert("Copied the text: " + copyText.value);
           }
       - elsif @product.quantity <= 0
-        .text-center
+        .text-center.pb-5
           %p
           %h3.text-danger
             Out of Stock
       - else
     -else
-      %p
-      .text-center
+      .text-center.pb-5
+        %p
         %h4
           Want to sell this item?
         %p

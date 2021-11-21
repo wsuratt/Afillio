@@ -22,7 +22,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user.has_role?(:admin) || @record.product.user == @user
+    @user.has_role?(:admin)
   end
   
 end

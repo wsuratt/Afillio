@@ -1,3 +1,9 @@
+- content_for :title do
+  Order
+  = @order.slug
+  \-
+  Afillio
+
 %p#notice= notice
 .row.justify-content-center
   .col-md-6
@@ -6,6 +12,7 @@
         %h3
           .fa.fa-box
           Order
+          = @order.slug
       .card-footer
         %p
           %b Product:
@@ -14,8 +21,14 @@
           %b Referred by:
           = @order.user
         %p
+          %b Price:
+          = number_to_currency(@order.product.price_cents)
+        %p
           %b Quantity:
           = @order.quantity
+        %p
+          %b Transaction fee:
+          = number_to_currency(Order.STRIPE_FEE)
         %p
           %b Total:
           = number_to_currency(@order.total_cents)
