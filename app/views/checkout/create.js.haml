@@ -1,4 +1,4 @@
-var stripe = Stripe("#{Rails.application.credentials[Rails.env.to_sym][:stripe][:public]}");
+var stripe = Stripe("#{Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public)}");
 
 stripe.redirectToCheckout({
 sessionId: '#{@session.id}'
