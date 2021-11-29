@@ -2,6 +2,7 @@ require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.before(:each) do
-    DatabaseCleaner.start
+    driven_by :selenium_chrome_headless
+    # driven_by :selenium_chrome
   end
 end
