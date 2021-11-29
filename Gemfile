@@ -73,3 +73,4 @@ gem 'sidekiq-scheduler' # scheduler to delete unpaid orders
 gem 'exception_notification'
 gem 'recaptcha'
 gem 'rails_autoscale_agent'
+gem 'rubocop', require: false
