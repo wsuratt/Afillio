@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WebhooksController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
@@ -11,12 +13,12 @@ class WebhooksController < ApplicationController
       event = Stripe::Webhook.construct_event(
         payload, sig_header, Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :webhook)
       )
-    rescue JSON::ParserError => e
+    rescue JSON::ParserError
       status 400
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
-      puts "Signature error"
+      puts 'Signature error'
       p e
       return
     end
@@ -37,10 +39,10 @@ class WebhooksController < ApplicationController
       @user = User.find_by(id: 1)
       @user.balance_cents += @order.admin_commission_cents
       @user.save
-      
+
       @order.product.quantity -= @order.quantity
       @order.product.save
-      
+
       OrderMailer.with(order: @order).new_order_email.deliver_later
       OrderMailer.with(user: @order.product.user).vendor_email.deliver_later
     end

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature 'products', type: :system do
   let(:vendor_user) { create(:vendor_user) }
-  let(:product) { create(:product, user:vendor_user) }
+  let(:product) { create(:product, user: vendor_user) }
 
   context 'as a user' do
     scenario 'view products' do
@@ -54,7 +54,7 @@ RSpec.feature 'products', type: :system do
       accept_alert do
         click_link 'Delete'
       end
-  
+
       expect(page).to have_text('Product was successfully deleted.')
     end
   end

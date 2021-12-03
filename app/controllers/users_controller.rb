@@ -1,42 +1,43 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :vendor_info, :vendor_info_update ]
-  
+  before_action :set_user, only: %i(show edit update destroy vendor_info vendor_info_update)
+
   def index
     @pagy, @users = pagy(User.all.order(created_at: :desc))
     authorize @users
   end
-  
+
   def verify_vendors
-    @pagy, @users = pagy(User.with_role(:seller).where.not(vendor_title: [nil, ""]))
+    @pagy, @users = pagy(User.with_role(:seller).where.not(vendor_title: [nil, '']))
     authorize @users
   end
-  
-  def become_vendor
-  end
-  
-  def vendor_info
-  end
-  
+
+  def become_vendor; end
+
+  def vendor_info; end
+
   def vendor_info_update
     # authorize @user
     if @user.has_role?(:seller)
-      if @user.update(user_params) && !@user.vendor_title.blank? && (!@user.support_email.blank? || !@user.support_phone.blank? || !@user.support_url.blank?)
+      if @user.update(user_params) && @user.info_complete?
         redirect_to become_vendor_user_path(@user), notice: 'User info was successfully submitted.'
       else
-        redirect_to vendor_info_user_path(@user), alert: 'Failed to submit user info. Please make sure all required fields are filled out.'
+        redirect_to vendor_info_user_path(@user),
+                    alert: 'Failed to submit user info. Please make sure all required fields are ' \
+                           'filled out.'
       end
+    elsif @user.update(user_params)
+      redirect_to vendor_info_user_path(@user), notice: 'User info was successfully updated.'
     else
-      if @user.update(user_params)
-        redirect_to vendor_info_user_path(@user), notice: 'User info was successfully updated.'
-      else
-        redirect_to vendor_info_user_path(@user), alert: 'Failed to update user info. Please make sure all required fields are filled out.'
-      end
+      redirect_to vendor_info_user_path(@user),
+                  alert: 'Failed to update user info. Please make sure all required fields are ' \
+                         'filled out.'
     end
   end
-  
-  def show
-  end
-  
+
+  def show; end
+
   def edit
     authorize @user
   end
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     authorize @user
     if @user.destroy
@@ -71,5 +72,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(policy(@user).permitted_attributes)
   end
-  
-end 
+end
