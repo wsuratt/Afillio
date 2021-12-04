@@ -59,6 +59,7 @@ jobs:
           POSTGRES_USER: afillio
           POSTGRES_PASSWORD: postgres
         run: |
+          cp config/database.ci.yml config/database.yml
           rake db:create db:migrate
       - name: Run tests
         env:
