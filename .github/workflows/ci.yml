@@ -52,9 +52,20 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Setup test database
-        run: |
-          rake db:create db:migrate
         env:
           RAILS_ENV: test
+          PGHOST: localhost
+          POSTGRES_DB: afillio_test
+          POSTGRES_USER: afillio
+          POSTGRES_PASSWORD: postgres
+        run: |
+          rake db:create db:migrate
       - name: Run tests
-        run: bundle exec rspec
+        env:
+          PGHOST: localhost
+          POSTGRES_DB: afillio_test
+          POSTGRES_USER: afillio
+          POSTGRES_PASSWORD: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
+          RAILS_ENV: test
+        run: rspec
