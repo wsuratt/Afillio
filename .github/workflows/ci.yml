@@ -52,20 +52,9 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Setup test database
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          POSTGRES_DB: rails_github_actions_test
-          POSTGRES_USER: rails_github_actions
-          POSTGRES_PASSWORD: postgres
         run: |
           rake db:create db:migrate
-      - name: Run tests
         env:
-          PGHOST: localhost
-          POSTGRES_DB: rails_github_actions_test
-          POSTGRES_USER: rails_github_actions
-          POSTGRES_PASSWORD: postgres
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
           RAILS_ENV: test
-        run: rspec
+      - name: Run tests
+        run: bundle exec rspec
