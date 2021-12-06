@@ -48,9 +48,7 @@ jobs:
           ruby-version: 2.7.2
       - name: Install dependencies
         run: |
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
-          gem install bundler
-          bundle install --jobs 4 --retry 3
+          bundle install
           rails webpacker:install
       - name: Setup test database
         env:
