@@ -68,7 +68,7 @@ gem 'httparty'
 gem 'money-rails'
 gem 'pagy' # pagination
 gem 'pundit' # authorization (different roles have different accesses)
-gem 'rails_autoscale_agent'
+# gem 'rails_autoscale_agent'
 gem 'ransack' # filter and sort data
 gem 'recaptcha'
 gem 'rolify' # give users roles
