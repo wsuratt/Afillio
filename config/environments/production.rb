@@ -1,28 +1,31 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = {host: "www.afillio.com", protocol: "https"}
+  config.action_mailer.default_url_options = { host: 'www.afillio.com', protocol: 'https' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,
-    address: Rails.application.credentials[:smtp][:address] ,
-    user_name: Rails.application.credentials[:smtp][:user_name] ,
-    password: Rails.application.credentials[:smtp][:password] ,
+    address: Rails.application.credentials[:smtp][:address],
+    user_name: Rails.application.credentials[:smtp][:user_name],
+    password: Rails.application.credentials[:smtp][:password],
     authentication: :plain,
     enable_starttls_auto: true
   }
-  
+
   Rails.application.config.middleware.use ExceptionNotification::Rack,
-  email: {
-    deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
-    email_prefix: '[ERROR] ',
-    sender_address: %{"Afillio error" <support@afillio.com>},
-    exception_recipients: %w{williamsuratt1@gmail.com}
-  }
-  
+                                          email: {
+                                            deliver_with: :deliver,
+                                            email_prefix: '[ERROR] ',
+                                            sender_address:
+                                              %("Afillio error" <support@afillio.com>),
+                                            exception_recipients: %w(williamsuratt1@gmail.com)
+                                          }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -75,7 +78,7 @@ Rails.application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -110,8 +113,8 @@ Rails.application.configure do
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
+    logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
@@ -138,7 +141,8 @@ Rails.application.configure do
   # these configuration options.
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
-  # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  
+  # config.active_record.database_resolver_context =
+  #   ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
   config.force_ssl = true
 end

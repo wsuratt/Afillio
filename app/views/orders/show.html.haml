@@ -28,7 +28,7 @@
           = @order.quantity
         %p
           %b Transaction fee:
-          = number_to_currency(Order.STRIPE_FEE)
+          = number_to_currency(Order.stripe_fee)
         %p
           %b Total:
           = number_to_currency(@order.total_cents)

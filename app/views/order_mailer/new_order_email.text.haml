@@ -10,7 +10,7 @@ Sold By: #{@order.product.user.vendor_title}
 Product: #{@order.product.title}
 Price: #{number_to_currency(@order.product.price_cents)}
 Quantity: #{@order.quantity}
-Transaction fee: #{number_to_currency(Order.STRIPE_FEE_CENTS)}
+Transaction fee: #{number_to_currency(Order.stripe_fee_cents)}
 Total: #{number_to_currency(@order.total_cents)}
 
 Shipping Information:

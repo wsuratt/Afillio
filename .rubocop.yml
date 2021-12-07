@@ -1,0 +1,11 @@
+inherit_from:
+  - https://raw.githubusercontent.com/trobrock/style-guides/master/ruby-style.yml
+
+AllCops:
+  NewCops: enable
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+Metrics/BlockLength:
+  Enabled: false
+Lint/MissingSuper:
+  Enabled: false
