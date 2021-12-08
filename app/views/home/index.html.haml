@@ -26,8 +26,10 @@
       Your recent sales
     .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
       - @recent_sales.each do |product|
-        .col
+        .col.desktop
           = render 'products/product', product: product
+        .col.mobile
+          = render 'products/mobile_product', product: product
 
 %hr
 %h2
@@ -35,8 +37,10 @@
   Popular products
 .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
   - @popular.each do |product|
-    .col
+    .col.desktop
       = render 'products/product', product: product
+    .col.mobile
+      = render 'products/mobile_product', product: product
 
 %hr
 %h2 
@@ -44,6 +48,8 @@
   Latest products
 .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
   - @latest.each do |product|
-    .col
+    .col.desktop
       = render 'products/product', product: product
+    .col.mobile
+      = render 'products/mobile_product', product: product
 %hr
