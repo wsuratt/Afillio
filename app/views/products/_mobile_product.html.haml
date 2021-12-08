@@ -1,9 +1,11 @@
 .row.row-cols-2.pb-4.border-bottom
-  .col
+  .col.position-relative
+    %a.stretched-link{:href => product_path(product)}
     .mx-auto.mr-sm-4
       - if product.image.attached?
         = image_tag product.image, alt: product.title + " image", class: "mobile-product-img"
-  .col
+  .col.position-relative
+    %a.stretched-link{:href => product_path(product)}
     .pt-3
       %h6.product-card-title.border-0.pb-0
         = product.title
