@@ -8,9 +8,10 @@
       %h6.product-card-title.border-0.pb-0
         = product.title
       .font-size-sm
-        %span.mr-2> Size:
-        8.5
+        %span.mr-2
+        Price:
+        = number_to_currency(product.price_cents)
       .font-size-sm
-        %span.mr-2> Color:
-        Black
-      .font-size-lg.text-primary.pt-2 $125.00
+        %span.mr-2
+        Commission:
+        = number_to_currency(product.commission_cents)
