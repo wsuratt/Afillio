@@ -24,7 +24,7 @@
     %h2
       .fa.fa-tags
       Your recent sales
-    .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
+    .row.row-cols-1.row-cols-1.row-cols-lg-3.row-cols-lg-4.g-4
       - @recent_sales.each do |product|
         .col.desktop
           = render 'products/product', product: product
@@ -35,7 +35,7 @@
 %h2
   .fa.fa-chart-line
   Popular products
-.row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
+.row.row-cols-1.row-cols-1.row-cols-lg-3.row-cols-lg-4.g-4
   - @popular.each do |product|
     .col.desktop
       = render 'products/product', product: product
@@ -46,7 +46,7 @@
 %h2 
   .fa.fa-clock
   Latest products
-.row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
+.row.row-cols-1.row-cols-1.row-cols-lg-3.row-cols-lg-4.g-4
   - @latest.each do |product|
     .col.desktop
       = render 'products/product', product: product
