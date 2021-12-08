@@ -75,10 +75,12 @@
 
 
   .col-md-10
-    .row.row-cols-1.row-cols-2.row-cols-lg-3.g-4
+    .row.row-cols-1.row-cols-md-3.g-4
       - @products.each do |product|
-        .col
+        .col.desktop
           = render 'products/product', product: product
+        .col.mobile
+          = render 'products/mobile_product', product: product
     %p
     != pagy_bootstrap_nav(@pagy)
 %br

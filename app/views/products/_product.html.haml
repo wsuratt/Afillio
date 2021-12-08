@@ -1,15 +1,15 @@
-%article.u-shadow-v18.g-bg-white.text-center.rounded.g-px-10.g-py-20.g-mb-5.position-relative
+%article.g-bg-white.text-center.rounded.position-relative
   - if !current_page?(product_path(product))
     %a.stretched-link{:href => product_path(product)}
   - if product.image.attached?
     .card-img-top.d-inline-block.img-fluid.mb-4
       = image_tag product.image, alt: product.title + " image", class: "product-img"
-  %h6.g-color-black.g-mb-10
+  %h6
     = product.title
-  %span.d-block.g-color-primary.g-font-size-16
+  %span.d-block
     Price:
     = number_to_currency(product.price_cents)
-  %span.d-block.g-color-primary.g-font-size-16
+  %span.d-block
     Commission:
     = number_to_currency(product.commission_cents)
   - if current_user
