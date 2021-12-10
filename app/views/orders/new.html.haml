@@ -13,19 +13,21 @@
               .fa.fa-box
               New order
           .card-body
-            = render 'products/product', product: @product
-            %p
-            .card
-              .card-header
-                Description
-              .card-body
-                = @product.description
+            .row.row-cols-1
+              .col
+                = render 'products/product', product: @product
+              .col
                 %hr
+                %b Description
+                %br
+                = @product.description
+                %p
                 Sold by: 
                 = @product.user.vendor_title
                 %br
                 Return policy: 
-                = @product.user.return_url.blank? ? 'No refunds or returns' : @product.user.return_url
+                = @product.user.return_url.blank? ? 'No refunds or returns.' : @product.user.return_url
+                %hr
         
           .card-body
             = render 'form'
