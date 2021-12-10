@@ -5,7 +5,10 @@
     .card-img-top.d-inline-block.img-fluid.mb-4
       = image_tag product.image, alt: product.title + " image", class: "product-img"
   %h6
-    = product.title
+    - if !current_page?(product_path(product))
+      = truncate(product.title, length:80)
+    -else
+      = product.title
   %span.d-block
     Price:
     = number_to_currency(product.price_cents)
