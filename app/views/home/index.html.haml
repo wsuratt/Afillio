@@ -24,6 +24,7 @@
     %h2
       .fa.fa-tags
       Your recent sales
+    %p
     .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
       - @recent_sales.each do |product|
         .col
@@ -33,6 +34,7 @@
 %h2
   .fa.fa-chart-line
   Popular products
+%p
 .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
   - @popular.each do |product|
     .col
@@ -42,6 +44,7 @@
 %h2 
   .fa.fa-clock
   Latest products
+%p
 .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4
   - @latest.each do |product|
     .col

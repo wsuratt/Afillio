@@ -7,24 +7,32 @@
       = f.association :product, as: :hidden
       = f.association :user, as: :hidden
       = f.input :quantity, input_html: { value: 1 }
-      %p
-      = f.input :street_address, label: 'Address'
-      %p
-      = f.input :street_address2, label: 'Address 2'
-      %p
-      = f.input :city
-      %p
-      = f.input :state
-      %p
-      = f.input :zipcode
-      %p
-      = f.input :first_name
-      %p
-      = f.input :last_name
-      %p
-      = f.input :phone
-      %p
-      = f.input :email
+      
+      .row.mt-4
+        .col-12
+          %label.order-form-label Address
+        .col-12.col-sm-6.pr-sm-2
+          = f.input :first_name, placeholder: 'First Name', label:false
+        .col-12.col-sm-6.mt-2.mt-sm-0.pl-sm-0
+          = f.input :last_name, placeholder: 'Last Name', label:false
+        .col-12.mt-2
+          = f.input :street_address, placeholder: 'Street Address', label:false
+        .col-12.mt-2
+          = f.input :street_address2, placeholder: 'Street Address Line 2', label:false
+        .col-12.col-sm-6.mt-2.pr-sm-2
+          = f.input :city, placeholder: 'City', label:false
+        .col-12.col-sm-6.mt-2.pl-sm-0
+          = f.input :state, placeholder: 'State', label:false
+        .col-12.mt-2
+          = f.input :zipcode, placeholder: 'Zip Code', label:false
+
+      .row.mt-4
+        .col-12
+          %label.order-form-label Contact Information
+        .col-12
+          = f.input :phone, placeholder: 'Phone', label:false
+        .col-12.mt-2
+          = f.input :email, placeholder: 'Email', label:false
       %p
   
     .form-actions

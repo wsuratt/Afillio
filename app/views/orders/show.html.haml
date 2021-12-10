@@ -17,9 +17,10 @@
         %p
           %b Product:
           = @order.product
-        %p
-          %b Referred by:
-          = @order.user
+        - if current_user
+          %p
+            %b Referred by:
+            = @order.user
         %p
           %b Price:
           = number_to_currency(@order.product.price_cents)
@@ -33,35 +34,31 @@
           %b Total:
           = number_to_currency(@order.total_cents)
       .card-body
-        %p
-          %b Address:
-          = @order.street_address
-        - if !@order.street_address2.blank?
-          %p
-            %b Address 2:
-            = @order.street_address2
-        %p
-          %b City:
-          = @order.city
-        %p
-          %b State:
-          = @order.state
-        %p
-          %b Zipcode:
-          = @order.zipcode
-        %p
-          %b First name:
-          = @order.first_name
-        %p
-          %b Last name:
-          = @order.last_name
-        %p
-          %b Phone:
-          = @order.phone
-        %p
-          %b Email:
-          = @order.email
-          
+        .row
+          .col-12
+            %h5 Address
+          .col-12.mt-2
+            = @order.first_name
+            = @order.last_name
+          .col-12.mt-2
+            = @order.street_address
+          - if !@order.street_address2.blank?
+            .col-12.mt-2
+              = @order.street_address2
+          .col-12.mt-2
+            #{@order.city},
+            = @order.state
+          .col-12.mt-2
+            = @order.zipcode
+  
+        .row.mt-4
+          .col-12
+            %h5 Contact Information
+          .col-12.mt-2
+            = @order.phone
+          .col-12.mt-2
+            = @order.email
+  
       - if current_user
         .card-footer
           = link_to 'Back', :back
