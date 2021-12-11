@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def my_sales
-    @ransack_path = my_orders_orders_path
+    @ransack_path = my_sales_orders_path
     @q = Order.where(orders: { user: current_user }, paid: true).ransack(params[:q])
     @pagy, @orders = pagy(@q.result.includes(:user))
   end
