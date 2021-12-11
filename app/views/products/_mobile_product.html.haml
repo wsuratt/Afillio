@@ -1,7 +1,7 @@
 .row.row-cols-2.pb-4.border-bottom
   .col.position-relative
     %a.stretched-link{:href => product_path(product)}
-    .mx-auto.mr-sm-4
+    .mx-auto.mr-sm-4.text-center
       - if product.image.attached?
         = image_tag product.image, alt: product.title + " image", class: "mobile-product-img"
   .col.position-relative
