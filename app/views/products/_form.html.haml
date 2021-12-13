@@ -14,12 +14,13 @@
         = @product.image.filename
       .row
       = f.file_field :image
-      %small= f.error :image, class: 'text-danger'
+      %small= f.full_error :image, class: 'text-danger'
 
       .row
       %p
       = f.label :description
       = f.rich_text_area :description
+      %small= f.full_error :description, class: 'text-danger'
       %p
       = f.input :category, collection: Product.categories, include_blank: true
       %p
