@@ -22,6 +22,8 @@ class Product < ApplicationRecord
                     content_type: ['image/png', 'image/jpg', 'image/jpeg'],
                     size: { less_than: 500.kilobytes,
                             message: 'size should be under 500 kilobytes' }
+  
+  has_rich_text :description
 
   def to_s
     title

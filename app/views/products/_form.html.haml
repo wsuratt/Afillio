@@ -18,7 +18,8 @@
 
       .row
       %p
-      = f.input :description
+      = f.label :description
+      = f.rich_text_area :description
       %p
       = f.input :category, collection: Product.categories, include_blank: true
       %p
