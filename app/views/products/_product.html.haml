@@ -6,7 +6,7 @@
         = image_tag product.images[0], alt: product.title + " image", class: "product-img"
   -else
     - if product.images.attached?
-      #carouselProductImages.carousel.carousel-dark.slide{"data-bs-ride" => "carousel"}
+      #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
         .carousel-inner
           - product.images.each do |image|
             - if image.eql? product.images.first()
