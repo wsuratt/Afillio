@@ -4,7 +4,7 @@
       %a.stretched-link{:href => product_path(product)}
       - if product.images.attached?
         .card-img-top.d-inline-block.img-fluid.mb-4
-          = image_tag product.images.first(), alt: product.title + " image", class: "product-img"
+          = image_tag product.images.first(), alt: product.title + " image", class: "product-img rounded"
     -else
       - if product.images.attached?
         #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
@@ -12,10 +12,10 @@
             - product.images.each do |image|
               - if image.eql? product.images.first()
                 .carousel-item.mb-4.active
-                  = image_tag image, alt: product.title + " image", class: "product-img"
+                  = image_tag image, alt: product.title + " image", class: "product-img rounded"
               - else
                 .carousel-item.mb-4
-                  = image_tag image, alt: product.title + " image", class: "product-img"
+                  = image_tag image, alt: product.title + " image", class: "product-img rounded"
           %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
             %span.carousel-control-prev-icon{"aria-hidden" => "true"}
             %span.visually-hidden Previous
