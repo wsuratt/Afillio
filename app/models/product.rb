@@ -17,8 +17,8 @@ class Product < ApplicationRecord
   scope :popular, -> { limit(4).order(orders_count: :desc, created_at: :desc) }
   scope :active, -> { where(show: true) }
 
-  has_one_attached :image
-  validates :image, attached: true,
+  has_many_attached :images
+  validates :images, attached: true,
                     content_type: ['image/png', 'image/jpg', 'image/jpeg'],
                     size: { less_than: 500.kilobytes,
                             message: 'size should be under 500 kilobytes' }

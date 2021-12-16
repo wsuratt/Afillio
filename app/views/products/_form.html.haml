@@ -6,15 +6,20 @@
     .form-inputs
       = f.input :title
       %p
-      = f.label :image
+      = f.label :images
       .row
-      - if @product.image.attached?
-        = image_tag @product.image, width: "200px"
-        .row
-        = @product.image.filename
+      // .row
+      // - if @product.images.attached?
+      //   - @product.images.each do |image|
+      //     = image_tag image, width: "200px"
+      //     .row
+      //     = image.filename
+      // .row
+      = f.file_field :images, multiple: true
+      %small= f.full_error :images, class: 'text-danger'
       .row
-      = f.file_field :image
-      %small= f.full_error :image, class: 'text-danger'
+      = f.file_field :images, multiple: true
+      %small= f.full_error :images, class: 'text-danger'
 
       .row
       %p
