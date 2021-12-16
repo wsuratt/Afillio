@@ -1,38 +1,39 @@
-%article.g-bg-white.text-center.rounded.position-relative
-  - if !current_page?(product_path(product))
-    %a.stretched-link{:href => product_path(product)}
-    - if product.images.attached?
-      .card-img-top.d-inline-block.img-fluid.mb-4
-        = image_tag product.images[0], alt: product.title + " image", class: "product-img"
-  -else
-    - if product.images.attached?
-      #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
-        .carousel-inner
-          - product.images.each do |image|
-            - if image.eql? product.images.first()
-              .carousel-item.mb-4.active
-                = image_tag image, alt: product.title + " image", class: "product-img"
-            - else
-              .carousel-item.mb-4
-                = image_tag image, alt: product.title + " image", class: "product-img"
-        %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
-          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-          %span.visually-hidden Previous
-        %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
-          %span.carousel-control-next-icon{"aria-hidden" => "true"}
-          %span.visually-hidden Next
-  %h6
+%article.text-center.rounded
+  .position-relative
     - if !current_page?(product_path(product))
-      = truncate(product.title, length:80)
+      %a.stretched-link{:href => product_path(product)}
+      - if product.images.attached?
+        .card-img-top.d-inline-block.img-fluid.mb-4
+          = image_tag product.images[0], alt: product.title + " image", class: "product-img"
     -else
-      = product.title
-  %span.d-block
-    Price:
-    = number_to_currency(product.price_cents)
-  - if !request.path_info.include?('orders/new')
+      - if product.images.attached?
+        #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
+          .carousel-inner
+            - product.images.each do |image|
+              - if image.eql? product.images.first()
+                .carousel-item.mb-4.active
+                  = image_tag image, alt: product.title + " image", class: "product-img"
+              - else
+                .carousel-item.mb-4
+                  = image_tag image, alt: product.title + " image", class: "product-img"
+          %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
+            %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+            %span.visually-hidden Previous
+          %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
+            %span.carousel-control-next-icon{"aria-hidden" => "true"}
+            %span.visually-hidden Next
+    %h6
+      - if !current_page?(product_path(product))
+        = truncate(product.title, length:80)
+      -else
+        = product.title
     %span.d-block
-      Commission:
-      = number_to_currency(product.commission_cents)
+      Price:
+      = number_to_currency(product.price_cents)
+    - if !request.path_info.include?('orders/new')
+      %span.d-block
+        Commission:
+        = number_to_currency(product.commission_cents)
   - if current_user
     - if policy(product).edit?
       %span.d-block.mt-2
