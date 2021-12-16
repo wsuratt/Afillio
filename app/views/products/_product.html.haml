@@ -1,10 +1,10 @@
 %article.text-center.rounded
   .position-relative
-    - if !current_page?(product_path(product))
+    - if products_page?
       %a.stretched-link{:href => product_path(product)}
       - if product.images.attached?
         .card-img-top.d-inline-block.img-fluid.mb-4
-          = image_tag product.images[0], alt: product.title + " image", class: "product-img"
+          = image_tag product.images.first(), alt: product.title + " image", class: "product-img"
     -else
       - if product.images.attached?
         #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}

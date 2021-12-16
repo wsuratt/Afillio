@@ -2,9 +2,8 @@
   .col.position-relative
     %a.stretched-link{:href => product_path(product)}
     - if product.images.attached?
-      - product.images.each do |image|
-        .mx-auto.mr-sm-4.text-center
-          = image_tag image, alt: product.title + " image", class: "mobile-product-img"
+      .mx-auto.mr-sm-4.text-center
+        = image_tag product.images.first(), alt: product.title + " image", class: "mobile-product-img"
   .col.position-relative
     %a.stretched-link{:href => product_path(product)}
     .pt-3
