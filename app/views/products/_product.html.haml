@@ -4,7 +4,7 @@
       %a.stretched-link{:href => product_path(product)}
       - if product.images.attached?
         .card-img-top.d-inline-block.img-fluid.mb-4
-          = image_tag product.images.first(), alt: product.title + " image", class: "product-img"
+          = image_tag product.images.first(), alt: product.title + " image", class: "mobile-product-img"
     -else
       - if product.images.attached?
         #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
@@ -22,7 +22,7 @@
           %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
             %span.carousel-control-next-icon{"aria-hidden" => "true"}
             %span.visually-hidden Next
-    %h5
+    %h6
       - if products_page?
         = truncate(product.title, length:80)
       -else
