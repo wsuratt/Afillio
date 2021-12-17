@@ -18,17 +18,22 @@
                 = render 'products/product', product: @product
               .col
                 %hr
-                %b Description
-                %br
-                = @product.description
                 %p
-                Sold by: 
-                = @product.user.vendor_title
-                %br
-                Return policy: 
-                = @product.user.return_url.blank? ? 'No refunds or returns.' : @product.user.return_url
+                %button.btn.d-flex.justify-content-between.w-100{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-target" => "#collapseExample", "data-bs-toggle" => "collapse", :type => "button"}
+                  %b Description
+                  .my-auto
+                    .fa.fa-chevron-down
+                #collapseExample.collapse
+                  %br
+                  = @product.description
+                  %p
+                  Sold by: 
+                  = @product.user.vendor_title
+                  %br
+                  Return policy: 
+                  = @product.user.return_url.blank? ? 'No refunds or returns.' : @product.user.return_url
                 %hr
-        
+  
           .card-body
             = render 'form'
             
