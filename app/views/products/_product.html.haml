@@ -16,10 +16,10 @@
               - else
                 .carousel-item.mb-4
                   = image_tag image, alt: product.title + " image", class: "product-img"
-          %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
+          %button.carousel-control-prev.w-10{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
             %span.carousel-control-prev-icon{"aria-hidden" => "true"}
             %span.visually-hidden Previous
-          %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
+          %button.carousel-control-next.w-10{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
             %span.carousel-control-next-icon{"aria-hidden" => "true"}
             %span.visually-hidden Next
     %h6
