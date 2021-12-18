@@ -9,13 +9,14 @@
       - if product.images.attached?
         #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
           .carousel-inner
-            - product.images.each do |image|
-              - if image.eql? product.images.first()
-                .carousel-item.mb-4.active
-                  = image_tag image, alt: product.title + " image", class: "product-img"
-              - else
-                .carousel-item.mb-4
-                  = image_tag image, alt: product.title + " image", class: "product-img"
+            .img-container.mx-auto.mb-4
+              - product.images.each do |image|
+                - if image.eql? product.images.first()
+                  .carousel-item.img-item.active
+                    = image_tag image, alt: product.title + " image", class: "product-img"
+                - else
+                  .carousel-item.img-item
+                    = image_tag image, alt: product.title + " image", class: "product-img"
           %button.carousel-control-prev.w-10{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
             %span.carousel-control-prev-icon{"aria-hidden" => "true"}
             %span.visually-hidden Previous
