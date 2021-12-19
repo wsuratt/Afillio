@@ -23,6 +23,8 @@ class Product < ApplicationRecord
                     size: { less_than: 500.kilobytes,
                             message: 'size should be under 500 kilobytes' }
   
+  validate :validate_images
+  
   has_rich_text :description
 
   def to_s
@@ -54,5 +56,12 @@ class Product < ApplicationRecord
   CATEGORIES = %i(Apparel Beauty Education Health Home Outdoors Tech Toys Other).freeze
   def self.categories
     CATEGORIES.map { |category| [category, category] }
+  end
+  
+  private
+  def validate_images
+    return if images.count <= 3
+  
+    errors.add(:images, 'limit is a maximum of 3')
   end
 end
