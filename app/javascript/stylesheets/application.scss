@@ -176,7 +176,8 @@ input[type="search"] {
 .index-img-container {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
+    padding-top: min(15em, 100%); /* 1:1 Aspect Ratio */
+    max-padding-top: 15em;
 }
 
 .w-10 {
