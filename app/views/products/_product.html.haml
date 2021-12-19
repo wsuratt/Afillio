@@ -23,10 +23,11 @@
           %button.carousel-control-next.w-10{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
             %span.carousel-control-next-icon{"aria-hidden" => "true"}
             %span.visually-hidden Next
-    %h6
-      - if products_page?
+    - if products_page?
+      %h6
         = truncate(product.title, length:80)
-      -else
+    -else
+      %h5
         = product.title
     %span.d-block
       Price:
