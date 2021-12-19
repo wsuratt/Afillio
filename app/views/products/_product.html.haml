@@ -3,9 +3,9 @@
     - if products_page?
       %a.stretched-link{:href => product_path(product)}
       - if product.images.attached?
-        .index-img-container.mx-auto.mb-4
+        .mobile-img-container.mx-auto.mb-4
           .img-item
-            = image_tag product.images.first(), alt: product.title + " image", class: "index-img"
+            = image_tag product.images.first(), alt: product.title + " image", class: "mobile-img"
     -else
       - if product.images.attached?
         #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
