@@ -60,7 +60,7 @@ class Product < ApplicationRecord
   
   private
   def validate_images
-    return if images.count <= 3
+    return if images.count / 2 <= 3
   
     errors.add(:images, 'limit is a maximum of 3')
   end
