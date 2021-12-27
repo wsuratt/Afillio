@@ -53,6 +53,14 @@ a.btn-danger:visited {
     border-color: $gray-400;
 }
 
+.border-custom {
+    border: 5px solid #90d4a2 !important;
+}
+
+.mt-n5 {
+    margin: -5px 0px 0px 0px;
+}
+
 .navbar-nav .nav-item .nav-link {
     color: white;
 }

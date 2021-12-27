@@ -21,6 +21,8 @@
   %body
     = render 'layouts/header'
     = render 'layouts/messages'
+    - if current_page?(root_path)
+      = render 'layouts/welcome'
     .container
       %p
       = yield
