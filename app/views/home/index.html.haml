@@ -2,14 +2,22 @@
   .bg-light
     .p-3 
       .rounded-lg 
-        .display-1{:style => "font-weight: bold;"}
-          What do you want to sell today?
+        .mobile
+          .display-3{:style => "font-weight: bold;"}
+            Sell products.
+            %br
+            Earn Commission.
+        .desktop
+          .display-1{:style => "font-weight: bold;"}
+            Sell products.
+            %br
+            Earn Commission.
     
         .p-4
         
         = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
           .input-group
-            = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search', :autocomplete => :off
+            = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search products', :autocomplete => :off
             %span.input-group-append
               %button.btn-primary.btn-sm{"aria-label" => "search", :type => "submit"}
                 %span.fa.fa-search{"aria-hidden" => "true"}
