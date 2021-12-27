@@ -61,6 +61,11 @@ a.btn-danger:visited {
     background: #edecec;
 }
 
+.bg-custom {
+    background: #90d4a2;
+    color: white;
+}
+
 @include media-breakpoint-up(md) {
     .my_sales {
         margin-left: auto;
