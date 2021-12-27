@@ -1,29 +1,28 @@
-.card 
-  .bg-light
-    .p-3 
-      .rounded-lg 
-        .mobile
-          .display-3{:style => "font-weight: bold;"}
-            Sell products.
-            %br
-            Earn commission.
-        .desktop
-          .display-1{:style => "font-weight: bold;"}
-            Sell products.
-            %br
-            Earn commission.
-    
-        .p-4
-        
-        = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
-          .input-group
-            = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search products', :autocomplete => :off
-            %span.input-group-append
-              %button.btn-primary.btn-sm{"aria-label" => "search", :type => "submit"}
-                %span.fa.fa-search{"aria-hidden" => "true"}
-        .float-end
-          = link_to 'How it works', support_index_path
-        .p-2
+.card.bg-custom.text-white
+  .p-3 
+    .rounded-lg 
+      .mobile
+        .display-3{:style => "font-weight: bold;"}
+          Sell products.
+          %br
+          Earn commission.
+      .desktop
+        .display-1{:style => "font-weight: bold;"}
+          Sell products.
+          %br
+          Earn commission.
+  
+      .p-4
+      
+      = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
+        .input-group
+          = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search products', :autocomplete => :off
+          %span.input-group-append
+            %button.btn-primary.btn-sm{"aria-label" => "search", :type => "submit"}
+              %span.fa.fa-search{"aria-hidden" => "true"}
+      .float-end
+        = link_to 'How it works', support_index_path
+      .p-2
 
 %p
 - if current_user
