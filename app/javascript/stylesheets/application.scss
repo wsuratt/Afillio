@@ -198,6 +198,10 @@ input[type="search"] {
     color: black !important;
 }
 
+.index-search-btn {
+    border-radius: 0 5px 5px 0;
+}
+
 @include media-breakpoint-down(md) {
     .mobile-hover-disabled:hover {
         background-color: transparent;

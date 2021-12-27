@@ -18,7 +18,7 @@
         .input-group
           = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search products', :autocomplete => :off
           %span.input-group-append
-            %button.btn-success.btn-sm{"aria-label" => "search", :type => "submit"}
+            %button.btn-success.btn-sm.index-search-btn{"aria-label" => "search", :type => "submit"}
               %span.fa.fa-search{"aria-hidden" => "true"}
       .float-end
         = link_to 'How it works', support_index_path, class: 'text-success'
