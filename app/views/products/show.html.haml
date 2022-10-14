@@ -42,7 +42,7 @@
           %p
           - if @product.videos.attached?
             - @product.videos.each do |video|
-              = video_tag url_for(video), alt: @product.title + " video", controls: true, class: "product-vid"
+              = video_tag url_for(video), alt: @product.title + " video", controls: true, preload: "metadata", class: "product-vid"
               %p
               = link_to rails_blob_path(video, disposition: 'attachment'), class: "download-btn" do
                 .fa.fa-download
