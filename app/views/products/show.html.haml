@@ -44,7 +44,7 @@
             - @product.videos.each do |video|
               = video_tag url_for(video), alt: @product.title + " video", controls: true, class: "product-vid"
               %p
-              = button_to rails_blob_path(video, disposition: 'attachment'), class: "download-btn" do
+              = link_to rails_blob_path(video, disposition: 'attachment'), class: "download-btn" do
                 .fa.fa-download
                 Download
           %p
