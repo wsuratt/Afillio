@@ -156,6 +156,14 @@ input[type="search"] {
     transform: translateY(-50%);
 }
 
+.product-vid {
+    max-width: 75%;
+    max-height: 100%;
+    border-radius: 2em;
+    position: relative;
+    top: 50%;
+}
+
 .mobile-img-container {
     position: relative;
     width: 100%;
@@ -184,6 +192,20 @@ input[type="search"] {
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.download-btn {
+  background-color: #90d4a2;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.download-btn:hover {
+  background-color: #71a67f;
 }
 
 .w-10 {

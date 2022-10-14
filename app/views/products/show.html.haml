@@ -35,13 +35,23 @@
         %hr
 
     -if current_user
-      - if @product.quantity > 0 and current_user.has_role?(:seller)
+      - if @product.quantity > 0 and current_user.has_role?(:vendor)
         .text-center
+          %h3
+            Marketing Content
+          %p
+          - if @product.videos.attached?
+            - @product.videos.each do |video|
+              = video_tag url_for(video), alt: @product.title + " video", controls: true, class: "product-vid"
+              %p
+              = button_to rails_blob_path(video, disposition: 'attachment'), class: "download-btn" do
+                .fa.fa-download
+                Download
           %p
           %h4
-            Share QR code or link below:
-          %p
-          = @svg.html_safe
+            Share link below:
+          // %p
+          // = @svg.html_safe
         %p
         .col-md-3.mx-auto.pb-5
           .input-group.justify-content-center.flex-nowrap

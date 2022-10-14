@@ -61,6 +61,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     authorize @product
     @product.images.attach(params[:product][:images])
+    @product.videos.attach(params[:product][:videos])
     @product.user = current_user
 
     respond_to do |format|
@@ -120,7 +121,8 @@ class ProductsController < ApplicationController
       :commission,
       :commission_cents,
       :show,
-      :images => []
+      :images => [],
+      :videos => []
     )
   end
 end
