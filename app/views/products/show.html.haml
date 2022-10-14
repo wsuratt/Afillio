@@ -35,7 +35,7 @@
         %hr
 
     -if current_user
-      - if @product.quantity > 0 and current_user.has_role?(:vendor)
+      - if @product.quantity > 0 and current_user.has_role?(:seller)
         .text-center
           %h3
             Marketing Content
