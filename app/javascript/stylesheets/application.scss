@@ -214,6 +214,22 @@ input[type="search"] {
   color: white;
 }
 
+.order-btn {
+  background-color: #90d4a2;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%;
+}
+
+.order-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
 .share-link {
     margin-top: 50px;
 }

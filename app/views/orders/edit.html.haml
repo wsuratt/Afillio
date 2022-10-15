@@ -49,6 +49,7 @@
             %p
         
           .form-actions
-            = f.button :submit, 'Update'
+            = f.button :submit, 'Update', class: 'order-btn'
       .card-footer
-        = link_to 'Back', @order
+        .text-center
+          = link_to 'Back', @order

@@ -64,7 +64,8 @@
           = link_to 'Back', :back
       - elsif !@order.paid
         .card-footer
-          = link_to 'Edit', edit_order_path(@order)
           .text-center
-            = button_to "Checkout", checkout_create_path, params: {id: @order.id}, remote: true, class: 'btn btn-sm btn-success'
+            = button_to "Checkout", checkout_create_path, params: {id: @order.id}, remote: true, class: 'order-btn'
+            %p
+            = link_to 'Edit', edit_order_path(@order)
             
