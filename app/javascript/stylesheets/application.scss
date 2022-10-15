@@ -215,7 +215,7 @@ input[type="search"] {
 }
 
 .order-btn {
-  background-color: #90d4a2;
+  background-color: #198754;
   border: none;
   border-radius: 0.2rem;
   color: white;
@@ -226,6 +226,22 @@ input[type="search"] {
 }
 
 .order-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
+.show-btn {
+  background-color: #198754;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 78.5%;
+}
+
+.show-btn:hover {
   background-color: #71a67f;
   color: white;
 }
