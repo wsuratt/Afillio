@@ -58,7 +58,7 @@
           .input-group.justify-content-center.flex-nowrap.d-flex.align-items-center
             %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
             .input-group-append
-              %button{:class => "ms-1 btn btn-sm btn-custom border border-1", :onclick => "myFunction()"}
+              %button{:class => "ms-1 btn btn-sm btn-custom h-100", :onclick => "myFunction()"}
                 Copy
         :javascript
           function myFunction() {
