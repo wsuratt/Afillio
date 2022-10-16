@@ -231,14 +231,20 @@ input[type="search"] {
 }
 
 .show-btn {
+  display: block;
   background-color: #198754;
   border: none;
   border-radius: 0.2rem;
   color: white;
+  margin: auto;
   padding: 12px 30px;
   cursor: pointer;
   font-size: 20px;
   width: 78.5%;
+}
+
+.show-btn:visited {
+  color: white;
 }
 
 .show-btn:hover {
