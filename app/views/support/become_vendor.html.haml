@@ -5,19 +5,14 @@
   \-
   Afillio
 
-#wrapper.d-md-flex
-
-  = render 'support/sidebar'
-
-  #page-content-wrapper
-    .container-fluid
-      %h1.mt-4 How to become a Vendor:
-      %p
-      %ol{:style => "font-size: 16px;"}
-        %li #{link_to 'Sign up', new_user_registration_path} and sign in (account is set to Seller by default).
-        %p
-        %li Fill out and submit #{link_to 'Vendor information form', current_user ? vendor_info_user_path(current_user) : new_user_session_path}.
-        %p
-        %li Your information will be reviewed by Afillio. This process can take up to a day.
-        %p
-        %li You will receive an email when your account has been accepted as a Vendor.
+.container-fluid
+  %h1.mt-4 How to become a Vendor:
+  %p
+  %ol{:style => "font-size: 16px;"}
+    %li #{link_to 'Sign up', new_user_registration_path} and sign in (account is set to Seller by default).
+    %p
+    %li Fill out and submit #{link_to 'Vendor information form', current_user ? vendor_info_user_path(current_user) : new_user_session_path}.
+    %p
+    %li Your information will be reviewed by Afillio. This process can take up to a day.
+    %p
+    %li You will receive an email when your account has been accepted as a Vendor.

@@ -273,15 +273,10 @@ input[type="search"] {
 }
 
 .text-support {
-    color: black !important;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
-.border-support {
-    border-bottom: 5px solid $gray-200 !important;
-    border-right: 5px solid $gray-200 !important;
-    border-left: 5px solid $gray-200 !important;
-    border-top: none;
-}
 
 .index-search-btn {
     border-radius: 0 0.2rem 0.2rem 0;
