@@ -1,15 +1,4 @@
 %p
-- if current_user
-  - if current_user.has_role?(:seller) && @recent_sales.size > 0
-    %h2
-      .fa.fa-tags
-      Your recent sales
-    %p
-    .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4.mb-4
-      - @recent_sales.each do |product|
-        .col
-          = render 'products/product', product: product
-
 %h2
   .fa.fa-chart-line
   Popular products
@@ -27,3 +16,14 @@
   - @latest.each do |product|
     .col
       = render 'products/product', product: product
+  
+- if current_user
+  - if current_user.has_role?(:seller) && @recent_sales.size > 0
+    %h2
+      .fa.fa-tags
+      Your recent sales
+    %p
+    .row.row-cols-1.row-cols-2.row-cols-lg-3.row-cols-lg-4.g-4.mb-4
+      - @recent_sales.each do |product|
+        .col
+          = render 'products/product', product: product
