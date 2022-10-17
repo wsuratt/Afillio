@@ -34,44 +34,44 @@
     %p
 
 .row
-  .col-md-2
-    = search_form_for @ransack_products, as: :products_search, url: @ransack_path do |f|
-      Search
-      = f.search_field :title_or_description_or_user_vendor_title_cont, placeholder: 'Search', class: 'form-control form-control-sm'
-      // = f.search_field :user_vendor_title_cont, placeholder: 'Company', class: 'form-control form-control-sm'
-      = f.label :category
-      .row
-      = f.select :category_cont, Product.categories, include_blank: true
-      .row
-      // = f.label :price
-      // = f.search_field :price_eq, placeholder: 'Price', class: 'form-control form-control-sm'
-      // = f.label :commission
-      // = f.search_field :commission_eq, placeholder: 'Commission', class: 'form-control form-control-sm'
-      // = f.label :vendor
-      // = f.search_field :user_email_cont, placeholder: 'Email', class: 'form-control form-control-sm'
-      Sort by
-      .pt-2.px-2
-        .row.align-items-start
-          .col.bg-gray
-            = sort_link(@ransack_products, :price)
-          .col.bg-gray
-            = sort_link(@ransack_products, :commission)
-          .col.bg-gray
-            = sort_link(@ransack_products, :orders_count, "Popular")
-          .col.bg-gray
-            = sort_link(@ransack_products, :created_at, "New")
-      %p
-      .row
-      .pt-0
-        - if current_page?(created_products_path)
-          = f.check_box :show_true
-          = f.label 'Shown in store'
-      .row
-      .pt-2
-        = f.submit
-      .row
-      .pt-2.pb-3
-        = link_to 'refresh', @ransack_path
+  // .col-md-2
+  //   = search_form_for @ransack_products, as: :products_search, url: @ransack_path do |f|
+  //     Search
+  //     = f.search_field :title_or_description_or_user_vendor_title_cont, placeholder: 'Search', class: 'form-control form-control-sm'
+  //     // = f.search_field :user_vendor_title_cont, placeholder: 'Company', class: 'form-control form-control-sm'
+  //     = f.label :category
+  //     .row
+  //     = f.select :category_cont, Product.categories, include_blank: true
+  //     .row
+  //     // = f.label :price
+  //     // = f.search_field :price_eq, placeholder: 'Price', class: 'form-control form-control-sm'
+  //     // = f.label :commission
+  //     // = f.search_field :commission_eq, placeholder: 'Commission', class: 'form-control form-control-sm'
+  //     // = f.label :vendor
+  //     // = f.search_field :user_email_cont, placeholder: 'Email', class: 'form-control form-control-sm'
+  //     Sort by
+  //     .pt-2.px-2
+  //       .row.align-items-start
+  //         .col.bg-gray
+  //           = sort_link(@ransack_products, :price)
+  //         .col.bg-gray
+  //           = sort_link(@ransack_products, :commission)
+  //         .col.bg-gray
+  //           = sort_link(@ransack_products, :orders_count, "Popular")
+  //         .col.bg-gray
+  //           = sort_link(@ransack_products, :created_at, "New")
+  //     %p
+  //     .row
+  //     .pt-0
+  //       - if current_page?(created_products_path)
+  //         = f.check_box :show_true
+  //         = f.label 'Shown in store'
+  //     .row
+  //     .pt-2
+  //       = f.submit
+  //     .row
+  //     .pt-2.pb-3
+  //       = link_to 'refresh', @ransack_path
 
 
   .col-md-10
