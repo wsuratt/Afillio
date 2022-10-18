@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get :how_it_works, on: :collection
     get :sign_up, on: :collection
     get :withdraw_balance, on: :collection
-    get :sell_product, on: :collection
+    get :market_product, on: :collection
     get :become_vendor, on: :collection
     get :connect_stripe, on: :collection
     get :refunds_and_returns, on: :collection
