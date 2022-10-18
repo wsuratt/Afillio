@@ -8,22 +8,22 @@
       .p-3
         %h1
           .fa.fa-shopping-bag
-        Find a product to sell
+        Find a product to sell and download its marketing content (feel free to edit this content as you see fit)
     .card.card-body
       .p-3
         %h1
-          .fa.fa-comment
-        Share your link with a customer or have them scan your QR code
+          .fa.fa-share-square
+        Post marketing content on any platform of your choice
     .card.card-body
       .p-3
         %h1
-          .fa.fa-check-square
-        Customer completes purchase
+          .fa.fa-link
+        Direct people to your link (we recommend putting it in your bio)
     .card.card-body
       .p-3
         %h1
           .fa.fa-hand-holding-usd
-        You get paid
+        Make sales and get paid
   - if current_user
     = link_to 'Get started as a Seller', products_path
   - else
@@ -50,7 +50,7 @@
     .card.card-body
       .p-3
         %h1
-          .fa.fa-share-square
+          .fa.fa-comment
         Share your products to get people interested in selling them
   - if current_user
     = link_to 'Get started as a Vendor', vendor_info_user_path(current_user)
