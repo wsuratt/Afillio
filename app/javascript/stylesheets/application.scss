@@ -256,6 +256,28 @@ input[type="search"] {
   color: white;
 }
 
+.payout-btn {
+  display: block;
+  background-color: #198754;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  margin: auto;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 78.5%;
+}
+
+.payout-btn:visited {
+  color: white;
+}
+
+.payout-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
 .share-link {
     margin-top: 50px;
 }

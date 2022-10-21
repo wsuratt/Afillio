@@ -29,7 +29,7 @@
       - if current_user.balance_cents.to_i > 0
         .row.justify-content-center
           .mt-4.mb-4.col-md-6
-            = link_to "Payout", payout_transfer_path, class: 'order-btn'
+            = link_to "Payout", payout_transfer_path, class: 'payout-btn'
       = link_to 'Connected with Stripe', 'https://connect.stripe.com', target: :_blank
       %p
     - else
