@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   def tracking_number_update
     authorize @order
     if @order.update(order_params) && !@order.tracking_number.blank?
-      OrderMailer.with(order: @order).new_order_email.deliver_later
+      OrderMailer.with(order: @order).shipped_order_email.deliver_later
     end
     respond_to do |format|
       if @order.update(order_params)
