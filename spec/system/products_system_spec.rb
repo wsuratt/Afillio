@@ -22,8 +22,9 @@ RSpec.feature 'products', type: :system do
       expect(page).to have_text('New product')
 
       fill_in 'Title', with: 'Cool Product'
-      attach_file('./spec/images/test_product.jpg')
-      fill_in 'Description', with: 'This is a cool product.'
+      attach_file('product_images_1', './spec/product_content/test_image.jpg')
+      attach_file('product_videos', './spec/product_content/test_video.mp4')
+      find('#product_description').set 'This is a cool product.'
       fill_in 'Quantity', with: '10'
       fill_in 'Price', with: '19.99'
       fill_in 'Commission', with: '5'
