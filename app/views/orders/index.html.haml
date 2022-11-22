@@ -26,11 +26,12 @@
                 = number_to_currency(current_user.balance_cents)
   
     - if current_user.stripe_user_id
+      - if current_user.balance_cents.to_i > 0
+        .row.justify-content-center
+          .mt-4.mb-4.col-md-6
+            = link_to "Payout", payout_transfer_path, class: 'payout-btn'
       = link_to 'Connected with Stripe', 'https://connect.stripe.com', target: :_blank
       %p
-      - if current_user.balance_cents.to_i > 0
-        %p
-          = link_to "Payout", payout_transfer_path, class: 'btn btn-sm btn-success'
     - else
       = link_to image_tag("stripe_button.svg", :size => "240x160"), stripe_button_link
   

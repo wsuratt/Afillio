@@ -1,4 +1,4 @@
-.bg-custom.text-white.w-100.border-custom.mb-4.mt-n5.row.justify-content-center
+.bg-custom.text-white.w-100.border-custom.mt-n5.row.justify-content-center
   .max-w-lg
     .ps-1.pe-1.pt-3.pb-3
       .rounded-lg
@@ -15,12 +15,12 @@
     
         .p-4
         
-        = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
-          .input-group
-            = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search products', :autocomplete => :off
-            %span.input-group-append
-              %button.btn-success.btn-sm.index-search-btn.border.border-start-0.border-dark{"aria-label" => "search", :type => "submit"}
-                %span.fa.fa-search{"aria-hidden" => "true"}
+        // = search_form_for @ransack_products, as: :products_search, url: products_path do |f|
+        //   .input-group
+        //     = f.search_field :title_or_description_or_user_vendor_title_cont, class: 'form-control-sm border border-dark', style: 'float: left; width: 165px; ', placeholder: 'Search products', :autocomplete => :off
+        //     %span.input-group-append
+        //       %button.btn-success.btn-sm.index-search-btn.border.border-start-0.border-dark{"aria-label" => "search", :type => "submit"}
+        //         %span.fa.fa-search{"aria-hidden" => "true"}
         .float-end
-          = link_to 'How it works', support_index_path, class: 'text-success'
+          = link_to 'How it works', how_it_works_support_index_path, class: 'text-success'
         .p-2

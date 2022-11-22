@@ -24,7 +24,15 @@ class Product < ApplicationRecord
                              message: 'size should be under 500 kilobytes' }
 
   validate :validate_images
-
+  
+  has_many_attached :videos
+  validates :videos, attached: true,
+                    content_type: ['video/mp4'],
+                    size: { less_than: 5.megabytes,
+                            message: 'size should be under 5 megabytes' }
+  
+  validate :validate_videos
+  
   has_rich_text :description
 
   def to_s
@@ -64,5 +72,11 @@ class Product < ApplicationRecord
     return if images.count / 2 <= 3
 
     errors.add(:images, 'limit is a maximum of 3')
+  end
+  
+  def validate_videos
+    return if videos.count / 2 <= 1
+  
+    errors.add(:videos, 'limit is a maximum of 1')
   end
 end

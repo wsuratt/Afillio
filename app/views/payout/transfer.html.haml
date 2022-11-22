@@ -3,13 +3,16 @@
   \-
   Afillio
 
-%h1
-  Transfer initiated
-%h3
-  = "Your transfer of " + number_to_currency(@amount) + " has been initiated."
+.text-center
+  %h1 Transfer initiated
   %p
-  %b Please allow up to 3 business days for your transfer to process.
-= link_to 'Back', my_sales_orders_path
+  %h1.text-success.fa.fa-hand-holding-usd
+  %p
+  %h5
+    = "Your transfer of " + number_to_currency(@amount) + " has been initiated."
+  %h3
+    %b Please allow up to 3 business days for your transfer to process.
+  = link_to 'Back', my_sales_orders_path
 
 // :javascript
 //   alert('Your transfer has been initiated. Please allow up to 3 business days for your transfer to process.')

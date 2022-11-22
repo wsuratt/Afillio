@@ -79,13 +79,13 @@
                     %td{:align => "center", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 15px;"}
                       %br/
                       %h2{:style => "font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"} Thank You For Your Order!
-                  %tr
-                    %td{:align => "center", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;"}
-                      %h2{:style => "font-size: 18px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"}
-                        This product is sold by #{@order.product.user.website_url.blank? ? @order.product.user.instagram.blank? ? @order.product.user.vendor_title : (link_to @order.product.user.vendor_title, 'https://www.instagram.com/' + @order.product.user.instagram) : (link_to @order.product.user.vendor_title, @order.product.user.website_url)}.
-                  %tr
-                    %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;"}
-                      %p{:style => "font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;"} Please use the customer support information provided below to address any issues you may have with your order.
+                  // %tr
+                  //   %td{:align => "center", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;"}
+                  //     %h2{:style => "font-size: 18px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"}
+                  //       This product is sold by #{@order.product.user.website_url.blank? ? @order.product.user.instagram.blank? ? @order.product.user.vendor_title : (link_to @order.product.user.vendor_title, 'https://www.instagram.com/' + @order.product.user.instagram) : (link_to @order.product.user.vendor_title, @order.product.user.website_url)}.
+                  // %tr
+                  //   %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;"}
+                  //     %p{:style => "font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;"} Please use the customer support information provided below to address any issues you may have with your order.
                   %tr
                     %td{:align => "left", :style => "padding-top: 20px;"}
                       %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
@@ -103,7 +103,7 @@
                           %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;", :width => "25%"}
                             = @order.quantity
                         %tr
-                          %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;", :width => "75%"} Transaction fee
+                          %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;", :width => "75%"} Stripe transaction fee
                           %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;", :width => "25%"}
                             = number_to_currency(Order.stripe_fee_cents)
                   %tr

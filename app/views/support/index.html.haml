@@ -5,66 +5,78 @@
   \-
   Afillio
 
-#wrapper.d-md-flex
+%h2
+  .text-center.mb-4
+    Support
 
-  = render 'support/sidebar'
-  
-  #page-content-wrapper
-    .container-fluid
-      %h1.mt-4 How it works:
-      %p
-      %h4
-        For Sellers:
-      .card-group
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-shopping-bag
-            Find a product to sell
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-qrcode
-            Share your link with a customer or have them scan your QR code
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-check-square
-            Customer completes purchase
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-hand-holding-usd
-            You get paid
-      - if current_user
-        = link_to 'Get started as a Seller', products_path
-      - else
-        = link_to 'Get started as a Seller', new_user_registration_path
-      %p
-      %h4
-        For Vendors:
-      .card-group
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-user-plus
-            Sign up (your account will be set to Seller by default)
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-align-justify
-            Submit Vendor form (click become vendor link below) and wait to be approved
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-shopping-bag
-            List your products on the site
-        .card.card-body
-          .p-3
-            %h1
-              .fa.fa-share-square
-            Share your products to get people interested in selling them
-      - if current_user
-        = link_to 'Get started as a Vendor', vendor_info_user_path(current_user)
-      - else
-        = link_to 'Get started as a Vendor', become_vendor_support_index_path
+.row
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => how_it_works_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-question
+        %p
+        %h3.card-title How it works
+        %p
+        %p.card-text.text-muted.text-support Learn how the marketing and vending processes work.
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => sign_up_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-pen-square
+        %p
+        %h3.card-title Sign up
+        %p
+        %p.card-text.text-muted.text-support Learn how easy it is to join as an Affiliate or as a Vendor.
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => become_vendor_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-store
+        %p
+        %h3.card-title Become a Vendor
+        %p
+        %p.card-text.text-muted.text-support Learn the sign up instructions for becoming a Vendor.
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => withdraw_balance_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-money-bill
+        %p
+        %h3.card-title Withdraw balance
+        %p
+        %p.card-text.text-muted.text-support Learn how to withdraw your account's balance.
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => market_product_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-box
+        %p
+        %h3.card-title Market a product
+        %p
+        %p.card-text.text-muted.text-support Learn the process for affiliate marketing a product.
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => connect_stripe_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-plug
+        %p
+        %h3.card-title Connect with Stripe
+        %p
+        %p.card-text.text-muted.text-support Learn how to properly connect your Stripe account.
+  .col-sm-3.mb-4
+    .card.shadow-sm
+      %a.stretched-link{:href => other_support_index_path}
+      .card-body.px-4.pb-4
+        %h1
+          .fa.fa-comment-dots
+        %p
+        %h3.card-title Other
+        %p
+        %p.card-text.text-muted.text-support Ask any other questions you may have here.

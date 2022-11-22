@@ -37,14 +37,25 @@
     -if current_user
       - if @product.quantity > 0 and current_user.has_role?(:seller)
         .text-center
+          %h3
+            Marketing Content
           %p
-          %h4
-            Share QR code or link below:
+          - if @product.videos.attached?
+            - @product.videos.each do |video|
+              .vid-container.mx-auto
+                = video_tag url_for(video)+"#t=0.001", alt: @product.title + " video", controls: true, preload: "metadata", class: "product-vid"
+              %p
+              = link_to rails_blob_path(video, disposition: 'attachment'), class: "download-btn" do
+                .fa.fa-download
+                Download
           %p
-          = @svg.html_safe
+          %h4.mt-5
+            Share link below:
+          // %p
+          // = @svg.html_safe
         %p
-        .col-md-3.mx-auto.pb-5
-          .input-group.justify-content-center.flex-nowrap
+        .col-md-3.mx-auto
+          .input-group.justify-content-center.flex-nowrap.d-flex.align-items-center
             %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
             .input-group-append
               %button{:class => "ms-1 btn btn-sm btn-custom", :onclick => "myFunction()"}
@@ -61,17 +72,17 @@
             // alert("Copied the text: " + copyText.value);
           }
       - elsif @product.quantity <= 0
-        .text-center.pb-5
+        .text-center
           %p
           %h3.text-danger
             Out of Stock
       - else
     -else
-      .text-center.pb-5
+      .text-center
         %p
         %h4
           Want to sell this item?
         %p
-        = link_to 'Log in', new_user_session_path, class: 'btn btn-lg btn-custom'
-        or
-        = link_to 'Sign up', new_user_registration_path, class: 'btn btn-lg btn-custom'
+        = link_to 'Log in', new_user_session_path, class: 'show-btn'
+        %p
+        = link_to 'Sign up', new_user_registration_path, class: 'show-btn'

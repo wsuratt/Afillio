@@ -73,6 +73,10 @@ a.btn-danger:visited {
     background: #90d4a2;
 }
 
+.bg-custom-dark {
+    background: #198754
+}
+
 @include media-breakpoint-up(md) {
     .my_sales {
         margin-left: auto;
@@ -156,6 +160,14 @@ input[type="search"] {
     transform: translateY(-50%);
 }
 
+.product-vid {
+    max-width: 75%;
+    max-height: 100%;
+    border-radius: 2em;
+    position: relative;
+    top: 50%;
+}
+
 .mobile-img-container {
     position: relative;
     width: 100%;
@@ -186,6 +198,90 @@ input[type="search"] {
     right: 0;
 }
 
+.vid-container {
+    position: relative;
+    width: 100%;
+}
+
+.download-btn {
+  background-color: #90d4a2;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.download-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
+.order-btn {
+  background-color: #198754;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%;
+}
+
+.order-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
+.show-btn {
+  display: block;
+  background-color: #90d4a2;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  margin: auto;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 78.5%;
+}
+
+.show-btn:visited {
+  color: white;
+}
+
+.show-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
+.payout-btn {
+  display: block;
+  background-color: #198754;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  margin: auto;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 78.5%;
+}
+
+.payout-btn:visited {
+  color: white;
+}
+
+.payout-btn:hover {
+  background-color: #71a67f;
+  color: white;
+}
+
+.share-link {
+    margin-top: 50px;
+}
+
 .w-10 {
     width: 10%;
 }
@@ -203,15 +299,10 @@ input[type="search"] {
 }
 
 .text-support {
-    color: black !important;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
-.border-support {
-    border-bottom: 5px solid $gray-200 !important;
-    border-right: 5px solid $gray-200 !important;
-    border-left: 5px solid $gray-200 !important;
-    border-top: none;
-}
 
 .index-search-btn {
     border-radius: 0 0.2rem 0.2rem 0;

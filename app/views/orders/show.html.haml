@@ -28,7 +28,7 @@
           %b Quantity:
           = @order.quantity
         %p
-          %b Transaction fee:
+          %b Stripe transaction fee:
           = number_to_currency(Order.stripe_fee)
         %p
           %b Total:
@@ -58,13 +58,18 @@
             = @order.phone
           .col-12.mt-2
             = @order.email
+        
+        - if !@order.paid
+          %hr
+          .text-center
+            %p
+            = button_to "Checkout", checkout_create_path, params: {id: @order.id}, remote: true, class: 'order-btn'
   
       - if current_user
         .card-footer
           = link_to 'Back', :back
       - elsif !@order.paid
         .card-footer
-          = link_to 'Edit', edit_order_path(@order)
           .text-center
-            = button_to "Checkout", checkout_create_path, params: {id: @order.id}, remote: true, class: 'btn btn-sm btn-success'
+            = link_to 'Edit', edit_order_path(@order)
             

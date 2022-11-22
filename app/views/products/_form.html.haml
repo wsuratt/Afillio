@@ -23,6 +23,12 @@
       .row
       = f.file_field :images, multiple: true
       %small= f.full_error :images, class: 'text-danger'
+      
+      %p
+      = f.label :videos
+      .row
+      = f.file_field :videos, multiple: true
+      %small= f.full_error :videos, class: 'text-danger'
 
       .row
       %p
