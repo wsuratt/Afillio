@@ -121,8 +121,8 @@ class ProductsController < ApplicationController
       :commission,
       :commission_cents,
       :show,
-      :images => [],
-      :videos => []
+      images: [],
+      videos: []
     )
   end
 end
