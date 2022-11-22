@@ -8,7 +8,7 @@
     %h1
       About us
     .img-max.py-3
-      = image_tag("burlington-2.jpeg", alt: "Burlington, Vermont", class: 'img-fluid')
+      = image_tag("burlington-vermont.jpeg", alt: "Burlington, Vermont", class: 'img-fluid')
     Afillio is an affiliate marketing business based in Burlington, Vermont. 
     %hr
     %b Our goal is to make affiliate marketing as simple as possible.
@@ -19,23 +19,13 @@
     %br
     %i "Affiliate" refers to the person marketing Vendors' products on Afillio
     %hr
-    -#.row.g-4.py-4.row-cols-1.row-cols-lg-2
-      %div
-        %h3.fs-2 Why become a Vendor?
-        %p Afillio makes affiliate marketing as simple as possible in order to make it accessible to the average person. No longer does one need to go through extensive sign up processes or have thousands of followers to successfully affiliate market. Simply, sign up on Afillio and start marketing products you are passionate about to friends, family, and more.
-        - if current_user
-          = link_to 'Become a Vendor', vendor_info_user_path(current_user)
-        - else
-          = link_to 'Become a Vendor', new_user_session_path
-      %div
-        %h3.fs-2 Why become an Affiliate?
-        %p Afillio makes affiliate marketing as simple as possible in order to make it accessible to the average person. No longer does one need to go through extensive sign up processes or have thousands of followers to successfully affiliate market. Simply, sign up on Afillio and start marketing products you are passionate about to friends, family, and more.
-        = link_to 'How it works', support_index_path
     %h3
       Why become a Vendor?
-    Afillio makes affiliate marketing as simple as possible in order to make it accessible to the average person. 
-    No longer does one need to go through extensive sign up processes or have thousands of followers to successfully affiliate market. 
-    Simply, sign up on Afillio and start marketing products you are passionate about to friends, family, and more.
+    Afillio allows for extensive advertisement and direct to consumer sales with no overhead cost. 
+    If you have a smaller business, this allows you to get your foot in the door and start building
+    a community around your brand without paying expensive advertising fees. If you have a larger
+    business with an existing community, you can also benefit from allowing people who are passionate
+    about your products to market them and make commission.
     %br
     %p
     - if current_user
