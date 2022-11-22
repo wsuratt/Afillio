@@ -8,17 +8,10 @@ AllCops:
     - Brewfile
   UseCache: false
   SuggestExtensions: false
+Lint/MissingSuper:
+  Enabled: false
 Metrics/BlockLength:
-  IgnoredMethods: [
-    'class_methods',
-    'context',
-    'define',
-    'describe',
-    'it',
-    'let',
-    'namespace',
-    'task'
-  ]
+  Enabled: false
 Style/CollectionMethods:
   Description: Preferred collection methods.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#map-find-select-reduce-size
@@ -57,6 +50,8 @@ Style/PercentLiteralDelimiters:
     "%w": "()"
     "%W": "()"
     "%x": "()"
+Style/FrozenStringLiteralComment:
+    SafeAutoCorrect: true
 Style/RaiseArgs:
   Description: Checks the arguments passed to raise/fail.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#exception-class-messages
@@ -156,6 +151,8 @@ Lint/AssignmentInCondition:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition
   Enabled: true
   AllowSafeAssignment: true
+Layout/TrailingEmptyLines:
+  Enabled: true
 Style/InlineComment:
   Description: Avoid inline comments.
   Enabled: false
@@ -240,7 +237,7 @@ Layout/MultilineMethodCallIndentation:
     - indented
 Layout/SpaceInsidePercentLiteralDelimiters:
   Description: 'No unnecessary spaces inside delimiters of %i/%w/%x literals.'
-  Enabled: false
+  Enabled: true
 Layout/SpaceInLambdaLiteral:
   Description: 'Checks for spaces in lambda literals.'
   Enabled: false

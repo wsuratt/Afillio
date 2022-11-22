@@ -15,13 +15,13 @@
       //     .row
       //     = image.filename
       // .row
-      = f.file_field :images, multiple: true
+      = f.file_field :images, multiple: true, id: "product_images_1"
       %small= f.full_error :images, class: 'text-danger'
       .row
-      = f.file_field :images, multiple: true
+      = f.file_field :images, multiple: true, id: "product_images_2"
       %small= f.full_error :images, class: 'text-danger'
       .row
-      = f.file_field :images, multiple: true
+      = f.file_field :images, multiple: true, id: "product_images_3"
       %small= f.full_error :images, class: 'text-danger'
       
       %p
