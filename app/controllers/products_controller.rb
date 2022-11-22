@@ -120,7 +120,7 @@ class ProductsController < ApplicationController
       :commission,
       :commission_cents,
       :show,
-      :images => []
+      images: []
     )
   end
 end
