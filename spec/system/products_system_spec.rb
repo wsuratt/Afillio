@@ -41,7 +41,7 @@ RSpec.feature 'products', type: :system do
       click_link 'Edit'
 
       fill_in 'Title', with: 'Not Cool Product'
-      fill_in 'Description', with: 'This is not a cool product.'
+      find('#product_description').set 'This is not a cool product.'
       click_button 'Update Product'
 
       expect(page).to have_text('Product was successfully updated.')
