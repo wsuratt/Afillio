@@ -5,9 +5,74 @@
   \-
   Afillio
 
+
 .container-fluid
-  %h1.mt-4 Other questions:
-  %p
-  Please email 
-  = mail_to 'support@afillio.com', 'support@afillio.com'
-  with any other questions.
+  %h1.mt-5{style: "color: #444444"} Frequently Asked Questions
+  .container.py-3.border-start.border-4.border-secondary.mt-5.d-inline-flex{style: "background-color: #e7e7e7; color: #444444; gap: .75rem"}
+    %h1 Q. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem"} Why can't I link my affiliate link on my TikTok profile?
+  .container.py-3.border-4.mb-4.d-inline-flex{style: "color: #90d4a2; border-left-style: solid; border-color: #90d4a2; gap: .75rem"}
+    %h1 A. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem; color: #444444"} 
+        In order to put a link in your TikTok bio, you need to have surpassed the 1000 follower mark. 
+        It can be difficult to reach this milestone, so in the meantime, a good alternative 
+        has been to link an instagram profile to your TikTok account, and link your affiliate code from there. 
+  %hr
+  .container.py-3.border-start.border-4.border-secondary.mt-4.d-inline-flex{style: "background-color: #e7e7e7; color: #444444; gap: .75rem"}
+    %h1 Q. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem"} I tried to transfer my money through my Stripe account, but my money has not been transferred into my account. Is this normal?
+  .container.py-3.border-4.mb-4.d-inline-flex{style: "color: #90d4a2; border-left-style: solid; border-color: #90d4a2; gap: .75rem"}
+    %h1 A. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem; color: #444444"} 
+        Yes. This is completely normal. Stripe can take up to 3-5 business days to transfer your money to your account. 
+        If this issue persists, please contact us at
+        = mail_to 'support@afillio.com', 'support@afillio.com'
+        or contact the Stripe team directly.
+        
+  %hr
+  .container.py-3.border-start.border-4.border-secondary.mt-4.d-inline-flex{style: "background-color: #e7e7e7; color: #444444; gap: .75rem"}
+    %h1 Q. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem"} How much does it cost to become an Affiliate?
+  .container.py-3.border-4.mb-4.d-inline-flex{style: "color: #90d4a2; border-left-style: solid; border-color: #90d4a2; gap: .75rem"}
+    %h1 A. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem; color: #444444"} 
+        Becoming an Affiliate is completely zero-cost. All that is required to become an Affiliate is a Stripe account, 
+        as well as an Afillio.com account. Make sure to check out our 
+        = link_to 'How it works', how_it_works_support_index_path
+        page.
+  %hr
+  .container.py-3.border-start.border-4.border-secondary.mt-4.d-inline-flex{style: "background-color: #e7e7e7; color: #444444; gap: .75rem"}
+    %h1 Q. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem"} As a vendor, will I make less money than if I were to sell the product on my own website?
+  .container.py-3.border-4.mb-4.d-inline-flex{style: "color: #90d4a2; border-left-style: solid; border-color: #90d4a2; gap: .75rem"}
+    %h1 A. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem; color: #444444"} 
+        No. As a Vendor, you sell your product for your given price, and Afillio will increase/adjust the price accordingly to allow for Affiliates to market 
+        your product with a commission. This allows for both Vendors and Affiliates to make adequate profits. 
+  %hr
+  .container.py-3.border-start.border-4.border-secondary.mt-4.d-inline-flex{style: "background-color: #e7e7e7; color: #444444; gap: .75rem"}
+    %h1 Q. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem"} I ordered a product and it has not shipped. Is this normal?
+  .container.py-3.border-4.mb-4.d-inline-flex{style: "color: #90d4a2; border-left-style: solid; border-color: #90d4a2; gap: .75rem"}
+    %h1 A. 
+    %div.align-self-center.pl-3
+      %p.mt-2{style: "font-size: 1.1rem; color: #444444"} 
+        Yes, this is normal. The shipping time for these products can be a bit lengthy, if you have any questions regarding the status of your order,
+        please contact us at 
+        = mail_to 'support@afillio.com', 'support@afillio.com'
+  %hr
+
+  %h2.mt-4 Other questions:
+  %p{style: "font-size: 1.1rem; color: #444444"}
+    Please email 
+    = mail_to 'support@afillio.com', 'support@afillio.com'
+    with any other questions.
