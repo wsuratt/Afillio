@@ -6,20 +6,55 @@
   Afillio
 
 .container-fluid
-  %h1.mt-4 How to withdraw account balance:
-  #body-wrapper{:style => "font-size: 18px;"}
-    %p
-    If you are an 
-    %b Affiliate 
-    and wish to withdraw your account balance, please visit #{link_to 'My Sales', my_sales_orders_path}. 
-    From there #{link_to 'connect your Stripe account', connect_stripe_support_index_path} and click the green payout button. 
-    Your account balance will be transferred to the linked bank account.
-    %p
-    If you are a 
-    %b Vendor 
-    and wish to withdraw your account balance, please visit #{link_to 'My Orders', my_orders_orders_path}. 
-    From there #{link_to 'connect your Stripe account', connect_stripe_support_index_path} and click the green payout button. 
-    Your account balance will be transferred to the linked bank account.
-    %p
-    %b Please note that the transfer process can take up to three business days.
-  
+
+  %h1.mt-4.mb-5.pb-3.border-bottom How to withdraw account balance:
+
+  %h1.mb-2.pb-2.border-bottom For Affiliates:
+  .row.g-4.py-4.row-cols-1.row-cols-lg-3
+    .col.d-flex.align-items-start
+      .fa.fa-shopping-bag.fa-2x.pe-2
+      %div
+        %h2 My Sales
+        %p
+          If you are an Affiliate and wish to withdraw your account balance, 
+          please visit #{link_to 'My Sales', my_sales_orders_path}. 
+    .col.d-flex.align-items-start
+      .fa.fa-link.fa-2x.pe-2
+      %div
+        %h2 Connect Stripe
+        %p
+          From there #{link_to 'connect your Stripe account', connect_stripe_support_index_path} 
+          and click the green payout button. Your account balance will be transferred to the linked bank account. 
+    .col.d-flex.align-items-start
+      .fa.fa-money-check.fa-2x.pe-2
+      %div
+        %h2 Wait for Transfer
+        %p
+          The transfer to your bank account can take up to 3 days to commence. 
+          If you are having troubles with transfers, 
+          please visit our #{link_to 'FAQ', other_support_index_path}.
+
+
+  %h1.mb-2.pb-2.border-bottom For Vendors: 
+  .row.g-4.py-4.row-cols-1.row-cols-lg-3
+    .col.d-flex.align-items-start
+      .fa.fa-shopping-bag.fa-2x.pe-2
+      %div
+        %h2 My Orders
+        %p
+          If you are a Vendor and wish to withdraw your account balance, please visit #{link_to 'My Orders', my_orders_orders_path}.
+    .col.d-flex.align-items-start
+      .fa.fa-link.fa-2x.pe-2
+      %div
+        %h2 Connect Stripe 
+        %p
+          From there #{link_to 'connect your Stripe account', connect_stripe_support_index_path} and click the green payout button. 
+          Your account balance will be transferred to the linked bank account.
+    .col.d-flex.align-items-start
+      .fa.fa-money-check.fa-2x.pe-2
+      %div
+        %h2 Wait for Transfer
+        %p
+          The transfer to your bank account can take up to 3 days to commence. 
+          If you are having troubles with transfers, 
+          please visit our #{link_to 'FAQ', other_support_index_path}.
