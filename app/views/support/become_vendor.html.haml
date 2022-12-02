@@ -7,32 +7,28 @@
 
 .container-fluid
   %h1.mt-4.border-bottom.mb-5.pb-3 How to become a Vendor:
-  .row.g-4.py-4.row-cols-1.row-cols-lg-4
+  .row.g-4.row-cols-1.row-cols-lg-4
     .col.d-flex.align-items-start
+      .fa.fa-user.fa-2x.pe-2
       %div
-        %h3.fs-2
-          .fa.fa-user
-          Sign in
+        %h3.fs-2 Sign in
         %p{style: "font-size: 1.05em"}
           #{link_to 'Sign up', new_user_registration_path} and sign in (account is set to Affiliate by default).
     .col.d-flex.align-items-start
+      .fa.fa-file.fa-2x.pe-2
       %div
-        %h3.fs-2
-          .fa.fa-file
-          Vendor Form
+        %h3.fs-2 Vendor Form
         %p{style: "font-size: 1.05em"}
           Fill out and submit #{link_to 'Vendor information form', current_user ? vendor_info_user_path(current_user) : new_user_session_path}.
     .col.d-flex.align-items-start
+      .fa.fa-clock.fa-2x.pe-2
       %div
-        %h3.fs-2
-          .fa.fa-clock
-          Review
+        %h3.fs-2 Review
         %p{style: "font-size: 1.05em"}
           Your information will be reviewed by Afillio. This process can take up to a day.
     .col.d-flex.align-items-start
+      .fa.fa-envelope.fa-2x.pe-2
       %div
-        %h3.fs-2
-          .fa.fa-envelope
-          Confirmation
+        %h3.fs-2 Confirmation
         %p{style: "font-size: 1.05em"}
           You will receive an email when your account has been accepted as a Vendor.
