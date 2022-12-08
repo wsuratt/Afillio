@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "easy money online, earn online, earn money online, fast money online", :name => "keywords"}/
-    %meta{:content => "Are You Looking for a Way to Make Money? Try Afillio! Simply Sign Up, Select a Product, and Sell to Anyone for Commission.", :name => "description"}/
+    %meta{:content => yield_meta_tag(:description, "Are You Looking for a Way to Make Money? Try Afillio! Simply Sign Up, Select a Product, and Sell to Anyone for Commission."), :name => "description"}/
     = csrf_meta_tags
     = csp_meta_tag
     %script{src: "https://js.stripe.com/v3/"}
