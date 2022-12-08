@@ -74,13 +74,13 @@
   //       = link_to 'refresh', @ransack_path
 
 
-  .col-md-10
-    .row.row-cols-1.row-cols-md-3.g-4
-      - @products.each do |product|
-        .col.desktop
-          = render 'products/product', product: product
-        .col.mobile
-          = render 'products/mobile_product', product: product
-    %p
-    != pagy_bootstrap_nav(@pagy)
+  -# .col-md-10
+  .row.row-cols-1.row-cols-md-3.g-4
+    - @products.each do |product|
+      .col.desktop
+        = render 'products/product', product: product
+      .col.mobile
+        = render 'products/mobile_product', product: product
+  %p
+  != pagy_bootstrap_nav(@pagy)
 %br
