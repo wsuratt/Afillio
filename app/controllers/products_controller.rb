@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i(show index)
+  skip_before_action :authenticate_user!, only: %i(show index landing)
   before_action :set_product, :set_user, only: %i(show edit update destroy)
 
   def index
@@ -98,6 +98,10 @@ class ProductsController < ApplicationController
     else
       redirect_to @product, alert: 'Product has orders. Can not be deleted.'
     end
+  end
+
+  def landing
+    @product = Product.friendly.find(params[:title])
   end
 
   private

@@ -278,6 +278,28 @@ input[type="search"] {
   color: white;
 }
 
+.buy-btn {
+    display: block;
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 0.2rem;
+    color: white;
+    margin: auto;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 78.5%;
+  }
+  
+  .buy-btn:visited {
+    color: white;
+  }
+  
+  .buy-btn:hover {
+    background-color: #1356c2;
+    color: white;
+  }
+
 .share-link {
     margin-top: 50px;
 }
