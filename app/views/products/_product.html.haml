@@ -32,16 +32,16 @@
         %b
           = product.title
     %span.d-block
-      .text-center
-        .fa.fa-star.text-warning
-        .fa.fa-star.text-warning
-        .fa.fa-star.text-warning
-        .fa.fa-star.text-warning
-        .fa.fa-star-half-alt.fa-sm.text-warning
       - if !request.path_info.include?('landing')
         Price:
         = number_to_currency(product.price_cents)
       - else
+        .text-center
+          .fa.fa-star.text-warning
+          .fa.fa-star.text-warning
+          .fa.fa-star.text-warning
+          .fa.fa-star.text-warning
+          .fa.fa-star-half-alt.fa-sm.text-warning
         %del.text-muted.d-inline
           = number_to_currency(product.price_cents*2.001)
         .text-danger.d-inline
