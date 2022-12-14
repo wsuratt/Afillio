@@ -23,12 +23,17 @@
                 Out of Stock
       .col
         %hr
-        %p
         %b
-          = @product.description
+          %u
+            .text-center
+              %h3 SAVE YOUR BACK TODAY
+        %p
+        = @product.description
         %p
         Sold by: 
         = @product.user.vendor_title
         %br
         Return policy: 
         = @product.user.return_url.blank? ? 'No refunds or returns.' : @product.user.return_url
+      .col#reviews
+        = render 'products/reviews'
