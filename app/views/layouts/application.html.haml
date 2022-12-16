@@ -20,7 +20,10 @@
       = render 'layouts/google_analytics'
   %body
     = render 'layouts/messages'
-    = render 'layouts/header'
+    - if action_name == "landing"
+      = render 'layouts/product_header'
+    -else
+      = render 'layouts/header'
     - if current_page?(root_path)
       .mb-4
         = render 'layouts/welcome'
