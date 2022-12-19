@@ -49,7 +49,7 @@
           &nbsp;
           = number_to_currency(product.price_cents)
           (ON SALE)
-    - if !request.path_info.include?('orders/new') && !request.path_info.include?('landing')
+    - if !request.path_info.include?('orders/new') && action_name != "landing"
       %span.d-block
         Commission:
         = number_to_currency(product.commission_cents)
