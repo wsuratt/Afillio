@@ -20,7 +20,7 @@
       = render 'layouts/google_analytics'
   %body
     = render 'layouts/messages'
-    - if action_name == "landing"
+    - if action_name == "landing" || (request.path_info.include?('orders/') && !request.path_info.include?('orders/my_sales') && !request.path_info.include?('orders/my_orders'))
       = render 'layouts/product_header'
     -else
       = render 'layouts/header'

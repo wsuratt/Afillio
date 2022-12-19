@@ -56,7 +56,7 @@
         %p
         .col-md-3.mx-auto
           .input-group.justify-content-center.flex-nowrap.d-flex.align-items-center
-            %input#myInput{:type => "text", :value => request.base_url + "/orders/new/" + @product.slug + "/" + @user.referral_token}/
+            %input#myInput{:type => "text", :value => request.base_url + "/products/" + @product.slug + "/" + @user.referral_token}/
             .input-group-append
               %button{:class => "ms-1 btn btn-sm btn-custom", :onclick => "myFunction()"}
                 Copy

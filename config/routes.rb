@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :products do
     get :purchased, :created, on: :collection
   end
-  get 'products/:title/landing', to: 'products#landing'
+  get 'products/:title/:referral_token', to: 'products#landing'
 
   resources :orders, path_names: { edit: ':id/edit', new: 'new/:title/:referral_token' } do
     get :my_orders, on: :collection

@@ -102,6 +102,7 @@ class ProductsController < ApplicationController
 
   def landing
     @product = Product.friendly.find(params[:title])
+    @user = User.friendly.find_by(referral_token: params[:referral_token])
   end
 
   private
