@@ -32,7 +32,7 @@
         %b
           = product.title
     %span.d-block
-      - if !request.path_info.include?('landing')
+      - if !request.path_info.include?('orders/new') && action_name != "landing"
         Price:
         = number_to_currency(product.price_cents)
       - else
