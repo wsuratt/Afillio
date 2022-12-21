@@ -7,6 +7,8 @@
 
   gtag('config', '#{Rails.application.credentials.dig(:google_analytics)}');
 
+  gtag('event', 'purchase', { 'transaction_id': 't_12345' });
+
 %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=#{Rails.application.credentials.dig(:google_analytics_campaign)}"}
   :cdata
 :javascript
