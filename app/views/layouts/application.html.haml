@@ -7,6 +7,14 @@
     %meta{:content => yield_meta_tag(:description, "Are You Looking for a Way to Make Money? Try Afillio! Simply Sign Up, Select a Product, and Sell to Anyone for Commission."), :name => "description"}/
     = csrf_meta_tags
     = csp_meta_tag
+    / Google Tag Manager
+    :javascript
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TGJTRVW');
+    / End Google Tag Manager
     %script{src: "https://js.stripe.com/v3/"}
     = favicon_link_tag asset_path('afillio-logo.svg')
     = favicon_link_tag asset_path('afillio-logo.png'), rel: 'apple-touch-icon', type: 'image/png'
@@ -19,6 +27,10 @@
     - if Rails.env.production?
       = render 'layouts/google_analytics'
   %body
+    / Google Tag Manager (noscript)
+    %noscript
+      %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-TGJTRVW", :style => "display:none;visibility:hidden", :width => "0"}
+    / End Google Tag Manager (noscript)
     = render 'layouts/messages'
     - if action_name == "landing" || request.path_info.include?('checkout/') || (request.path_info.include?('orders/') && !request.path_info.include?('orders/my_sales') && !request.path_info.include?('orders/my_orders'))
       = render 'layouts/product_header'
