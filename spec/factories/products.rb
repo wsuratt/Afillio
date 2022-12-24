@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :product do
     title { 'Cool Product' }
     description { 'This is a cool product.' }
+    cta { 'Buy this' }
     quantity { '10' }
     price { '19.99' }
     commission { '5' }

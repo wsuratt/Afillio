@@ -25,6 +25,7 @@ RSpec.feature 'products', type: :system do
       attach_file('product_images_1', './spec/product_content/test_image.jpg')
       attach_file('product_videos', './spec/product_content/test_video.mp4')
       find('#product_description').set 'This is a cool product.'
+      fill_in 'Call to action', with: 'Buy this'
       fill_in 'Quantity', with: '10'
       fill_in 'Price', with: '19.99'
       fill_in 'Commission', with: '5'
