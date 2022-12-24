@@ -36,6 +36,8 @@
       = f.rich_text_area :description
       %small= f.full_error :description, class: 'text-danger'
       %p
+      = f.input :cta, label: "Call to action"
+      %p
       = f.input :category, collection: Product.categories, include_blank: true
       %p
       = f.input :quantity

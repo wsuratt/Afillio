@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   validates :description, presence: true, length: { minimum: 5, maximum: 500 }
   validates :quantity, presence: true,
                        numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :cta, presence: true, length: { maximum: 20 }
 
   belongs_to :user, counter_cache: true
   # User.find_each { |user| User.reset_counters(user.id, :products) }
