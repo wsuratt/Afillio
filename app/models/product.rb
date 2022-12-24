@@ -54,7 +54,7 @@ class Product < ApplicationRecord
                product.price_cents
              },
              greater_than: 0
-          }
+           }
   monetize :commission,
            as: :commission_cents,
            presence: true,
