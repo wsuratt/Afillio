@@ -61,7 +61,7 @@ class Product < ApplicationRecord
            numericality:
            {
              less_than_or_equal_to: proc { |product|
-               product.price_cents - (product.price_cents * 0.03)
+               product.sale_price_cents - (product.sale_price_cents * 0.03)
              },
              greater_than: 0
            }

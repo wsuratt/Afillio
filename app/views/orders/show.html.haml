@@ -23,7 +23,7 @@
             = @order.user
         %p
           %b Price:
-          = number_to_currency(@order.product.price_cents)
+          = number_to_currency(@order.product.sale_price_cents)
         %p
           %b Quantity:
           = @order.quantity

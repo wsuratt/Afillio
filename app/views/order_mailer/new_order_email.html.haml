@@ -97,7 +97,7 @@
                           %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;", :width => "75%"}
                             = @order.product.title
                           %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;", :width => "25%"}
-                            = number_to_currency(@order.product.price_cents)
+                            = number_to_currency(@order.product.sale_price_cents)
                         %tr
                           %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;", :width => "75%"} Quantity
                           %td{:align => "left", :style => "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;", :width => "25%"}

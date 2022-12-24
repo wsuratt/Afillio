@@ -8,7 +8,7 @@ Order ID: #{@order.slug}
 Sold By: #{@order.product.user.vendor_title}
 
 Product: #{@order.product.title}
-Price: #{number_to_currency(@order.product.price_cents)}
+Price: #{number_to_currency(@order.product.sale_price_cents)}
 Quantity: #{@order.quantity}
 Stripe transaction fee: #{number_to_currency(Order.stripe_fee_cents)}
 Total: #{number_to_currency(@order.total_cents)}

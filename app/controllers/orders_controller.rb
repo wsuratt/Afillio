@@ -67,10 +67,10 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.product.quantity >= @order.quantity
       # @order.product = Product.friendly.find(params[:title])
-      @order.total_cents = (@order.product.price_cents * @order.quantity) + Order.stripe_fee_cents
+      @order.total_cents = (@order.product.sale_price_cents * @order.quantity) + Order.stripe_fee_cents
       @order.seller_commission_cents = @order.product.commission_cents * @order.quantity
       @order.admin_commission_cents =
-        (Order.afillio_fee * @order.product.price_cents * @order.quantity) + Order.stripe_fee_cents
+        (Order.afillio_fee * @order.product.sale_price_cents * @order.quantity) + Order.stripe_fee_cents
       @order.vendor_commission_cents =
         @order.total_cents - (@order.seller_commission_cents + @order.admin_commission_cents)
 
