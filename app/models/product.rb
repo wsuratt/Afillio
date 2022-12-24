@@ -45,6 +45,16 @@ class Product < ApplicationRecord
   end
 
   monetize :price, as: :price_cents, presence: true, numericality: { greater_than: 0 }
+  monetize :sale_price,
+           as: :sale_price_cents,
+           presence: true,
+           numericality:
+           {
+            less_than: proc { |product|
+              product.price_cents
+            },
+            greater_than: 0
+          }
   monetize :commission,
            as: :commission_cents,
            presence: true,

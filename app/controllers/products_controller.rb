@@ -124,6 +124,8 @@ class ProductsController < ApplicationController
       :quantity,
       :price,
       :price_cents,
+      :sale_price,
+      :sale_price_cents,
       :commission,
       :commission_cents,
       :show,

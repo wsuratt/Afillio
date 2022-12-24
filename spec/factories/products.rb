@@ -7,6 +7,7 @@ FactoryBot.define do
     cta { 'Buy this' }
     quantity { '10' }
     price { '19.99' }
+    sale_price { '12.99' }
     commission { '5' }
     user
 

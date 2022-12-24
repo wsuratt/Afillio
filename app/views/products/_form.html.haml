@@ -43,6 +43,9 @@
       = f.input :quantity
       %p
       = f.input :price_cents, label: "Price"
+      %i This is the price that will be crossed out
+      %p
+      = f.input :sale_price_cents, label: "Sale price"
       %i Note: Afillio takes a 3% platform fee out of all sales
       %p
       = f.input :commission_cents, label: "Commission"
