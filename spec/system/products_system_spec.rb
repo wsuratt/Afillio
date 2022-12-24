@@ -28,7 +28,7 @@ RSpec.feature 'products', type: :system do
       fill_in 'Call to action', with: 'Buy this'
       fill_in 'Quantity', with: '10'
       fill_in 'Price', with: '19.99'
-      fill_in 'Sale Price', with: '12.99'
+      fill_in 'Sale price', with: '12.99'
       fill_in 'Commission', with: '5'
       click_button 'Create Product'
 
