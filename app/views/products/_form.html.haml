@@ -17,12 +17,12 @@
       // .row
       = f.file_field :images, multiple: true, id: "product_images_1"
       %small= f.full_error :images, class: 'text-danger'
-      .row
-      = f.file_field :images, multiple: true, id: "product_images_2"
-      %small= f.full_error :images, class: 'text-danger'
-      .row
-      = f.file_field :images, multiple: true, id: "product_images_3"
-      %small= f.full_error :images, class: 'text-danger'
+      -# .row
+      -# = f.file_field :images, multiple: true, id: "product_images_2"
+      -# %small= f.full_error :images, class: 'text-danger'
+      -# .row
+      -# = f.file_field :images, multiple: true, id: "product_images_3"
+      -# %small= f.full_error :images, class: 'text-danger'
       
       %p
       = f.label :videos
@@ -46,7 +46,7 @@
       %i This is the price that will be crossed out
       %p
       = f.input :sale_price_cents, label: "Sale price"
-      %i Note: Afillio takes a 3% platform fee out of all sales
+      -# %i Note: Afillio takes a 3% platform fee out of all sales
       %p
       = f.input :commission_cents, label: "Commission"
       %p
