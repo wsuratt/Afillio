@@ -39,5 +39,5 @@
         %br
         Return policy: 
         = @product.user.return_url.blank? ? 'No refunds or returns.' : @product.user.return_url
-      .col#reviews
-        = render 'products/reviews'
+      -# .col#reviews
+      -#   = render 'products/reviews'

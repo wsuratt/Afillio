@@ -27,12 +27,12 @@ class Product < ApplicationRecord
   validate :validate_images
 
   has_many_attached :videos
-  validates :videos, attached: true,
-                     content_type: ['video/mp4'],
-                     size: { less_than: 5.megabytes,
-                             message: 'size should be under 5 megabytes' }
+  # validates :videos, attached: true,
+  #                    content_type: ['video/mp4'],
+  #                    size: { less_than: 5.megabytes,
+  #                            message: 'size should be under 5 megabytes' }
 
-  validate :validate_videos
+  # validate :validate_videos
 
   has_rich_text :description
 
@@ -44,15 +44,15 @@ class Product < ApplicationRecord
     reject { |a| a[:show] }
   end
 
-  monetize :price, as: :price_cents, presence: true, numericality: { greater_than: 0 }
+  # monetize :price, as: :price_cents, presence: true, numericality: { greater_than: 0 }
   monetize :sale_price,
            as: :sale_price_cents,
            presence: true,
            numericality:
            {
-             less_than: proc { |product|
-               product.price_cents
-             },
+            #  less_than: proc { |product|
+            #    product.price_cents
+            #  },
              greater_than: 0
            }
   monetize :commission,

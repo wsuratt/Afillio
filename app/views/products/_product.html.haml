@@ -32,23 +32,23 @@
         %b
           = product.title
     %span.d-block
-      - if !request.path_info.include?('orders/new') && action_name != "landing"
-        Price:
-        = number_to_currency(product.sale_price_cents)
-      - else
-        .text-center
-          %a{:href => "#reviews"}
-            .fa.fa-star.text-warning
-            .fa.fa-star.text-warning
-            .fa.fa-star.text-warning
-            .fa.fa-star.text-warning
-            .fa.fa-star-half-alt.fa-sm.text-warning
-        %del.text-muted.d-inline
-          = number_to_currency(product.price_cents)
-        .text-danger.d-inline
-          &nbsp;
-          = number_to_currency(product.sale_price_cents)
-          (ON SALE)
+      -# - if !request.path_info.include?('orders/new') && action_name != "landing"
+      Price:
+      = number_to_currency(product.sale_price_cents)
+      -# - else
+      -#   .text-center
+      -#     %a{:href => "#reviews"}
+      -#       .fa.fa-star.text-warning
+      -#       .fa.fa-star.text-warning
+      -#       .fa.fa-star.text-warning
+      -#       .fa.fa-star.text-warning
+      -#       .fa.fa-star-half-alt.fa-sm.text-warning
+      -#   %del.text-muted.d-inline
+      -#     = number_to_currency(product.price_cents)
+      -#   .text-danger.d-inline
+      -#     &nbsp;
+      -#     = number_to_currency(product.sale_price_cents)
+      -#     (ON SALE)
     - if !request.path_info.include?('orders/new') && action_name != "landing"
       %span.d-block
         Commission:
