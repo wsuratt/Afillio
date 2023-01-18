@@ -48,16 +48,16 @@
               = link_to rails_blob_path(video, disposition: 'attachment'), class: "download-btn" do
                 .fa.fa-download
                 Download
-          -# %p
-          -# %h4.mt-5
-          -#   Share link below:
-          -# %p
-          -# = @svg.html_safe
           %p
-          %h4
-            Share QR code or link below:
+          %h4.mt-5
+            Share link below:
           %p
           = @svg.html_safe
+          -# %p
+          -# %h4
+          -#   Share QR code or link below:
+          -# %p
+          -# = @svg.html_safe
         %p
         .col-md-3.mx-auto
           .input-group.justify-content-center.flex-nowrap.d-flex.align-items-center
