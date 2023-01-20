@@ -1,7 +1,7 @@
 .container-fluid
   %h2.pb-3.border-bottom For Affiliates
   .desktop
-    .row.g-4.py-4.row-cols-1.row-cols-lg-4
+    .row.g-5.py-4.row-cols-1.row-cols-lg-5
       .col.d-flex.align-items-start
         = image_tag("findproduct.png", alt: "Find product", class: 'img-fluid')
       .col.d-flex.align-items-start
@@ -10,6 +10,8 @@
         = image_tag("makesale.png", alt: "Find product", class: 'img-fluid') 
       .col.d-flex.align-items-start
         = image_tag("commission.png", alt: "Find product", class: 'img-fluid')
+      .col.d-flex.align-items-start
+        = image_tag("join.png", alt: "Find product", class: 'img-fluid')
   .mobile.py-4
     #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
       .carousel-inner
@@ -25,6 +27,9 @@
         .carousel-item
           .d-flex.justify-content-center
             = image_tag("commission.png", alt: "Find product", class: 'carousel-img')
+        .carousel-item
+          .d-flex.justify-content-center
+            = image_tag("join.png", alt: "Find product", class: 'carousel-img')
       %button.carousel-control-prev.w-10{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
         %span.carousel-control-prev-icon{"aria-hidden" => "true"}
         %span.visually-hidden Previous
