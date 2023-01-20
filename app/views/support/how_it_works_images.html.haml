@@ -1,0 +1,17 @@
+#carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
+  .carousel-inner
+    .img-container.mx-auto.mb-4
+      .carousel-item.img-item.active
+        = image_tag("findproduct.png", alt: "Find product", class: 'img-fluid')
+      .carousel-item.img-item.active
+        = image_tag("marketingcontent.png", alt: "Find product", class: 'img-fluid')
+      .carousel-item.img-item.active
+        = image_tag("makesale.png", alt: "Find product", class: 'img-fluid')
+      .carousel-item.img-item
+        = image_tag("commission.png", alt: "Find product", class: 'img-fluid')
+  %button.carousel-control-prev.w-10{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
+    %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+    %span.visually-hidden Previous
+  %button.carousel-control-next.w-10{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
+    %span.carousel-control-next-icon{"aria-hidden" => "true"}
+    %span.visually-hidden Next

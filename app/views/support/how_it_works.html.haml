@@ -1,30 +1,36 @@
 .container-fluid
   %h2.pb-3.border-bottom For Affiliates
-  .row.g-4.py-4.row-cols-1.row-cols-lg-4
-    .col.d-flex.align-items-start
-      = image_tag("findproduct.png", alt: "Find product", class: 'img-fluid')
-      -# .fa.fa-shopping-bag.fa-2x.pe-2
-      -# %div
-      -#   %h3.fs-2 Find a product
-      -#   %p Find a product to market and download its marketing content (feel free to edit this content as you see fit).
-    .col.d-flex.align-items-start
-      = image_tag("marketingcontent.png", alt: "Find product", class: 'img-fluid')
-      -# .fa.fa-share-square.fa-2x.pe-2
-      -# %div
-      -#   %h3.fs-2 Post content
-      -#   %p Post or advertise marketing content on any social media platform.   
-    .col.d-flex.align-items-start
-      = image_tag("makesale.png", alt: "Find product", class: 'img-fluid')
-      -# .fa.fa-link.fa-2x.pe-2
-      -# %div
-      -#   %h3.fs-2 Share link
-      -#   %p Direct people to your affiliate link.   
-    .col.d-flex.align-items-start
-      = image_tag("commission.png", alt: "Find product", class: 'img-fluid')
-      -# .fa.fa-hand-holding-usd.fa-2x.pe-2
-      -# %div
-      -#   %h3.fs-2 Make sales
-      -#   %p Make sales and earn commissions. 
+  .desktop
+    .row.g-4.py-4.row-cols-1.row-cols-lg-4
+      .col.d-flex.align-items-start
+        = image_tag("findproduct.png", alt: "Find product", class: 'img-fluid')
+      .col.d-flex.align-items-start
+        = image_tag("marketingcontent.png", alt: "Find product", class: 'img-fluid') 
+      .col.d-flex.align-items-start
+        = image_tag("makesale.png", alt: "Find product", class: 'img-fluid') 
+      .col.d-flex.align-items-start
+        = image_tag("commission.png", alt: "Find product", class: 'img-fluid')
+  .mobile.py-4
+    #carouselProductImages.carousel.carousel-dark.slide{"data-bs-interval" => "false", "data-bs-ride" => "carousel"}
+      .carousel-inner
+        .carousel-item.active
+          .d-flex.justify-content-center
+            = image_tag("findproduct.png", alt: "Find product", class: 'carousel-img')
+        .carousel-item
+          .d-flex.justify-content-center
+            = image_tag("marketingcontent.png", alt: "Find product", class: 'carousel-img')
+        .carousel-item
+          .d-flex.justify-content-center
+            = image_tag("makesale.png", alt: "Find product", class: 'carousel-img')
+        .carousel-item
+          .d-flex.justify-content-center
+            = image_tag("commission.png", alt: "Find product", class: 'carousel-img')
+      %button.carousel-control-prev.w-10{"data-bs-slide" => "prev", "data-bs-target" => "#carouselProductImages", :type => "button"}
+        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+        %span.visually-hidden Previous
+      %button.carousel-control-next.w-10{"data-bs-slide" => "next", "data-bs-target" => "#carouselProductImages", :type => "button"}
+        %span.carousel-control-next-icon{"aria-hidden" => "true"}
+        %span.visually-hidden Next
 
   - if current_user
     = link_to 'Get started as an Affiliate', products_path
