@@ -9,6 +9,15 @@
           = link_to products_path, class: 'nav-link' do
             .fa.fa-shopping-bag
             Products
+        %li.nav-item{class: "#{'active fw-bold' if current_page?(vendor_info_user_path(current_user))}"}
+          - if current_user
+            = link_to vendor_info_user_path(current_user), class: 'nav-link' do
+              .fa.fa-clipboard
+              Become a Vendor
+          - else
+            = link_to 'Become a Vendor', new_user_session_path, class: 'nav-link' do
+              .fa.fa-clipboard
+              Become a Vendor
         %li.nav-item{class: "#{'active fw-bold' if current_page?(support_index_path)}"}
           = link_to support_index_path, class: 'nav-link' do
             .fa.fa-question-circle
