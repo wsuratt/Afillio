@@ -82,6 +82,9 @@
           %h3.text-danger
             Out of Stock
       - else
+        .text-center
+          %p
+          = link_to 'Preview buy page', request.base_url + "/products/" + @product.slug + "/" + @user.referral_token, class: 'show-btn'
     -else
       .text-center
         %p

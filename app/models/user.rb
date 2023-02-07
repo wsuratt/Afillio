@@ -45,6 +45,11 @@ class User < ApplicationRecord
     end
   end
 
+  def assign_vendor_role
+    add_role(:vendor)
+    remove_role(:seller)
+  end
+
   validate :must_have_a_role, on: :update
   validate :must_have_a_vendor_title, on: :update, if: -> { has_role?(:vendor) }
   validate :must_have_a_support, on: :update, if: -> { has_role?(:vendor) }

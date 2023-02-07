@@ -56,4 +56,10 @@
   .text-center
     %p
     %h3.text-danger
-      Seller's cannot place orders from themselves.
+      - if current_user.has_role?(:vendor)
+        Vendor's cannot place orders from themselves.
+      -else
+        Seller's cannot place orders from themselves.
+    %p
+    .w-50.mx-auto.mt-4
+      = link_to 'Home', root_path, class: 'show-btn'

@@ -24,12 +24,6 @@
       -# .row
       -# = f.file_field :images, multiple: true, id: "product_images_3"
       -# %small= f.full_error :images, class: 'text-danger'
-      
-      -# %p
-      -# = f.label :videos
-      -# .row
-      -# = f.file_field :videos, multiple: true
-      -# %small= f.full_error :videos, class: 'text-danger'
 
       .row
       %p
@@ -38,10 +32,11 @@
       %small= f.full_error :description, class: 'text-danger'
       %p
       = f.input :cta, label: "Call to action"
+      %i Ex: "SAVE YOUR BACK TODAY"
       %p
       = f.input :category, collection: Product.categories, include_blank: true
       %p
-      = f.input :quantity
+      = f.input :quantity, label: "Quantity in stock"
       %p
       -# = f.input :price_cents, label: "Price"
       -# %i This is the price that will be crossed out
@@ -50,6 +45,13 @@
       %i Note: Afillio takes a 3% platform fee out of all sales
       %p
       = f.input :commission_cents, label: "Commission"
+      %p
+      = f.label :videos, label: "Marketing video (optional)"
+      .row
+      = f.file_field :videos, multiple: true
+      %small= f.full_error :videos, class: 'text-danger'
+      %i Short video that affiliates can use to promote your product
+      .row
       %p
       = f.label "Show in store"
       = f.check_box :show

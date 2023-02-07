@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     # authorize @user
     if @user.has_role?(:seller)
       if @user.update(user_params) && @user.info_complete?
+        @user.assign_vendor_role #auto verification
         redirect_to become_vendor_user_path(@user), notice: 'User info was successfully submitted.'
       else
         redirect_to vendor_info_user_path(@user),
