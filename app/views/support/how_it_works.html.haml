@@ -54,7 +54,7 @@
       .fa.fa-book.fa-2x.pe-2
       %div
         %h3.fs-2 Complete form
-        %p Submit the linked vendor form and enter the necessary information.
+        %p Submit the #{link_to 'Vendor information form', current_user ? vendor_info_user_path(current_user) : new_user_session_path} and enter the necessary information.
         
     .col.d-flex.align-items-start
       .fa.fa-shopping-bag.fa-2x.pe-2
